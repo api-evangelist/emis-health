@@ -1,0 +1,110 @@
+aid: emis-health
+url: https://raw.githubusercontent.com/api-evangelist/emis-health/refs/heads/main/apis.yml
+name: EMIS Health
+kind: company
+description: EMIS Health is a United Kingdom health-technology company and one of
+  the two dominant GP clinical-system providers in the NHS (alongside TPP SystmOne),
+  supplying the EMIS Web electronic patient record used across primary care, community
+  pharmacy, and other care settings. EMIS is migrating from EMIS Web to EMIS-X, a
+  cloud-first platform, and exposes third-party integration through the EMIS Partner
+  Developer Portal at docs.partner.emis-x.uk. The gated partner programme documents
+  a RESTful JSON Partner API (PAPI) covering appointments, the clinical/medical record,
+  patient demographics and matching, organisation lookup and clinical searches, plus
+  EMIS-X App Launch and an EMIS-X Analytics data warehouse. Authentication is OAuth2 /
+  OIDC (Microsoft Entra External ID / Azure AD B2C) using authorization-code, PKCE,
+  and client-credentials flows with scoped JWT access tokens; native HL7 FHIR resource
+  support is documented as upcoming rather than yet available.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Healthcare
+- United Kingdom
+- EHR
+- EMR
+- Interoperability
+- HL7
+- FHIR
+- Primary Care
+- NHS
+- Clinical Data
+- Electronic Patient Record
+created: '2026-07-24'
+modified: '2026-07-24'
+specificationVersion: '0.19'
+apis:
+- aid: emis-health:emis-partner-api
+  name: EMIS Partner API (PAPI)
+  description: The EMIS Partner API (PAPI) is a RESTful JSON API for EMIS-X / EMIS Web
+    integration, exposing appointments, the clinical/medical record, patient demographics,
+    patient matching, organisation lookup, and clinical searches. Documented as
+    OpenAPI 3.0.4 (Partner API v1.2) with 40 operations across the appointments,
+    medicalRecord, patient, patientMatching, organisation, search, and user domains.
+    Access is OAuth2 authorization-code with scoped bearer (JWT) tokens.
+  humanURL: https://docs.partner.emis-x.uk/papi-overview
+  baseURL: https://api.platform.emis-x.uk/partner
+  tags:
+  - Appointments
+  - Medical Record
+  - Patient
+  - Primary Care
+  properties:
+  - type: OpenAPI
+    url: openapi/emis-health-partner-api-openapi.json
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/papi-overview
+  - type: APIReference
+    url: https://docs.partner.emis-x.uk/openapi/papi
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/using-the-partner-api
+  - type: Authentication
+    url: https://docs.partner.emis-x.uk/auth/
+- aid: emis-health:emis-x-app-launch
+  name: EMIS-X App Launch
+  description: EMIS-X App Launch lets partner applications be launched in-context
+    from within the EMIS-X / EMIS Web clinical workflow, passing an authenticated
+    user and patient context to the integrating application via the shared EMIS-X
+    OAuth2 / OIDC authentication.
+  humanURL: https://docs.partner.emis-x.uk/emisx-app-launch/
+  tags:
+  - App Launch
+  - Interoperability
+  properties:
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/emisx-app-launch/
+  - type: Authentication
+    url: https://docs.partner.emis-x.uk/auth/
+- aid: emis-health:emis-x-analytics
+  name: EMIS-X Analytics
+  description: EMIS-X Analytics provides partner access to an EMIS-X data warehouse
+    with modelled datasets across domains including Community Pharmacy, Incremental
+    Primary Care Views (iPCVs), OpenSAFELY, Recruit, and IM1 Bulk Extract, browsable
+    through the developer portal data explorer.
+  humanURL: https://docs.partner.emis-x.uk/getting-started/
+  tags:
+  - Analytics
+  - Data Warehouse
+  - Community Pharmacy
+  properties:
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/getting-started/
+common:
+- type: Website
+  url: https://www.emishealth.com/
+- type: DeveloperPortal
+  url: https://docs.partner.emis-x.uk/
+- type: Documentation
+  url: https://docs.partner.emis-x.uk/getting-started/
+- type: APIReference
+  url: https://docs.partner.emis-x.uk/openapi/papi
+- type: GettingStarted
+  url: https://docs.partner.emis-x.uk/getting-started/
+- type: Onboarding
+  url: https://docs.partner.emis-x.uk/onboarding-one/
+- type: Authentication
+  url: https://docs.partner.emis-x.uk/auth/
+- type: OpenIDConfiguration
+  url: https://identity.stg.emis-x.uk/b205162c-c95a-4639-8076-bb1fcb152d2b/b2c_1a_clientcredentials/.well-known/openid-configuration
+- type: PrivacyPolicy
+  url: https://www.emishealth.com/privacy-policy
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

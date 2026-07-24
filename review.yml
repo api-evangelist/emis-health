@@ -1,0 +1,141 @@
+aid: emis-health
+name: EMIS Health
+review:
+  question: Does EMIS Health expose a documented public developer portal and machine-readable API contract, and what is its FHIR / standards posture?
+  answer: true
+  date: '2026-07-24'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    EMIS Health (EMIS-X) runs a live, gated partner developer portal at
+    https://docs.partner.emis-x.uk/ (HTTP 200). Access to production
+    integration is partner/assurance-gated (onboarding + assurance
+    prerequisites), but the documentation and a real OpenAPI contract are
+    publicly readable. The flagship product is the EMIS Partner API (PAPI):
+    an OpenAPI 3.0.4 document (title "Partner API", version 1.2) served
+    verbatim at https://api.platform.emis-x.uk/partner/swagger/v1/swagger.json
+    with 40 operations across the appointments, medicalRecord, patient,
+    patientMatching, organisation, search, and user domains. The portal also
+    documents EMIS-X App Launch (in-context partner app launch) and EMIS-X
+    Analytics (a modelled data warehouse across Community Pharmacy, iPCVs,
+    OpenSAFELY, Recruit, and IM1 Bulk Extract). Native HL7 FHIR resource
+    support is listed on the portal as upcoming ("🔜"), so no FHIR
+    CapabilityStatement / metadata endpoint and no SMART-on-FHIR
+    .well-known/smart-configuration were found or captured at review time.
+  homeMarket: United Kingdom
+  tier: ehr-emr
+  developerPortal:
+    url: https://docs.partner.emis-x.uk/
+    status: 200
+    confirmed: true
+    gated: true
+    gatingNote: >-
+      Documentation and the PAPI OpenAPI are publicly readable; production
+      access requires partner onboarding + assurance prerequisites.
+  fhirCapabilityStatement:
+    found: false
+    note: >-
+      Portal states FHIR resource support is upcoming. No <base>/metadata
+      CapabilityStatement and no /.well-known/smart-configuration were served
+      (smart-configuration on the docs host returned 404). Not SMART on FHIR
+      at review time.
+  standardsConformance:
+    usCore: false
+    ukCore: false
+    auCore: false
+    daVinci: false
+    carin: false
+    note: >-
+      No FHIR profile conformance is claimed yet; the current PAPI is a REST
+      JSON API, not a FHIR API. EMIS-X messaging historically also uses NHS
+      ITK3 and the NHS IM1 integration mechanism (context, not captured here).
+  downloadableSpecs:
+    count: 1
+    specs:
+    - type: OpenAPI
+      openapiVersion: 3.0.4
+      title: Partner API
+      version: '1.2'
+      operationCount: 40
+      tags:
+      - appointments
+      - medicalRecord
+      - patient
+      - patientMatching
+      - organisation
+      - search
+      - user
+      - health
+      provenance: https://api.platform.emis-x.uk/partner/swagger/v1/swagger.json
+      savedAs: openapi/emis-health-partner-api-openapi.json
+      httpStatus: 200
+  authModel:
+    scheme: OAuth2 / OIDC (Microsoft Entra External ID / Azure AD B2C)
+    smartOnFhir: false
+    grantTypes:
+    - authorization_code
+    - authorization_code + PKCE
+    - client_credentials
+    - resource_owner_password (documented for automated testing only)
+    tokenFormat: JWT bearer, ~1 hour validity
+    identityHost: identity.stg.emis-x.uk
+    openidConfiguration: https://identity.stg.emis-x.uk/b205162c-c95a-4639-8076-bb1fcb152d2b/b2c_1a_clientcredentials/.well-known/openid-configuration
+    openidConfigurationStatus: 200
+    scopes:
+    - papi-appt.read
+    - papi-appt.write
+    - papi-cr.read
+    - papi-cr.write
+    - papi-subjects.read
+    - papi-config.read
+    - papi-searches.read
+    scopesNote: >-
+      Scopes above are enumerated verbatim in the PAPI OpenAPI OAuth2
+      authorizationCode flow. The auth docs also reference an
+      "authorizations" JWT claim array (e.g. clinical-cr.read /
+      clinical-cr.write) for EMIS-X clinical record access.
+  transports:
+  - protocol: REST
+    scheme: https
+    baseURL: https://api.platform.emis-x.uk/partner
+    documented: true
+  - protocol: FHIR
+    scheme: https
+    documented: false
+    note: FHIR resource support is listed as upcoming on the partner portal; not yet available.
+  - protocol: WebSocket
+    scheme: wss
+    documented: false
+    note: No WebSocket surface documented.
+sources:
+- url: https://docs.partner.emis-x.uk/getting-started/
+  type: Documentation
+  status: 200
+  note: EMIS Partner Developer Portal landing / getting started; lists Partner API, App Launch, and Analytics.
+- url: https://docs.partner.emis-x.uk/papi-overview
+  type: Documentation
+  status: 200
+  note: Partner API (PAPI) overview; points to the Swagger spec for endpoint detail.
+- url: https://docs.partner.emis-x.uk/openapi/papi
+  type: APIReference
+  status: 200
+  note: Swagger UI page; loads spec from api.platform.emis-x.uk/partner/swagger/v1/swagger.json.
+- url: https://api.platform.emis-x.uk/partner/swagger/v1/swagger.json
+  type: OpenAPI
+  status: 200
+  note: OpenAPI 3.0.4, Partner API v1.2, 40 operations. Saved verbatim to openapi/.
+- url: https://docs.partner.emis-x.uk/auth/
+  type: Documentation
+  status: 200
+  note: OAuth2 / OIDC auth model (Azure AD B2C); grant types, token types, scopes.
+- url: https://identity.stg.emis-x.uk/b205162c-c95a-4639-8076-bb1fcb152d2b/b2c_1a_clientcredentials/.well-known/openid-configuration
+  type: OpenIDConfiguration
+  status: 200
+  note: Anonymous OIDC discovery document; authorization/token/jwks endpoints.
+- url: https://www.emishealth.com/
+  type: Website
+  status: 200
+  note: Corporate website.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
