@@ -1,0 +1,35 @@
+generated: '2026-07-24'
+method: searched
+source: openapi/emis-health-partner-api-openapi.json + https://docs.partner.emis-x.uk/
+notes: >-
+  Versioning and evolution posture for the EMIS Partner API. No public status
+  page, no formal deprecation/sunset policy, and no published SLA were found on
+  the partner portal at review time, so StatusPage / Deprecation pointers are not
+  emitted (absence is recorded, not fabricated).
+versioning:
+  scheme: uri-path
+  current: v1
+  spec_version: '1.2'
+  docs: https://docs.partner.emis-x.uk/using-the-partner-api
+  strategy: >-
+    Additive; new response shapes ship as parallel V2 / Ex operations rather than
+    a new URI version. EMIS is concurrently migrating the underlying platform from
+    EMIS Web to the cloud-first EMIS-X.
+platform_migration:
+  from: EMIS Web
+  to: EMIS-X (cloud-first)
+  note: FHIR resource support is documented on the portal as upcoming.
+token_lifecycle:
+  access_token_validity: ~1 hour
+  note: The identity provider states token validity may change at any time.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No RFC 8594 Sunset/Deprecation header support or written deprecation policy found.
+status_page:
+  url: null
+  note: No public status page found.
+sla:
+  url: null
+  note: No published SLA/uptime target found on the partner portal.
+deprecated_operations: []

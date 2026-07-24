@@ -1,0 +1,16 @@
+generated: '2026-07-24'
+method: generated
+source: openapi/emis-health-partner-api-openapi.json
+skills:
+- file: emis-health-retrieve-medical-record.md
+  name: Retrieve a patient's medical record
+  api: openapi/emis-health-partner-api-openapi.json
+  operations: [GetMatchedPatients, GetPatientDemographics, GetMedicalRecord, GetCodedRecord, GetMedicationIssues]
+- file: emis-health-book-appointment.md
+  name: Find a slot and book an appointment
+  api: openapi/emis-health-partner-api-openapi.json
+  operations: [GetAppointmentSessions, GetSlotsForSession, BookAppointment, SetAppointmentStatus, CancelAppointment]
+- file: emis-health-file-clinical-record.md
+  name: File a record into a patient's clinical record
+  api: openapi/emis-health-partner-api-openapi.json
+  operations: [GetMatchedPatients, FileRecord]

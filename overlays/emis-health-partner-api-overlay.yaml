@@ -1,0 +1,35 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for EMIS Partner API (PAPI)
+  version: 1.0.0
+extends: openapi/emis-health-partner-api-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-slug: emis-health
+    x-apievangelist-provider: EMIS Health (EMIS-X)
+    x-apievangelist-home-market: United Kingdom
+    x-apievangelist-tier: ehr-emr
+    x-apievangelist-auth: OAuth2 / OIDC (Azure AD B2C) bearer JWT
+    x-apievangelist-error-envelope: PartnerApi.Service.Model.ErrorResponse
+    x-apievangelist-fhir-status: upcoming
+- target: $.servers
+  update:
+  - url: https://api.platform.emis-x.uk/partner
+    description: EMIS-X Partner API production base URL (added by API Evangelist; absent from the source spec)
+- target: $.tags
+  update:
+  - name: appointments
+    description: Appointment sessions, slots, booking, and status.
+  - name: medicalRecord
+    description: Clinical/medical record, consultations, attachments, medication.
+  - name: patient
+    description: Patient demographics.
+  - name: patientMatching
+    description: Patient matching, change tracking, and sequence.
+  - name: organisation
+    description: Organisation lookup.
+  - name: search
+    description: Population and clinical searches.
+  - name: user
+    description: User lookup.

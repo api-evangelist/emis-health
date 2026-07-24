@@ -57,6 +57,12 @@ apis:
     url: https://docs.partner.emis-x.uk/using-the-partner-api
   - type: Authentication
     url: https://docs.partner.emis-x.uk/auth/
+  - type: ErrorCatalog
+    url: errors/emis-health-problem-types.yml
+  - type: DataModel
+    url: data-model/emis-health-data-model.yml
+  - type: Overlay
+    url: overlays/emis-health-partner-api-overlay.yaml
 - aid: emis-health:emis-x-app-launch
   name: EMIS-X App Launch
   description: EMIS-X App Launch lets partner applications be launched in-context
@@ -87,6 +93,28 @@ apis:
   - type: Documentation
     url: https://docs.partner.emis-x.uk/getting-started/
 common:
+- type: AgenticAccess
+  url: agentic-access/emis-health-agentic-access.yml
+- type: DomainSecurity
+  url: security/emis-health-domain-security.yml
+- type: Authentication
+  url: authentication/emis-health-authentication.yml
+- type: OAuthScopes
+  url: scopes/emis-health-scopes.yml
+- type: WellKnown
+  url: well-known/emis-health-well-known.yml
+- type: Conventions
+  url: conventions/emis-health-conventions.yml
+- type: Lifecycle
+  url: lifecycle/emis-health-lifecycle.yml
+- type: Conformance
+  url: conformance/emis-health-conformance.yml
+- type: Sandbox
+  url: sandbox/emis-health-sandbox.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/emis-health-llms.txt
 - type: Website
   url: https://www.emishealth.com/
 - type: DeveloperPortal

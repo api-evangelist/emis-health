@@ -1,0 +1,900 @@
+generated: '2026-07-24'
+method: generated
+source: openapi/emis-health-partner-api-openapi.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 80
+  by_action_class:
+    connected: 72
+    acting: 8
+  by_consequence:
+    read: 72
+    write: 8
+  human_in_the_loop_required: 0
+operations:
+- path: /api/v1/appointments/BookAppointment
+  method: get
+  operationId: BookAppointment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.write
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/BookAppointment
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/CancelAppointment
+  method: get
+  operationId: CancelAppointment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.write
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/CancelAppointment
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetAppointmentConfiguration
+  method: get
+  operationId: GetAppointmentConfiguration
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetAppointmentConfiguration
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetAppointmentSessions
+  method: get
+  operationId: GetAppointmentSessions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetAppointmentSessions
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetArrivedPatients
+  method: get
+  operationId: GetArrivedPatients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetArrivedPatients
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetAttachments
+  method: get
+  operationId: GetAttachments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-cr.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetAttachments
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetAttachmentsV2
+  method: get
+  operationId: GetAttachmentsV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-cr.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetAttachmentsV2
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetBase64AttachmentData
+  method: get
+  operationId: GetBase64AttachmentData
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-cr.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetBase64AttachmentData
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetBase64AttachmentDataV2
+  method: get
+  operationId: GetBase64AttachmentDataV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-cr.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetBase64AttachmentDataV2
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetBookedPatients
+  method: get
+  operationId: GetBookedPatients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetBookedPatients
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetBookedPatientsV2
+  method: get
+  operationId: GetBookedPatientsV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetBookedPatientsV2
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patientMatching/GetChangedPatients
+  method: get
+  operationId: GetChangedPatients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-subjects.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patientMatching/GetChangedPatients
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patientMatching/GetChangedPatientsMR
+  method: get
+  operationId: GetChangedPatientsMR
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-subjects.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patientMatching/GetChangedPatientsMR
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetCodedRecord
+  method: get
+  operationId: GetCodedRecord
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-cr.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetCodedRecord
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetConsultation
+  method: get
+  operationId: GetConsultation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-cr.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetConsultation
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetEvents
+  method: get
+  operationId: GetEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-cr.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetEvents
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /
+  method: get
+  operationId: GetHealth
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patientMatching/GetMatchedPatients
+  method: get
+  operationId: GetMatchedPatients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-subjects.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patientMatching/GetMatchedPatients
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetMedicalRecord
+  method: get
+  operationId: GetMedicalRecord
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-cr.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetMedicalRecord
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetMedicationIssues
+  method: get
+  operationId: GetMedicationIssues
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-cr.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/GetMedicationIssues
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organisation/GetOrganisation
+  method: get
+  operationId: GetOrganisation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-config.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organisation/GetOrganisation
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organisation/GetOrganisationV2
+  method: get
+  operationId: GetOrganisationV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-config.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organisation/GetOrganisationV2
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetPatientAppointments
+  method: get
+  operationId: GetPatientAppointments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetPatientAppointments
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetPatientAppointmentsV2
+  method: get
+  operationId: GetPatientAppointmentsV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetPatientAppointmentsV2
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patient/GetPatientDemographics
+  method: get
+  operationId: GetPatientDemographics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-subjects.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patient/GetPatientDemographics
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/search/GetPatientSearches
+  method: get
+  operationId: GetPatientSearches
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-searches.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/search/GetPatientSearches
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patientMatching/GetPatientSequence
+  method: get
+  operationId: GetPatientSequence
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-subjects.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patientMatching/GetPatientSequence
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetSentInPatients
+  method: get
+  operationId: GetSentInPatients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetSentInPatients
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetSlotsForSession
+  method: get
+  operationId: GetSlotsForSession
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetSlotsForSession
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetSlotsForSessionV2
+  method: get
+  operationId: GetSlotsForSessionV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-appt.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/GetSlotsForSessionV2
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/user/GetUserById
+  method: get
+  operationId: GetUserById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - papi-config.read
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/user/GetUserById
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/AddSlotComment
+  method: patch
+  operationId: AddSlotComment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - papi-appt.write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/appointments/AddSlotComment
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/SetAppointmentStatus
+  method: patch
+  operationId: SetAppointmentStatus
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - papi-appt.write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/appointments/SetAppointmentStatus
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/SetAppointmentStatusEx
+  method: patch
+  operationId: SetAppointmentStatusEx
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - papi-appt.write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/appointments/SetAppointmentStatusEx
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/SetSlotNotes
+  method: patch
+  operationId: SetSlotNotes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - papi-appt.write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/appointments/SetSlotNotes
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/appointments/SetSlotType
+  method: patch
+  operationId: SetSlotType
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - papi-appt.write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/appointments/SetSlotType
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/UpdateAttachment
+  method: patch
+  operationId: UpdateAttachment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - papi-cr.write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/medicalRecord/UpdateAttachment
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/UpdateConsultationVisibility
+  method: patch
+  operationId: UpdateConsultationVisibility
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - papi-cr.write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/medicalRecord/UpdateConsultationVisibility
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/medicalRecord/FileRecord
+  method: post
+  operationId: FileRecord
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - papi-cr.write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/medicalRecord/FileRecord
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /swagger/*
+  method: get
+  operationId: swagger
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /swagger/*
+  method: options
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

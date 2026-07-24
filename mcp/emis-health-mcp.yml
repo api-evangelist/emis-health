@@ -1,0 +1,81 @@
+generated: '2026-07-24'
+method: derived
+status: candidate
+source: openapi/emis-health-partner-api-openapi.json
+notes: >-
+  No official EMIS-X / EMIS Health MCP server was found (no hosted server in docs,
+  no @modelcontextprotocol package, nothing in MCP registries). This is a DERIVED
+  candidate tool list: one tool per PAPI operation, to illustrate what an
+  agent-facing MCP surface would look like. Every tool inherits its real
+  inputSchema from the backing OpenAPI operation's parameters (each operation
+  requires an applicationId header + OAuth2 bearer with the noted scope).
+server:
+  name: emis-partner-api
+  transport: http
+  url: null
+  auth: OAuth2 authorizationCode (Azure AD B2C) bearer JWT
+tools:
+- name: get_patient_demographics
+  description: Retrieve patient demographics by patient number.
+  source_operation: openapi/emis-health-partner-api-openapi.json#GetPatientDemographics
+  scope: papi-subjects.read
+- name: get_matched_patients
+  description: Return patients matched to supplied demographic criteria.
+  source_operation: openapi/emis-health-partner-api-openapi.json#GetMatchedPatients
+  scope: papi-subjects.read
+- name: get_medical_record
+  description: Retrieve a patient's medical record.
+  source_operation: openapi/emis-health-partner-api-openapi.json#GetMedicalRecord
+  scope: papi-cr.read
+- name: get_coded_record
+  description: Retrieve the coded clinical record for a patient.
+  source_operation: openapi/emis-health-partner-api-openapi.json#GetCodedRecord
+  scope: papi-cr.read
+- name: get_consultation
+  description: Retrieve a consultation from the medical record.
+  source_operation: openapi/emis-health-partner-api-openapi.json#GetConsultation
+  scope: papi-cr.read
+- name: get_medication_issues
+  description: Retrieve medication issues for a patient.
+  source_operation: openapi/emis-health-partner-api-openapi.json#GetMedicationIssues
+  scope: papi-cr.read
+- name: file_record
+  description: File a record into a patient's clinical record.
+  source_operation: openapi/emis-health-partner-api-openapi.json#FileRecord
+  scope: papi-cr.write
+- name: book_appointment
+  description: Book an appointment into a given slot for a patient.
+  source_operation: openapi/emis-health-partner-api-openapi.json#BookAppointment
+  scope: papi-appt.write
+- name: cancel_appointment
+  description: Cancel a booked appointment.
+  source_operation: openapi/emis-health-partner-api-openapi.json#CancelAppointment
+  scope: papi-appt.write
+- name: get_booked_patients
+  description: List patients booked into appointment sessions.
+  source_operation: openapi/emis-health-partner-api-openapi.json#GetBookedPatients
+  scope: papi-appt.read
+- name: get_appointment_sessions
+  description: List appointment sessions for an organisation.
+  source_operation: openapi/emis-health-partner-api-openapi.json#GetAppointmentSessions
+  scope: papi-appt.read
+- name: get_slots_for_session
+  description: List slots for an appointment session.
+  source_operation: openapi/emis-health-partner-api-openapi.json#GetSlotsForSession
+  scope: papi-appt.read
+- name: set_appointment_status
+  description: Set the status of an appointment.
+  source_operation: openapi/emis-health-partner-api-openapi.json#SetAppointmentStatus
+  scope: papi-appt.write
+- name: get_organisation
+  description: Look up an organisation.
+  source_operation: openapi/emis-health-partner-api-openapi.json#GetOrganisation
+  scope: papi-config.read
+- name: get_patient_searches
+  description: Run/retrieve population and clinical searches.
+  source_operation: openapi/emis-health-partner-api-openapi.json#GetPatientSearches
+  scope: papi-searches.read
+coverage:
+  operations_total: 38
+  tools_derived: 15
+  note: A representative subset across all seven domains; the full candidate set is one tool per operationId.

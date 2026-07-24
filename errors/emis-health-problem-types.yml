@@ -1,0 +1,49 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/emis-health-partner-api-openapi.json
+format: custom
+notes: >-
+  The PAPI does not use RFC 9457 application/problem+json. Errors are returned as
+  a PartnerApi.Service.Model.ErrorResponse object (application/json or
+  application/xml) on every 4xx/5xx. Envelope fields derived verbatim from the
+  spec component schema.
+envelope:
+  schema: PartnerApi.Service.Model.ErrorResponse
+  content_types: [application/json, application/xml]
+  fields:
+  - name: messageId
+    type: string(uuid)
+    note: Correlation id for the error occurrence.
+  - name: text
+    type: object (PartnerApi.Service.Model.Text)
+    note: Human-readable message text.
+  - name: issue
+    type: object (PartnerApi.Service.Model.Issue)
+    note: Structured issue detail (code/severity).
+  - name: legacyOutcome
+    type: integer(int32)
+    note: Legacy EMIS Open outcome code carried through for back-compatibility.
+problems:
+- status: 400
+  title: Bad request - adjust URL or parameters
+  applies_to: all 38 partner operations
+  remediation: Correct the query/header parameters or path and retry.
+- status: 401
+  title: Authentication token not valid
+  applies_to: all 38 partner operations
+  remediation: Obtain a fresh JWT bearer token (tokens expire ~1 hour) with the required scope.
+- status: 404
+  title: Not found
+  applies_to: all 38 partner operations
+  remediation: Verify the resource identifier (patientNumber, slotId, organisation id) exists and is in scope for the application.
+- status: 415
+  title: Media type not valid for URL
+  applies_to: all 38 partner operations
+  remediation: Send a supported Content-Type (application/json or application/xml).
+- status: 500
+  title: Internal error
+  applies_to: all 38 partner operations
+  remediation: Retry later; if persistent contact EMIS partner support with the messageId.
+coverage:
+  operations_with_400_401_404_415_500: 38
+  operations_total: 38

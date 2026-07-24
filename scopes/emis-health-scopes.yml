@@ -1,0 +1,68 @@
+generated: '2026-07-24'
+method: searched
+source: openapi/emis-health-partner-api-openapi.json
+docs: https://docs.partner.emis-x.uk/auth/
+notes: >-
+  Two scope surfaces exist. (1) The OAuth2 authorizationCode flow declared in the
+  PAPI OpenAPI enumerates seven papi-* scopes below. (2) The EMIS-X access token
+  additionally carries an "authorizations" JWT claim array of ERN-granted
+  clinical/agreement scopes (clinical-cr.*, agmt-agmt.read, doc-app.*,
+  term-prep.read) documented on the auth page; these govern EMIS-X clinical
+  record access and are granted per partner agreement, not requested in the
+  OAuth flow. Both are recorded verbatim from the spec and docs.
+schemes:
+- name: OAuth2CodeEMIS-X-GP-PAPI
+  source: openapi/emis-health-partner-api-openapi.json
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://identity.stg.emis-x.uk/b205162c-c95a-4639-8076-bb1fcb152d2b/b2c_1a_clientcredentials/oauth2/authorize
+    tokenUrl: https://identity.stg.emis-x.uk/b205162c-c95a-4639-8076-bb1fcb152d2b/b2c_1a_clientcredentials/oauth2/token
+scopes:
+- scope: papi-appt.read
+  description: Read Appointments
+  flows: [authorizationCode]
+  sources: [openapi/emis-health-partner-api-openapi.json]
+- scope: papi-appt.write
+  description: Write Appointments
+  flows: [authorizationCode]
+  sources: [openapi/emis-health-partner-api-openapi.json]
+- scope: papi-cr.read
+  description: Read Clinical Record
+  flows: [authorizationCode]
+  sources: [openapi/emis-health-partner-api-openapi.json]
+- scope: papi-cr.write
+  description: Write Clinical Record
+  flows: [authorizationCode]
+  sources: [openapi/emis-health-partner-api-openapi.json]
+- scope: papi-subjects.read
+  description: Read Subjects (patient demographics, matching, sequence)
+  flows: [authorizationCode]
+  sources: [openapi/emis-health-partner-api-openapi.json]
+- scope: papi-config.read
+  description: Read Config (organisation lookup, user details)
+  flows: [authorizationCode]
+  sources: [openapi/emis-health-partner-api-openapi.json]
+- scope: papi-searches.read
+  description: Read Searches (population/clinical searches)
+  flows: [authorizationCode]
+  sources: [openapi/emis-health-partner-api-openapi.json]
+authorizations_claim_scopes:
+- scope: clinical-cr.read
+  description: Read the EMIS-X clinical record (authorizations JWT claim)
+  source: https://docs.partner.emis-x.uk/auth/
+- scope: clinical-cr.write
+  description: Write to the EMIS-X clinical record (authorizations JWT claim)
+  source: https://docs.partner.emis-x.uk/auth/
+- scope: agmt-agmt.read
+  description: Read partner agreement context (authorizations JWT claim)
+  source: https://docs.partner.emis-x.uk/auth/
+- scope: doc-app.addcode
+  description: Add a clinical code via a document/app context (authorizations JWT claim)
+  source: https://docs.partner.emis-x.uk/auth/
+- scope: doc-app.create
+  description: Create a document/app record (authorizations JWT claim)
+  source: https://docs.partner.emis-x.uk/auth/
+- scope: term-prep.read
+  description: Read terminology preparation data (authorizations JWT claim)
+  source: https://docs.partner.emis-x.uk/auth/

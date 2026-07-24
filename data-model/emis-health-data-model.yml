@@ -1,0 +1,83 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/emis-health-partner-api-openapi.json
+notes: >-
+  Entity-relationship graph derived from the PAPI operations, their id-reference
+  parameters (patientNumber, slotId, sessionId, organisation id, applicationId,
+  userId), and the EMIS Open response schemas (284 components). Relationships are
+  inferred from parameter usage across operations, not from explicit $ref links
+  between top-level resources.
+entities:
+- name: Organisation
+  domain: organisation
+  operations: [GetOrganisation, GetOrganisationV2]
+  note: The GP practice / care organisation; root context for all data.
+- name: User
+  domain: user
+  operations: [GetUserById]
+  identified_by: userId / userERN
+- name: Patient
+  domain: patient / patientMatching
+  operations: [GetPatientDemographics, GetMatchedPatients, GetChangedPatients, GetChangedPatientsMR, GetPatientSequence]
+  identified_by: patientNumber
+- name: MedicalRecord
+  domain: medicalRecord
+  operations: [GetMedicalRecord, GetCodedRecord, GetConsultation, GetEvents, GetMedicationIssues, FileRecord]
+  identified_by: patientNumber
+- name: Consultation
+  domain: medicalRecord
+  operations: [GetConsultation, UpdateConsultationVisibility]
+- name: Attachment
+  domain: medicalRecord
+  operations: [GetAttachments, GetAttachmentsV2, GetBase64AttachmentData, GetBase64AttachmentDataV2, UpdateAttachment]
+- name: AppointmentSession
+  domain: appointments
+  operations: [GetAppointmentSessions, GetSlotsForSession, GetSlotsForSessionV2]
+  identified_by: sessionId
+- name: Slot
+  domain: appointments
+  operations: [GetSlotsForSession, SetSlotType, SetSlotNotes, AddSlotComment]
+  identified_by: slotId
+- name: Appointment
+  domain: appointments
+  operations: [BookAppointment, CancelAppointment, GetPatientAppointments, GetPatientAppointmentsV2, GetBookedPatients, GetBookedPatientsV2, GetArrivedPatients, GetSentInPatients, SetAppointmentStatus, SetAppointmentStatusEx]
+- name: Search
+  domain: search
+  operations: [GetPatientSearches]
+relationships:
+- from: User
+  type: belongs_to
+  to: Organisation
+- from: Patient
+  type: belongs_to
+  to: Organisation
+- from: MedicalRecord
+  type: belongs_to
+  to: Patient
+  via: patientNumber
+- from: Consultation
+  type: belongs_to
+  to: MedicalRecord
+- from: Attachment
+  type: belongs_to
+  to: MedicalRecord
+- from: AppointmentSession
+  type: belongs_to
+  to: Organisation
+- from: Slot
+  type: belongs_to
+  to: AppointmentSession
+  via: sessionId
+- from: Appointment
+  type: belongs_to
+  to: Slot
+  via: slotId
+- from: Appointment
+  type: belongs_to
+  to: Patient
+  via: patientNumber
+id_conventions:
+  ERN: 'EMIS Resource Name identifiers, e.g. ern:emis:user:user:<id>, ern:emis:org:org:<id>'
+  patient: patientNumber
+  slot: slotId
+  session: sessionId

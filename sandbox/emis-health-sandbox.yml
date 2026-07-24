@@ -1,0 +1,24 @@
+generated: '2026-07-24'
+method: searched
+source: https://docs.partner.emis-x.uk/auth/ + https://docs.partner.emis-x.uk/onboarding-one/
+notes: >-
+  EMIS-X exposes a staging identity environment rather than a public
+  self-service sandbox with published test data. Production integration is
+  partner-onboarding + assurance gated. No test card / magic-identifier values
+  are published (this is a clinical-record API, not a payments API), so none are
+  fabricated.
+environments:
+- name: staging
+  identity_host: identity.stg.emis-x.uk
+  openid_configuration: https://identity.stg.emis-x.uk/b205162c-c95a-4639-8076-bb1fcb152d2b/b2c_1a_clientcredentials/.well-known/openid-configuration
+  note: The staging Azure AD B2C tenant used by the partner developer portal examples.
+test_access:
+  resource_owner_password_flow:
+    documented: true
+    purpose: For automated testing only (explicitly not for production use).
+    source: https://docs.partner.emis-x.uk/auth/
+  note: >-
+    Partners obtain test credentials and a test EMIS-X organisation through the
+    onboarding/assurance process; test data is provisioned per partner rather
+    than published as shared fixtures.
+published_test_values: []

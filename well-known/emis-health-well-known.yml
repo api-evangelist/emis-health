@@ -1,0 +1,38 @@
+generated: '2026-07-24'
+method: searched
+source: live probes of /.well-known/* on EMIS-X hosts + the EMIS-X Entry ID (Azure AD B2C) OIDC discovery document
+notes: >-
+  Root /.well-known/* discovery paths return 404 on every EMIS-X host
+  (api.platform.emis-x.uk, docs.partner.emis-x.uk, www.emishealth.com). The one
+  live, anonymous discovery document is the OpenID Connect metadata published by
+  the EMIS-X identity provider (Microsoft Entra External ID / Azure AD B2C),
+  served under the tenant + user-flow scoped path rather than the host root.
+hosts:
+- host: https://identity.stg.emis-x.uk
+  documents:
+  - path: /b205162c-c95a-4639-8076-bb1fcb152d2b/b2c_1a_clientcredentials/.well-known/openid-configuration
+    kind: openid-configuration
+    status: 200
+    file: emis-health-openid-configuration.json
+- host: https://api.platform.emis-x.uk
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://docs.partner.emis-x.uk
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/smart-configuration
+    status: 404
+- host: https://www.emishealth.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404

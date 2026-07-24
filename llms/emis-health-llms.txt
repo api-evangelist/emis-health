@@ -1,0 +1,31 @@
+# EMIS Health (EMIS-X)
+
+> EMIS Health is a UK health-technology company and one of the two dominant GP clinical-system providers in the NHS (alongside TPP SystmOne). It supplies the EMIS Web electronic patient record and is migrating to the cloud-first EMIS-X platform. Third-party integration is offered through the gated EMIS Partner Developer Portal, which documents a RESTful JSON Partner API (PAPI) covering appointments, the clinical/medical record, patient demographics and matching, organisation lookup, and clinical searches, plus EMIS-X App Launch and an EMIS-X Analytics data warehouse. Authentication is OAuth2 / OIDC via Microsoft Entra External ID (Azure AD B2C).
+
+## APIs
+
+- [EMIS Partner API (PAPI)](https://docs.partner.emis-x.uk/papi-overview): RESTful JSON API, OpenAPI 3.0.4 (Partner API v1.2), 38 partner operations across appointments, medicalRecord, patient, patientMatching, organisation, search, and user. Base URL https://api.platform.emis-x.uk/partner.
+- [EMIS-X App Launch](https://docs.partner.emis-x.uk/emisx-app-launch/): In-context launch of partner applications from within the EMIS-X / EMIS Web clinical workflow, passing authenticated user + patient context.
+- [EMIS-X Analytics](https://docs.partner.emis-x.uk/getting-started/): Partner access to an EMIS-X data warehouse (Community Pharmacy, iPCVs, OpenSAFELY, Recruit, IM1 Bulk Extract).
+
+## Specs
+
+- [PAPI OpenAPI (JSON)](https://api.platform.emis-x.uk/partner/swagger/v1/swagger.json): OpenAPI 3.0.4, 38 operations, 284 component schemas.
+- [OpenID Connect discovery](https://identity.stg.emis-x.uk/b205162c-c95a-4639-8076-bb1fcb152d2b/b2c_1a_clientcredentials/.well-known/openid-configuration): Azure AD B2C OIDC metadata.
+
+## Auth
+
+- [Authentication](https://docs.partner.emis-x.uk/auth/): OAuth2 / OIDC bearer JWT (~1h). Flows: client_credentials (M2M), authorization_code, authorization_code + PKCE, resource_owner_password (testing only). OAuth scopes: papi-appt.read/write, papi-cr.read/write, papi-subjects.read, papi-config.read, papi-searches.read. Access tokens carry an "authorizations" JWT claim (clinical-cr.read/write, agmt-agmt.read, doc-app.*, term-prep.read).
+
+## Docs
+
+- [Getting started](https://docs.partner.emis-x.uk/getting-started/)
+- [Using the Partner API](https://docs.partner.emis-x.uk/using-the-partner-api)
+- [API reference (Swagger UI)](https://docs.partner.emis-x.uk/openapi/papi)
+- [Onboarding](https://docs.partner.emis-x.uk/onboarding-one/)
+
+## Notes
+
+- Native HL7 FHIR resource support is documented as upcoming; the current PAPI is a REST JSON API (no FHIR CapabilityStatement, not SMART-on-FHIR at review time).
+- Errors use a custom PartnerApi.Service.Model.ErrorResponse envelope (messageId, text, issue, legacyOutcome), not RFC 9457.
+- Production access is partner-onboarding + assurance gated; documentation and the OpenAPI are publicly readable.

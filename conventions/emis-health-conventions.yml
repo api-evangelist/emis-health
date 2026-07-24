@@ -1,0 +1,48 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/emis-health-partner-api-openapi.json + https://docs.partner.emis-x.uk/auth/
+notes: >-
+  Cross-cutting request/response semantics for the EMIS Partner API (PAPI),
+  derived from the OpenAPI and the partner auth documentation. No idempotency-key
+  mechanism is documented, so no Idempotency pointer is emitted (write operations
+  are PATCH/POST without an idempotency contract).
+authentication:
+  style: OAuth2 / OIDC bearer JWT (Azure AD B2C)
+  header: 'Authorization: Bearer <jwt>'
+  token_validity: ~1 hour
+  see: authentication/emis-health-authentication.yml
+request_context:
+  application_header:
+    name: applicationId
+    required: true
+    note: Identifies the partner application; required on every operation.
+versioning:
+  scheme: uri-path
+  base_path: /api/v1
+  operation_variants: >-
+    Newer response shapes are shipped as parallel V2 operations
+    (GetAttachmentsV2, GetBookedPatientsV2, GetOrganisationV2,
+    GetPatientAppointmentsV2, GetSlotsForSessionV2, SetAppointmentStatusEx,
+    GetBase64AttachmentDataV2) rather than by bumping the URI version.
+  spec_version: '1.2'
+pagination:
+  supported: false
+  note: No page/offset/cursor/limit parameters are declared in the spec. Change-tracking is instead done via sequence endpoints (GetPatientSequence, GetChangedPatients, GetChangedPatientsMR).
+change_tracking:
+  style: sequence / delta
+  operations: [GetPatientSequence, GetChangedPatients, GetChangedPatientsMR]
+  note: Consumers poll for changed patients / medical records since a known sequence point.
+content_negotiation:
+  request: [application/json, application/xml, text/json, text/xml]
+  response: [application/json, application/xml]
+error_envelope:
+  schema: PartnerApi.Service.Model.ErrorResponse
+  fields: [messageId, text, issue, legacyOutcome]
+  correlation_id: messageId (uuid)
+  see: errors/emis-health-problem-types.yml
+idempotency:
+  supported: false
+  note: No Idempotency-Key header or idempotency contract is documented.
+rate_limiting:
+  documented: false
+  note: No rate-limit headers or published quotas were found on the partner portal.
