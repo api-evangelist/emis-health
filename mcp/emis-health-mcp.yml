@@ -2,13 +2,11 @@ generated: '2026-07-24'
 method: derived
 status: candidate
 source: openapi/emis-health-partner-api-openapi.json
-notes: >-
-  No official EMIS-X / EMIS Health MCP server was found (no hosted server in docs,
-  no @modelcontextprotocol package, nothing in MCP registries). This is a DERIVED
-  candidate tool list: one tool per PAPI operation, to illustrate what an
-  agent-facing MCP surface would look like. Every tool inherits its real
-  inputSchema from the backing OpenAPI operation's parameters (each operation
-  requires an applicationId header + OAuth2 bearer with the noted scope).
+notes: 'No official EMIS-X / EMIS Health MCP server was found (no hosted server in docs, no @modelcontextprotocol
+  package, nothing in MCP registries). This is a DERIVED candidate tool list: one tool per PAPI operation,
+  to illustrate what an agent-facing MCP surface would look like. Every tool inherits its real inputSchema
+  from the backing OpenAPI operation''s parameters (each operation requires an applicationId header +
+  OAuth2 bearer with the noted scope).'
 server:
   name: emis-partner-api
   transport: http
@@ -79,3 +77,9 @@ coverage:
   operations_total: 38
   tools_derived: 15
   note: A representative subset across all seven domains; the full candidate set is one tool per operationId.
+deployment:
+  mode: none
+  verified: derived
+  tools: 15
+  checked: '2026-08-12'
+  source: catalog MCP census

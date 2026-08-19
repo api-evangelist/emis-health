@@ -1,0 +1,1846 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Partner API",
+    "version": "1.2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "appointments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "BookAppointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/BookAppointment",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "reason",
+                "value": "",
+                "type": "query",
+                "description": "The reason for making the appointment"
+              },
+              {
+                "name": "bookedBy",
+                "value": "",
+                "type": "query",
+                "description": "DBID of staff making the appointment"
+              },
+              {
+                "name": "bookingNote",
+                "value": "",
+                "type": "query",
+                "description": "Optional booking note for the appointment"
+              },
+              {
+                "name": "slotId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the appointment slot"
+              },
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call books a patient into the specified appointment slot"
+        },
+        {
+          "info": {
+            "name": "CancelAppointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/CancelAppointment",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slotId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the appointment slot"
+              },
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call removes a patient from a specified appointment slot"
+        },
+        {
+          "info": {
+            "name": "GetAppointmentConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/GetAppointmentConfiguration",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Lower date filter in the format dd/mm/yyyy"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Upper date filter in the format dd/mm/yyyy"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call is used to retrieve a site's appointment configuration settings, including slot types, session holders, staff holidays, and practice holidays. The date filter bounds the staff and practice holidays to avoid returning large amounts of historical data."
+        },
+        {
+          "info": {
+            "name": "GetAppointmentSessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/GetAppointmentSessions",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slotType",
+                "value": "",
+                "type": "query",
+                "description": "Slot type as returned from GetAppointmentConfiguration - if empty, returns all"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Lower date filter in the format dd/mm/yyyy"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Upper date filter in the format dd/mm/yyyy"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a list of appointment sessions within a given timeframe. The maximum window to retrieve sessions is 90 days."
+        },
+        {
+          "info": {
+            "name": "GetArrivedPatients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/GetArrivedPatients",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "minutesBefore",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes before the query time to search"
+              },
+              {
+                "name": "minutesWithin",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes within the query time to search"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a list of patients whose current status is 'arrived'. This status is normally set to indicate that the patient has arrived and is in the waiting area, ready to be called by the clinician."
+        },
+        {
+          "info": {
+            "name": "GetBookedPatients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/GetBookedPatients",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "minutesBefore",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes before the query time to search"
+              },
+              {
+                "name": "minutesWithin",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes within the query time to search"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a list of patients with appointments booked in the next x minutes. It also indicates the presence of alerts in the record. Note that these should not be displayed to patients. For each session holder it indicates the estimated waiting time (how far behind the doctor is running).\n\n**Important:** To manage loads on the server the call is restricted to searching 60 minutes in the past but can search up to 30 days in the future. Care should be taken to minimise the search window, t"
+        },
+        {
+          "info": {
+            "name": "GetBookedPatientsV2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/GetBookedPatientsV2",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "minutesBefore",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes before the query time to search"
+              },
+              {
+                "name": "minutesWithin",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes within the query time to search"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a list of patients with appointments booked in the next x minutes. It also indicates the presence of alerts in the record. Note that these should not be displayed to patients. For each session holder it indicates the estimated waiting time (how far behind the doctor is running).\n\n**Important:** To manage loads on the server the call is restricted to searching 60 minutes in the past but can search up to 30 days in the future. Care should be taken to minimise the search window to"
+        },
+        {
+          "info": {
+            "name": "GetPatientAppointments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/GetPatientAppointments",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Lower date filter in the format dd/mm/yyyy"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Upper date filter in the format dd/mm/yyyy"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a list of patient appointments within a given timeframe. The maximum window to retrieve sessions is 90 days."
+        },
+        {
+          "info": {
+            "name": "GetPatientAppointmentsV2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/GetPatientAppointmentsV2",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Lower date filter in the format dd/mm/yyyy"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Upper date filter in the format dd/mm/yyyy"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a list of patient appointments within a given timeframe. The maximum window to retrieve sessions is 90 days."
+        },
+        {
+          "info": {
+            "name": "GetSentInPatients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/GetSentInPatients",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "minutesBefore",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes before the query time to search"
+              },
+              {
+                "name": "minutesWithin",
+                "value": "",
+                "type": "query",
+                "description": "How many minutes within the query time to search"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a list of patients whose current status is 'sent in'. This status is normally set by the clinician or receptionist when they are ready to see the patient. This status will remain set until they leave the surgery.\n\n**Note:** The patient will be returned each time the function is called whilst they are in the consultation."
+        },
+        {
+          "info": {
+            "name": "GetSlotsForSession",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/GetSlotsForSession",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "appointmentSessionId",
+                "value": "",
+                "type": "query",
+                "description": "Appointment session id as returned from GetAppointmentSessions"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call retrieves a list of slots in a specified session."
+        },
+        {
+          "info": {
+            "name": "GetSlotsForSessionV2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/appointments/GetSlotsForSessionV2",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "appointmentSessionId",
+                "value": "",
+                "type": "query",
+                "description": "Appointment session id as returned from GetAppointmentSessions"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call retrieves a list of slots in a specified session."
+        },
+        {
+          "info": {
+            "name": "AddSlotComment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/appointments/AddSlotComment",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slotComment",
+                "value": "",
+                "type": "query",
+                "description": "Slot Comment to add to specified SlotId"
+              },
+              {
+                "name": "slotId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the appointment slot"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Adds a comment to a slot. Comments can be added to any specified slot."
+        },
+        {
+          "info": {
+            "name": "SetAppointmentStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/appointments/SetAppointmentStatus",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "statusId",
+                "value": "",
+                "type": "query",
+                "description": "The new status for the appointment (2 = Arrive, 3 = SentIn, 4 = Left, 12 = QuietSentIn)"
+              },
+              {
+                "name": "slotId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the appointment slot"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "For a given appointment slot, this call sets the status in the clinical system to show if the patient has arrived, left or needs sending in."
+        },
+        {
+          "info": {
+            "name": "SetAppointmentStatusEx",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/appointments/SetAppointmentStatusEx",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "statusId",
+                "value": "",
+                "type": "query",
+                "description": "The new status of the selected appointment slot"
+              },
+              {
+                "name": "slotId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the appointment slot"
+              },
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call replaces and expands the functionality provided by SetAppointmentStatus to check for the correct patient before modifying the status. This is an extension of SetAppointmentStatus.\n\n**Note:** For compatibility, the return codes are not entirely consistent with the methods used in the rest of these calls."
+        },
+        {
+          "info": {
+            "name": "SetSlotNotes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/appointments/SetSlotNotes",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slotNotes",
+                "value": "",
+                "type": "query",
+                "description": "Slot Notes"
+              },
+              {
+                "name": "slotId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the appointment slot"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates the existing slot notes for a specified appointment slot."
+        },
+        {
+          "info": {
+            "name": "SetSlotType",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/appointments/SetSlotType",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slotType",
+                "value": "",
+                "type": "query",
+                "description": "New SlotTypeId for the selected Slot"
+              },
+              {
+                "name": "bookingNote",
+                "value": "",
+                "type": "query",
+                "description": "Optional booking note for the appointment"
+              },
+              {
+                "name": "slotId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the appointment slot"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call sets the slot type and booking note of a given slot."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CORS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/BookAppointment"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/CancelAppointment"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/GetAppointmentConfiguration"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/GetAppointmentSessions"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/GetArrivedPatients"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetAttachments"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetAttachmentsV2"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetBase64AttachmentData"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetBase64AttachmentDataV2"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/GetBookedPatients"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/GetBookedPatientsV2"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/patientMatching/GetChangedPatients"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/patientMatching/GetChangedPatientsMR"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetCodedRecord"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetConsultation"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetEvents"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/patientMatching/GetMatchedPatients"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetMedicalRecord"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetMedicationIssues"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/organisation/GetOrganisation"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/organisation/GetOrganisationV2"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/GetPatientAppointments"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/GetPatientAppointmentsV2"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/patient/GetPatientDemographics"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/search/GetPatientSearches"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/patientMatching/GetPatientSequence"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/GetSentInPatients"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/GetSlotsForSession"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/GetSlotsForSessionV2"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/user/GetUserById"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/AddSlotComment"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/SetAppointmentStatus"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/SetAppointmentStatusEx"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/SetSlotNotes"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/appointments/SetSlotType"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/UpdateAttachment"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/UpdateConsultationVisibility"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/FileRecord"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        },
+        {
+          "info": {
+            "name": "CORS pre-flight request",
+            "type": "http"
+          },
+          "http": {
+            "method": "OPTIONS",
+            "url": "{{baseUrl}}/swagger/*"
+          },
+          "docs": "Handles CORS pre-flight requests"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "medicalRecord",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetAttachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetAttachments",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns an EMIS Open medical record message containing a list of attachments to that patient’s record.  To retrieve the attachment data, call GetAttachments, parse the list of attachments for file names, and call the GetBase64AttachmentData method for each attachment you wish to retrieve."
+        },
+        {
+          "info": {
+            "name": "GetAttachmentsV2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetAttachmentsV2",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns an EMIS Open medical record message containing a list of attachments to that patient’s record.  To retrieve the attachment data, call GetAttachments, parse the list of attachments for file names, and call the GetBase64AttachmentData method for each attachment you wish to retrieve."
+        },
+        {
+          "info": {
+            "name": "GetBase64AttachmentData",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetBase64AttachmentData",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This function accepts a DDSIdentifier argument which uniquely identifies a specific attachment, even where attachments with duplicated names occur in the database. It returns the complete attached file in the body of the XML, encoded in Base-64 to allow it to be returned in XML format. The client application must decode the attachment from Base-64 in order to use it. The specification for base-64 encoding is readily available from usual reference sources. After decoding, the client application s"
+        },
+        {
+          "info": {
+            "name": "GetBase64AttachmentDataV2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetBase64AttachmentDataV2",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "V2: This function accepts a DDSIdentifier argument which uniquely identifies a specific attachment, even where attachments with duplicated names occur in the database. It returns the complete attached file in the body of the XML, encoded in Base-64 to allow it to be returned in XML format. The client application must decode the attachment from Base-64 in order to use it. The specification for base-64 encoding is readily available from usual reference sources. After decoding, the client applicati"
+        },
+        {
+          "info": {
+            "name": "GetCodedRecord",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetCodedRecord",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a subset of the medical record which comprises only of the clinically coded items. It does not return Medication or registration information."
+        },
+        {
+          "info": {
+            "name": "GetConsultation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetConsultation",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consultationGuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a specific consultation record and any associated information. For instance, the location and users relating to the consultation content."
+        },
+        {
+          "info": {
+            "name": "GetEvents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetEvents",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "noOfDays",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a subset of the medical record which comprises only the **coded clinical events** for the patient.\n\nInformation is returned for the specified time period counting back from the current day, in **whole days**.\n\nThis function executes significantly faster than `getMedicalRecord`, particularly for patients with large records.\n\nThe returned XML will contain the following elements:\n\n- `EventList`\n- `PeopleList`\n\nNote: It does **not** contain **Medication** information.\n\nThe call eff"
+        },
+        {
+          "info": {
+            "name": "GetMedicalRecord",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetMedicalRecord",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a medical record for a specific patient number. Before using this call please consider what information you require from the patient record and see if any of the other available calls can give you the same information. This call can take a while to execute and will return a lot of information (>1Mb) in some cases. If you are only concerned with clinically coded information we would recommend using GetCodedRecord as an alternative."
+        },
+        {
+          "info": {
+            "name": "GetMedicationIssues",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/GetMedicationIssues",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "noOfDays",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a list of issued medication. This call will execute significantly faster than getMedicalRecord, particularly for patients with large medical records."
+        },
+        {
+          "info": {
+            "name": "UpdateAttachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/UpdateAttachment",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "attachmentGuid",
+                "value": "",
+                "type": "query",
+                "description": "The Attachment Guid (aka Document Guid) Identifier"
+              },
+              {
+                "name": "pfsVisibility",
+                "value": "",
+                "type": "query",
+                "description": "The Pfs visible status of the specified attachment. -1 = No Change,  0 = Not Visible, 1 = Visible"
+              },
+              {
+                "name": "provisional",
+                "value": "",
+                "type": "query",
+                "description": "The Provisional status of the specified attachment. -1 = No Change, 0 = Not Provisional, 1 = Provisional"
+              },
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This function updates the pfs visible and provisional status of a specified attachment"
+        },
+        {
+          "info": {
+            "name": "UpdateConsultationVisibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/UpdateConsultationVisibility",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consultationGuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pfsVisibility",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates the PFS Visibility value for a consultation previously filed into EMIS Web and all associated content (clinical code, associated text and attachments), including any linked observations."
+        },
+        {
+          "info": {
+            "name": "FileRecord",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/medicalRecord/FileRecord",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call files a new consultation from an XML message, into a patient's medical record. \n\nPatient ID\nThis is the DBID number of the patient.\n\nAttachments are referenced by the Attachment/Address element. The 'attachment' parameter should indicate the local path preceding the file name that resides in the address element. The filer uses the path and the address element to transfer the attachment from the client to the server. Note: the trailing backslash on the path argument is required.\n\nFiling"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "patientMatching",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetChangedPatients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/patientMatching/GetChangedPatients",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "When called this method returns a list of patients whose registration details have changed since the date specified. If no patient meets these criteria the method returns an empty list."
+        },
+        {
+          "info": {
+            "name": "GetChangedPatientsMR",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/patientMatching/GetChangedPatientsMR",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "When called this method returns a list of patients whose medical record has changed (as defined by looking at the audit trail) since the date specified. If no patients meet this criterion the method returns an empty list."
+        },
+        {
+          "info": {
+            "name": "GetMatchedPatients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/patientMatching/GetMatchedPatients",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "matchedTerms",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call is used to find patients that match a specific search criterion. Only one field can be used at a time, such as last name, first name, date of birth, NHS number, etc.\n\nExample: \"DOB firstName lastName\"\n\nDo not include parentheses, special characters, country codes, or non-standard formats in the search term.\n\nA standard demographic message is returned"
+        },
+        {
+          "info": {
+            "name": "GetPatientSequence",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/patientMatching/GetPatientSequence",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "startId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "batchSize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API retrieves the next batch of patients from the Age-Sex Register, based on the specified batch size and starting patient ID (`StartID`).\n\nNote: This endpoint is provided for legacy use only and is not part of the standard, publicly available API set. Access may be restricted or unsupported in newer implementations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetHealth",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "organisation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetOrganisation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/organisation/GetOrganisation",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns details about the practice administration including users, locations and location types."
+        },
+        {
+          "info": {
+            "name": "GetOrganisationV2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/organisation/GetOrganisationV2",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns details about the practice administration including users, locations and location types."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "patient",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetPatientDemographics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/patient/GetPatientDemographics",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "patientNumber",
+                "value": "",
+                "type": "query",
+                "description": "The numeric patient identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call returns a demographic subset of the medical record for a specific patient number."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetPatientSearches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/search/GetPatientSearches",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "searchGuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reportType",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This call accepts the ID of a QOF (Quality Outcomes Framework) report and a report type. It returns a list of patients from the most recently run result set for that search.\n\nHAID (How Am I Driving) runs on the following intervals:\n1. How Am I Driving – Weekly (Wednesday and Weekend)\n2. End of Financial Year – Weekends only\n3. Look Ahead 1 and 3 Months – Runs based on available bandwidth\n\nReport Types:\n0 = 3 Month Look-Ahead\n1 = How Am I Driving\n2 = Financial Year End\n3 = 1 Month Look-Ahead"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "user",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetUserById",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/user/GetUserById",
+            "headers": [
+              {
+                "name": "applicationId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userInRoleId",
+                "value": "",
+                "type": "query",
+                "description": "User DBID as returned from GetOrganisation"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "For speed and brevity, the extended appointments API does not return full user details for session holders, just name and system IDs. If the developer requires more information, they can retrieve details of a member of staff based on their DBID using this function. The XML returned is the same as the node information in GetOrganisation."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "swagger",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Swagger UI endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/swagger/*"
+          },
+          "docs": "Serves the Swagger UI and OpenAPI JSON."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
