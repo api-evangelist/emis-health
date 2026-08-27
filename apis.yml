@@ -31,24 +31,45 @@ created: '2026-07-24'
 modified: '2026-07-24'
 specificationVersion: '0.23'
 apis:
-- aid: emis-health:emis-partner-api
-  name: EMIS Partner API (PAPI)
-  description: The EMIS Partner API (PAPI) is a RESTful JSON API for EMIS-X / EMIS Web
-    integration, exposing appointments, the clinical/medical record, patient demographics,
-    patient matching, organisation lookup, and clinical searches. Documented as
-    OpenAPI 3.0.4 (Partner API v1.2) with 40 operations across the appointments,
-    medicalRecord, patient, patientMatching, organisation, search, and user domains.
-    Access is OAuth2 authorization-code with scoped bearer (JWT) tokens.
+- aid: emis-health:emis-x-app-launch
+  name: EMIS-X App Launch
+  description: >-
+    EMIS-X App Launch lets partner applications be launched in-context from within the EMIS-X / EMIS Web
+    clinical workflow, passing an authenticated user and patient context to the integrating application
+    via the shared EMIS-X OAuth2 / OIDC authentication.
+  humanURL: https://docs.partner.emis-x.uk/emisx-app-launch/
+  tags:
+  - App Launch
+  - Interoperability
+  properties:
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/emisx-app-launch/
+  - type: Authentication
+    url: https://docs.partner.emis-x.uk/auth/
+- aid: emis-health:emis-x-analytics
+  name: EMIS-X Analytics
+  description: >-
+    EMIS-X Analytics provides partner access to an EMIS-X data warehouse with modelled datasets across
+    domains including Community Pharmacy, Incremental Primary Care Views (iPCVs), OpenSAFELY, Recruit,
+    and IM1 Bulk Extract, browsable through the developer portal data explorer.
+  humanURL: https://docs.partner.emis-x.uk/getting-started/
+  tags:
+  - Analytics
+  - Data Warehouse
+  - Community Pharmacy
+  properties:
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/getting-started/
+- aid: emis-health:emis-health-appointments-api
+  name: EMIS Health Appointments API
+  description: The appointments API from EMIS Health — 17 operation(s) for appointments.
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
   tags:
-  - Appointments
-  - Medical Record
-  - Patient
-  - Primary Care
+  - appointments
   properties:
   - type: OpenAPI
-    url: openapi/emis-health-partner-api-openapi.json
+    url: openapi/emis-health-appointments-api-openapi.yml
   - type: Documentation
     url: https://docs.partner.emis-x.uk/papi-overview
   - type: APIReference
@@ -61,38 +82,207 @@ apis:
     url: errors/emis-health-problem-types.yml
   - type: DataModel
     url: data-model/emis-health-data-model.yml
-  - type: Overlay
-    url: overlays/emis-health-partner-api-overlay.yaml
-- aid: emis-health:emis-x-app-launch
-  name: EMIS-X App Launch
-  description: EMIS-X App Launch lets partner applications be launched in-context
-    from within the EMIS-X / EMIS Web clinical workflow, passing an authenticated
-    user and patient context to the integrating application via the shared EMIS-X
-    OAuth2 / OIDC authentication.
-  humanURL: https://docs.partner.emis-x.uk/emisx-app-launch/
+- aid: emis-health:emis-health-cors-api
+  name: EMIS Health CORS API
+  description: The CORS API from EMIS Health — 40 operation(s) for cors.
+  humanURL: https://docs.partner.emis-x.uk/papi-overview
+  baseURL: https://api.platform.emis-x.uk/partner
   tags:
-  - App Launch
-  - Interoperability
+  - CORS
   properties:
+  - type: OpenAPI
+    url: openapi/emis-health-cors-api-openapi.yml
   - type: Documentation
-    url: https://docs.partner.emis-x.uk/emisx-app-launch/
+    url: https://docs.partner.emis-x.uk/papi-overview
+  - type: APIReference
+    url: https://docs.partner.emis-x.uk/openapi/papi
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/using-the-partner-api
   - type: Authentication
     url: https://docs.partner.emis-x.uk/auth/
-- aid: emis-health:emis-x-analytics
-  name: EMIS-X Analytics
-  description: EMIS-X Analytics provides partner access to an EMIS-X data warehouse
-    with modelled datasets across domains including Community Pharmacy, Incremental
-    Primary Care Views (iPCVs), OpenSAFELY, Recruit, and IM1 Bulk Extract, browsable
-    through the developer portal data explorer.
-  humanURL: https://docs.partner.emis-x.uk/getting-started/
+  - type: ErrorCatalog
+    url: errors/emis-health-problem-types.yml
+  - type: DataModel
+    url: data-model/emis-health-data-model.yml
+- aid: emis-health:emis-health-health-api
+  name: EMIS Health Health API
+  description: The health API from EMIS Health — 1 operation(s) for health.
+  humanURL: https://docs.partner.emis-x.uk/papi-overview
+  baseURL: https://api.platform.emis-x.uk/partner
   tags:
-  - Analytics
-  - Data Warehouse
-  - Community Pharmacy
+  - health
   properties:
+  - type: OpenAPI
+    url: openapi/emis-health-health-api-openapi.yml
   - type: Documentation
-    url: https://docs.partner.emis-x.uk/getting-started/
+    url: https://docs.partner.emis-x.uk/papi-overview
+  - type: APIReference
+    url: https://docs.partner.emis-x.uk/openapi/papi
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/using-the-partner-api
+  - type: Authentication
+    url: https://docs.partner.emis-x.uk/auth/
+  - type: ErrorCatalog
+    url: errors/emis-health-problem-types.yml
+  - type: DataModel
+    url: data-model/emis-health-data-model.yml
+- aid: emis-health:emis-health-medicalrecord-api
+  name: EMIS Health Medical Record API
+  description: The medicalRecord API from EMIS Health — 12 operation(s) for medicalrecord.
+  humanURL: https://docs.partner.emis-x.uk/papi-overview
+  baseURL: https://api.platform.emis-x.uk/partner
+  tags:
+  - medicalRecord
+  properties:
+  - type: OpenAPI
+    url: openapi/emis-health-medicalrecord-api-openapi.yml
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/papi-overview
+  - type: APIReference
+    url: https://docs.partner.emis-x.uk/openapi/papi
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/using-the-partner-api
+  - type: Authentication
+    url: https://docs.partner.emis-x.uk/auth/
+  - type: ErrorCatalog
+    url: errors/emis-health-problem-types.yml
+  - type: DataModel
+    url: data-model/emis-health-data-model.yml
+- aid: emis-health:emis-health-organisation-api
+  name: EMIS Health Organisation API
+  description: The organisation API from EMIS Health — 2 operation(s) for organisation.
+  humanURL: https://docs.partner.emis-x.uk/papi-overview
+  baseURL: https://api.platform.emis-x.uk/partner
+  tags:
+  - organisation
+  properties:
+  - type: OpenAPI
+    url: openapi/emis-health-organisation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/papi-overview
+  - type: APIReference
+    url: https://docs.partner.emis-x.uk/openapi/papi
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/using-the-partner-api
+  - type: Authentication
+    url: https://docs.partner.emis-x.uk/auth/
+  - type: ErrorCatalog
+    url: errors/emis-health-problem-types.yml
+  - type: DataModel
+    url: data-model/emis-health-data-model.yml
+- aid: emis-health:emis-health-patient-api
+  name: EMIS Health Patient API
+  description: The patient API from EMIS Health — 1 operation(s) for patient.
+  humanURL: https://docs.partner.emis-x.uk/papi-overview
+  baseURL: https://api.platform.emis-x.uk/partner
+  tags:
+  - patient
+  properties:
+  - type: OpenAPI
+    url: openapi/emis-health-patient-api-openapi.yml
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/papi-overview
+  - type: APIReference
+    url: https://docs.partner.emis-x.uk/openapi/papi
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/using-the-partner-api
+  - type: Authentication
+    url: https://docs.partner.emis-x.uk/auth/
+  - type: ErrorCatalog
+    url: errors/emis-health-problem-types.yml
+  - type: DataModel
+    url: data-model/emis-health-data-model.yml
+- aid: emis-health:emis-health-patientmatching-api
+  name: EMIS Health Patient Matching API
+  description: The patientMatching API from EMIS Health — 4 operation(s) for patientmatching.
+  humanURL: https://docs.partner.emis-x.uk/papi-overview
+  baseURL: https://api.platform.emis-x.uk/partner
+  tags:
+  - patientMatching
+  properties:
+  - type: OpenAPI
+    url: openapi/emis-health-patientmatching-api-openapi.yml
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/papi-overview
+  - type: APIReference
+    url: https://docs.partner.emis-x.uk/openapi/papi
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/using-the-partner-api
+  - type: Authentication
+    url: https://docs.partner.emis-x.uk/auth/
+  - type: ErrorCatalog
+    url: errors/emis-health-problem-types.yml
+  - type: DataModel
+    url: data-model/emis-health-data-model.yml
+- aid: emis-health:emis-health-search-api
+  name: EMIS Health Search API
+  description: The search API from EMIS Health — 1 operation(s) for search.
+  humanURL: https://docs.partner.emis-x.uk/papi-overview
+  baseURL: https://api.platform.emis-x.uk/partner
+  tags:
+  - search
+  properties:
+  - type: OpenAPI
+    url: openapi/emis-health-search-api-openapi.yml
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/papi-overview
+  - type: APIReference
+    url: https://docs.partner.emis-x.uk/openapi/papi
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/using-the-partner-api
+  - type: Authentication
+    url: https://docs.partner.emis-x.uk/auth/
+  - type: ErrorCatalog
+    url: errors/emis-health-problem-types.yml
+  - type: DataModel
+    url: data-model/emis-health-data-model.yml
+- aid: emis-health:emis-health-swagger-api
+  name: EMIS Health Swagger API
+  description: The swagger API from EMIS Health — 1 operation(s) for swagger.
+  humanURL: https://docs.partner.emis-x.uk/papi-overview
+  baseURL: https://api.platform.emis-x.uk/partner
+  tags:
+  - swagger
+  properties:
+  - type: OpenAPI
+    url: openapi/emis-health-swagger-api-openapi.yml
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/papi-overview
+  - type: APIReference
+    url: https://docs.partner.emis-x.uk/openapi/papi
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/using-the-partner-api
+  - type: Authentication
+    url: https://docs.partner.emis-x.uk/auth/
+  - type: ErrorCatalog
+    url: errors/emis-health-problem-types.yml
+  - type: DataModel
+    url: data-model/emis-health-data-model.yml
+- aid: emis-health:emis-health-user-api
+  name: EMIS Health User API
+  description: The user API from EMIS Health — 1 operation(s) for user.
+  humanURL: https://docs.partner.emis-x.uk/papi-overview
+  baseURL: https://api.platform.emis-x.uk/partner
+  tags:
+  - user
+  properties:
+  - type: OpenAPI
+    url: openapi/emis-health-user-api-openapi.yml
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/papi-overview
+  - type: APIReference
+    url: https://docs.partner.emis-x.uk/openapi/papi
+  - type: Documentation
+    url: https://docs.partner.emis-x.uk/using-the-partner-api
+  - type: Authentication
+    url: https://docs.partner.emis-x.uk/auth/
+  - type: ErrorCatalog
+    url: errors/emis-health-problem-types.yml
+  - type: DataModel
+    url: data-model/emis-health-data-model.yml
 common:
+- type: Overlay
+  url: overlays/emis-health-partner-api-overlay.yaml
 - type: MCPServer
   url: mcp/emis-health-mcp.yml
 - type: AgenticAccess
