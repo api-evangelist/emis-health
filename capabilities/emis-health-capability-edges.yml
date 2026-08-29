@@ -18,36 +18,38 @@ edges:
   capability_id: BC-2800.10
   capability_id_l1: BC-2800
   capability_name: Scheduling & Appointment Management
-  confidence: 0.93
-  evidence: BookAppointment; CancelAppointment; GetSlotsForSession; GetAppointmentSessions
-  reason: Operations book, cancel and query appointment slots and sessions in a GP clinical system — appointment
-    and scheduling management.
+  confidence: 0.95
+  evidence: GET /api/v1/appointments/BookAppointment; CancelAppointment; GetAppointmentSessions; GetSlotsForSession
+  reason: Operations book and cancel patient appointments and expose sessions and free slots in a GP clinical
+    system — plainly provider-side scheduling and appointment management.
 - tag: medicalRecord
   spec_file: emis-health-medicalrecord-api-openapi.yml
   capability_id: BC-2830
   capability_id_l1: BC-2830
   capability_name: Clinical Documentation Management
-  confidence: 0.82
-  evidence: GetMedicalRecord; GetConsultation; GetCodedRecord; FileRecord; UpdateConsultationVisibility
-  reason: Reads and files consultation/coded clinical record entries and attachments in the EMIS EPR —
-    clinical documentation of the patient record; specific sub-capability (note documentation vs record
-    lifecycle) is ambiguous.
+  confidence: 0.8
+  evidence: GET /api/v1/medicalRecord/GetConsultation; GetCodedRecord; POST /api/v1/medicalRecord/FileRecord;
+    PATCH UpdateConsultationVisibility
+  reason: Read and write access to the active patient record — consultations, coded entries, attachments,
+    medication issues — i.e. EHR clinical documentation. Spans several sub-capabilities (note documentation,
+    results, record workflow), so mapped at L1 only.
 - tag: patient
   spec_file: emis-health-patient-api-openapi.yml
   capability_id: BC-2800.20
   capability_id_l1: BC-2800
   capability_name: Patient Registration Management
-  confidence: 0.75
-  evidence: GET /api/v1/patient/GetPatientDemographics  GetPatientDemographics
-  reason: Retrieval of patient demographic/registration data from the GP record, matching capture and
-    stewardship of demographic and identity data; read-only so evidence is thin on stewardship.
+  confidence: 0.7
+  evidence: GET /api/v1/patient/GetPatientDemographics
+  reason: Retrieval of patient demographic and registration data (RegistrationStatusType, RegistrationTypeDead
+    schemas) from the GP record — the demographic/identity stewardship of patient registration. Single
+    operation, so moderate confidence between registration and MPI.
 - tag: patientMatching
   spec_file: emis-health-patientmatching-api-openapi.yml
   capability_id: BC-2900.10
   capability_id_l1: BC-2900
   capability_name: Master Patient Index Management
   confidence: 0.7
-  evidence: GET /api/v1/patientMatching/GetMatchedPatients ... schema PartnerApi.EmisOpen.PatientMatches37.PatientMatchesPatient
-  reason: 'Operations return matched/changed patient records from the EMIS patient index, which is patient
-    identity matching — closest to Master Patient Index stewardship. Some ambiguity: it may serve as a
-    change-feed for integrations rather than duplicate resolution, hence moderate confidence.'
+  evidence: GET /api/v1/patientMatching/GetMatchedPatients; GetChangedPatients; GetPatientSequence; schema
+    PatientMatches37.PatientMatchesPatient
+  reason: Operations resolve and synchronise patient identities between a partner system and the EMIS
+    record — patient identity matching, the core of master patient index stewardship.
