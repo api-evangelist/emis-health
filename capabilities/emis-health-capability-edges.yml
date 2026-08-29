@@ -1,0 +1,53 @@
+slug: emis-health
+provider: EMIS Health
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: appointments
+  spec_file: emis-health-appointments-api-openapi.yml
+  capability_id: BC-2800.10
+  capability_id_l1: BC-2800
+  capability_name: Scheduling & Appointment Management
+  confidence: 0.93
+  evidence: BookAppointment; CancelAppointment; GetSlotsForSession; GetAppointmentSessions
+  reason: Operations book, cancel and query appointment slots and sessions in a GP clinical system — appointment
+    and scheduling management.
+- tag: medicalRecord
+  spec_file: emis-health-medicalrecord-api-openapi.yml
+  capability_id: BC-2830
+  capability_id_l1: BC-2830
+  capability_name: Clinical Documentation Management
+  confidence: 0.82
+  evidence: GetMedicalRecord; GetConsultation; GetCodedRecord; FileRecord; UpdateConsultationVisibility
+  reason: Reads and files consultation/coded clinical record entries and attachments in the EMIS EPR —
+    clinical documentation of the patient record; specific sub-capability (note documentation vs record
+    lifecycle) is ambiguous.
+- tag: patient
+  spec_file: emis-health-patient-api-openapi.yml
+  capability_id: BC-2800.20
+  capability_id_l1: BC-2800
+  capability_name: Patient Registration Management
+  confidence: 0.75
+  evidence: GET /api/v1/patient/GetPatientDemographics  GetPatientDemographics
+  reason: Retrieval of patient demographic/registration data from the GP record, matching capture and
+    stewardship of demographic and identity data; read-only so evidence is thin on stewardship.
+- tag: patientMatching
+  spec_file: emis-health-patientmatching-api-openapi.yml
+  capability_id: BC-2900.10
+  capability_id_l1: BC-2900
+  capability_name: Master Patient Index Management
+  confidence: 0.7
+  evidence: GET /api/v1/patientMatching/GetMatchedPatients ... schema PartnerApi.EmisOpen.PatientMatches37.PatientMatchesPatient
+  reason: 'Operations return matched/changed patient records from the EMIS patient index, which is patient
+    identity matching — closest to Master Patient Index stewardship. Some ambiguity: it may serve as a
+    change-feed for integrations rather than duplicate resolution, hence moderate confidence.'

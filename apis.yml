@@ -292,6 +292,9 @@ apis:
   - type: DataModel
     url: data-model/emis-health-data-model.yml
 common:
+- type: CapabilityMap
+  url: capabilities/emis-health-capability-edges.yml
+  name: EMIS Health Business Capability Map
 - type: Overlay
   url: overlays/emis-health-partner-api-overlay.yaml
 - type: MCPServer
