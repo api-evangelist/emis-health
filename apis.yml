@@ -14,6 +14,17 @@ description: EMIS Health is a United Kingdom health-technology company and one o
   OIDC (Microsoft Entra External ID / Azure AD B2C) using authorization-code, PKCE,
   and client-credentials flows with scoped JWT access tokens; native HL7 FHIR resource
   support is documented as upcoming rather than yet available.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Healthcare
