@@ -77,6 +77,8 @@ apis:
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
   tags:
+  - Appointments
+  tags_raw:
   - appointments
   properties:
   - type: OpenAPI
@@ -121,6 +123,8 @@ apis:
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
   tags:
+  - Health
+  tags_raw:
   - health
   properties:
   - type: OpenAPI
@@ -142,7 +146,8 @@ apis:
   description: The medicalRecord API from EMIS Health — 12 operation(s) for medicalrecord.
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
-  tags:
+  tags: []
+  tags_raw:
   - medicalRecord
   properties:
   - type: OpenAPI
@@ -165,6 +170,8 @@ apis:
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
   tags:
+  - Organisation
+  tags_raw:
   - organisation
   properties:
   - type: OpenAPI
@@ -187,6 +194,8 @@ apis:
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
   tags:
+  - Patient
+  tags_raw:
   - patient
   properties:
   - type: OpenAPI
@@ -209,6 +218,8 @@ apis:
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
   tags:
+  - Patient Matching
+  tags_raw:
   - patientMatching
   properties:
   - type: OpenAPI
@@ -231,6 +242,8 @@ apis:
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
   tags:
+  - Search
+  tags_raw:
   - search
   properties:
   - type: OpenAPI
@@ -253,6 +266,8 @@ apis:
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
   tags:
+  - Swagger
+  tags_raw:
   - swagger
   properties:
   - type: OpenAPI
@@ -275,6 +290,8 @@ apis:
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
   tags:
+  - User
+  tags_raw:
   - user
   properties:
   - type: OpenAPI
