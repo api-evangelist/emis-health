@@ -1,0 +1,557 @@
+openapi: 3.2.0
+info:
+  title: Partner User API
+  version: '1.2'
+tags:
+- name: user
+paths:
+  /api/v1/user/GetUserById:
+    get:
+      tags:
+      - user
+      description: For speed and brevity, the extended appointments API does not return full user details for session holders, just name and system IDs. If the developer requires more information, they can retrieve details of a member of staff based on their DBID using this function. The XML returned is the same as the node information in GetOrganisation.
+      operationId: GetUserById
+      parameters:
+      - name: userInRoleId
+        in: query
+        description: User DBID as returned from GetOrganisation
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: applicationId
+        in: header
+        description: The applicationId (aka party key) will be provided by your assurance lead
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '400':
+          description: Bad request - adjust URL or parameters
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '401':
+          description: Authentication token not valid
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '415':
+          description: Media type not valid for URL
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '200':
+          description: Retrieves user details
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.UserDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.UserDetails'
+      security:
+      - bearer: []
+      - OAuth2CodeEMIS-X-GP-PAPI:
+        - papi-config.read
+components:
+  schemas:
+    PartnerApi.EmisOpen.MedicalRecord35.PersonCategoryType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        mnemonic:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        purpose:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonCategoryTypePurpose'
+        purposeSpecified:
+          type: boolean
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord35.PersonTypeContraceptive:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord35.RoleType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        application:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.ApplicationType'
+        team:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.IdentType'
+        location:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.IdentType'
+      additionalProperties: false
+    PartnerApi.Service.Model.Coding:
+      type: object
+      properties:
+        system:
+          type:
+          - string
+          - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        display:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.Service.Model.ErrorResponse:
+      type: object
+      properties:
+        messageId:
+          type: string
+          format: uuid
+        text:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Text'
+        issue:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Issue'
+        legacyOutcome:
+          type: integer
+          format: int32
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord35.UserDetails:
+      type: object
+      properties:
+        person:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord35.PersonTypeConsulter:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord35.IdentType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord35.PersonType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        mnemonic:
+          type:
+          - string
+          - 'null'
+        pcsUser:
+          type:
+          - string
+          - 'null'
+        activeEMISUser:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        category:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonCategoryType'
+        nationalCode:
+          type:
+          - string
+          - 'null'
+        prescriptionCode:
+          type:
+          - string
+          - 'null'
+        gmcCode:
+          type:
+          - string
+          - 'null'
+        ukccCode:
+          type:
+          - string
+          - 'null'
+        scripts:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonTypeScripts'
+        scriptsSpecified:
+          type: boolean
+        consulter:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonTypeConsulter'
+        consulterSpecified:
+          type: boolean
+        contractStart:
+          type:
+          - string
+          - 'null'
+        contractEnd:
+          type:
+          - string
+          - 'null'
+        doctor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonTypeDoctor'
+        doctorSpecified:
+          type: boolean
+        locum:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonTypeLocum'
+        locumSpecified:
+          type: boolean
+        registrar:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonTypeRegistrar'
+        registrarSpecified:
+          type: boolean
+        maternity:
+          type:
+          - string
+          - 'null'
+        childSurveillance:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonTypeChildSurveillance'
+        childSurveillanceSpecified:
+          type: boolean
+        contraceptive:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonTypeContraceptive'
+        contraceptiveSpecified:
+          type: boolean
+        twentyFourHour:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonTypeTwentyFourHour'
+        twentyFourHourSpecified:
+          type: boolean
+        minorSurgery:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonTypeMinorSurgery'
+        minorSurgerySpecified:
+          type: boolean
+        resonsibleHA:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.IdentType'
+        trainer:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.IdentType'
+        contractualRelationship:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.PersonTypeContractualRelationship'
+        contractualRelationshipSpecified:
+          type: boolean
+        address:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.AddressType'
+        telephone1:
+          type:
+          - string
+          - 'null'
+        telephone2:
+          type:
+          - string
+          - 'null'
+        fax:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        role:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord35.RoleType'
+        activeUser:
+          type:
+          - string
+          - 'null'
+        security1:
+          type:
+          - string
+          - 'null'
+        security2:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord35.AddressType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        houseNameFlat:
+          type:
+          - string
+          - 'null'
+        street:
+          type:
+          - string
+          - 'null'
+        village:
+          type:
+          - string
+          - 'null'
+        town:
+          type:
+          - string
+          - 'null'
+        county:
+          type:
+          - string
+          - 'null'
+        postCode:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord35.PersonTypeDoctor:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord35.PersonTypeMinorSurgery:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord35.PersonCategoryTypePurpose:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord35.PersonTypeRegistrar:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord35.PersonTypeTwentyFourHour:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.Details:
+      type: object
+      properties:
+        text:
+          type:
+          - string
+          - 'null'
+        coding:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Coding'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord35.PersonTypeLocum:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.Issue:
+      type: object
+      properties:
+        severity:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.SeverityType'
+        code:
+          type:
+          - string
+          - 'null'
+        details:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Details'
+        diagnostics:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord35.ApplicationType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        applicationMnemonic:
+          type:
+          - string
+          - 'null'
+        applicationName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord35.PersonTypeContractualRelationship:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.SeverityType:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord35.PersonTypeScripts:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord35.PersonTypeChildSurveillance:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.Text:
+      type: object
+      properties:
+        status:
+          type:
+          - string
+          - 'null'
+        div:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    OAuth2CodeEMIS-X-GP-PAPI:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes:
+            papi-appt.read: Read Appointments
+            papi-appt.write: Write Appointments
+            papi-cr.read: Read Clinical Record
+            papi-cr.write: Write Clinical Record
+            papi-subjects.read: Read Subjects
+            papi-config.read: Read Config
+            papi-searches.read: Read Searches

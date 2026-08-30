@@ -1,0 +1,385 @@
+openapi: 3.2.0
+info:
+  title: Partner CORS API
+  version: '1.2'
+tags:
+- name: CORS
+paths:
+  /api/v1/appointments/BookAppointment:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/CancelAppointment:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/GetAppointmentConfiguration:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/GetAppointmentSessions:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/GetArrivedPatients:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/GetAttachments:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/GetAttachmentsV2:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/GetBase64AttachmentData:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/GetBase64AttachmentDataV2:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/GetBookedPatients:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/GetBookedPatientsV2:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/patientMatching/GetChangedPatients:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/patientMatching/GetChangedPatientsMR:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/GetCodedRecord:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/GetConsultation:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/GetEvents:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/patientMatching/GetMatchedPatients:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/GetMedicalRecord:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/GetMedicationIssues:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/organisation/GetOrganisation:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/organisation/GetOrganisationV2:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/GetPatientAppointments:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/GetPatientAppointmentsV2:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/patient/GetPatientDemographics:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/search/GetPatientSearches:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/patientMatching/GetPatientSequence:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/GetSentInPatients:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/GetSlotsForSession:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/GetSlotsForSessionV2:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/user/GetUserById:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/AddSlotComment:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/SetAppointmentStatus:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/SetAppointmentStatusEx:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/SetSlotNotes:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/appointments/SetSlotType:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/UpdateAttachment:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/UpdateConsultationVisibility:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /api/v1/medicalRecord/FileRecord:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+  /swagger/*:
+    options:
+      tags:
+      - CORS
+      summary: CORS pre-flight request
+      description: Handles CORS pre-flight requests
+      responses:
+        '204':
+          description: No Content
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    OAuth2CodeEMIS-X-GP-PAPI:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes:
+            papi-appt.read: Read Appointments
+            papi-appt.write: Write Appointments
+            papi-cr.read: Read Clinical Record
+            papi-cr.write: Write Clinical Record
+            papi-subjects.read: Read Subjects
+            papi-config.read: Read Config
+            papi-searches.read: Read Searches

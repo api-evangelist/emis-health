@@ -1,0 +1,35 @@
+openapi: 3.2.0
+info:
+  title: Partner Swagger API
+  version: '1.2'
+tags:
+- name: swagger
+paths:
+  /swagger/*:
+    get:
+      tags:
+      - swagger
+      summary: Swagger UI endpoint
+      description: Serves the Swagger UI and OpenAPI JSON.
+      operationId: swagger
+      responses:
+        '200':
+          description: Swagger UI or OpenAPI JSON
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    OAuth2CodeEMIS-X-GP-PAPI:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes:
+            papi-appt.read: Read Appointments
+            papi-appt.write: Write Appointments
+            papi-cr.read: Read Clinical Record
+            papi-cr.write: Write Clinical Record
+            papi-subjects.read: Read Subjects
+            papi-config.read: Read Config
+            papi-searches.read: Read Searches

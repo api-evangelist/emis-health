@@ -1,0 +1,1166 @@
+openapi: 3.2.0
+info:
+  title: Partner Patient Matching API
+  version: '1.2'
+tags:
+- name: patientMatching
+paths:
+  /api/v1/patientMatching/GetChangedPatients:
+    get:
+      tags:
+      - patientMatching
+      description: When called this method returns a list of patients whose registration details have changed since the date specified. If no patient meets these criteria the method returns an empty list.
+      operationId: GetChangedPatients
+      parameters:
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: applicationId
+        in: header
+        description: The applicationId (aka party key) will be provided by your assurance lead
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '400':
+          description: Bad request - adjust URL or parameters
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '401':
+          description: Authentication token not valid
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '415':
+          description: Media type not valid for URL
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '200':
+          description: Retrieves the patients whose registration record has changed
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PatientMatches'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PatientMatches'
+      security:
+      - bearer: []
+      - OAuth2CodeEMIS-X-GP-PAPI:
+        - papi-subjects.read
+  /api/v1/patientMatching/GetChangedPatientsMR:
+    get:
+      tags:
+      - patientMatching
+      description: When called this method returns a list of patients whose medical record has changed (as defined by looking at the audit trail) since the date specified. If no patients meet this criterion the method returns an empty list.
+      operationId: GetChangedPatientsMR
+      parameters:
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: applicationId
+        in: header
+        description: The applicationId (aka party key) will be provided by your assurance lead
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '400':
+          description: Bad request - adjust URL or parameters
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '401':
+          description: Authentication token not valid
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '415':
+          description: Media type not valid for URL
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '200':
+          description: Retrieves the patients whose medical record has changed
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PatientMatches'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PatientMatches'
+      security:
+      - bearer: []
+      - OAuth2CodeEMIS-X-GP-PAPI:
+        - papi-subjects.read
+  /api/v1/patientMatching/GetMatchedPatients:
+    get:
+      tags:
+      - patientMatching
+      description: 'This call is used to find patients that match a specific search criterion. Only one field can be used at a time, such as last name, first name, date of birth, NHS number, etc.
+
+
+        Example: "DOB firstName lastName"
+
+
+        Do not include parentheses, special characters, country codes, or non-standard formats in the search term.
+
+
+        A standard demographic message is returned'
+      operationId: GetMatchedPatients
+      parameters:
+      - name: matchedTerms
+        in: query
+        schema:
+          type: string
+      - name: applicationId
+        in: header
+        description: The applicationId (aka party key) will be provided by your assurance lead
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '400':
+          description: Bad request - adjust URL or parameters
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '401':
+          description: Authentication token not valid
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '415':
+          description: Media type not valid for URL
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '200':
+          description: Retrieves the patients who match search criteria
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PatientMatches'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PatientMatches'
+      security:
+      - bearer: []
+      - OAuth2CodeEMIS-X-GP-PAPI:
+        - papi-subjects.read
+  /api/v1/patientMatching/GetPatientSequence:
+    get:
+      tags:
+      - patientMatching
+      description: 'This API retrieves the next batch of patients from the Age-Sex Register, based on the specified batch size and starting patient ID (`StartID`).
+
+
+        Note: This endpoint is provided for legacy use only and is not part of the standard, publicly available API set. Access may be restricted or unsupported in newer implementations.'
+      operationId: GetPatientSequence
+      parameters:
+      - name: startId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: batchSize
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: applicationId
+        in: header
+        description: The applicationId (aka party key) will be provided by your assurance lead
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '400':
+          description: Bad request - adjust URL or parameters
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '401':
+          description: Authentication token not valid
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '415':
+          description: Media type not valid for URL
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.Service.Model.ErrorResponse'
+        '200':
+          description: Retrieves the next set of patients from the age sex register
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PatientMatches'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PatientMatches'
+      security:
+      - bearer: []
+      - OAuth2CodeEMIS-X-GP-PAPI:
+        - papi-subjects.read
+components:
+  schemas:
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeContraceptive:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.IdentType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeTwentyFourHour:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.Coding:
+      type: object
+      properties:
+        system:
+          type:
+          - string
+          - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        display:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeLocum:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.RegistrationTypeCustomRegistrationEntry:
+      type: object
+      properties:
+        fieldName:
+          type:
+          - string
+          - 'null'
+        fieldValue:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeScripts:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.ErrorResponse:
+      type: object
+      properties:
+        messageId:
+          type: string
+          format: uuid
+        text:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Text'
+        issue:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Issue'
+        legacyOutcome:
+          type: integer
+          format: int32
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.StringCodeTypeScheme:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.StatusType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        code:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IntegerCodeType'
+        statusDate:
+          type:
+          - string
+          - 'null'
+        patientType:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IntegerCodeType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeContractualRelationship:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeDoctor:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.StringCodeType:
+      type: object
+      properties:
+        value:
+          type:
+          - string
+          - 'null'
+        scheme:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.StringCodeTypeScheme'
+        schemeSpecified:
+          type: boolean
+        term:
+          type:
+          - string
+          - 'null'
+        oldCode:
+          type:
+          - string
+          - 'null'
+        mapCode:
+          type:
+          - string
+          - 'null'
+        mapScheme:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonCategoryType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        mnemonic:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        purpose:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonCategoryTypePurpose'
+        purposeSpecified:
+          type: boolean
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        mnemonic:
+          type:
+          - string
+          - 'null'
+        pcsUser:
+          type:
+          - string
+          - 'null'
+        activeEMISUser:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        category:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonCategoryType'
+        nationalCode:
+          type:
+          - string
+          - 'null'
+        prescriptionCode:
+          type:
+          - string
+          - 'null'
+        gmcCode:
+          type:
+          - string
+          - 'null'
+        ukccCode:
+          type:
+          - string
+          - 'null'
+        scripts:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeScripts'
+        scriptsSpecified:
+          type: boolean
+        consulter:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeConsulter'
+        consulterSpecified:
+          type: boolean
+        contractStart:
+          type:
+          - string
+          - 'null'
+        contractEnd:
+          type:
+          - string
+          - 'null'
+        doctor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeDoctor'
+        doctorSpecified:
+          type: boolean
+        locum:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeLocum'
+        locumSpecified:
+          type: boolean
+        registrar:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeRegistrar'
+        registrarSpecified:
+          type: boolean
+        maternity:
+          type:
+          - string
+          - 'null'
+        childSurveillance:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeChildSurveillance'
+        childSurveillanceSpecified:
+          type: boolean
+        contraceptive:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeContraceptive'
+        contraceptiveSpecified:
+          type: boolean
+        twentyFourHour:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeTwentyFourHour'
+        twentyFourHourSpecified:
+          type: boolean
+        minorSurgery:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeMinorSurgery'
+        minorSurgerySpecified:
+          type: boolean
+        resonsibleHA:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+        trainer:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+        contractualRelationship:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeContractualRelationship'
+        contractualRelationshipSpecified:
+          type: boolean
+        address:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.AddressType'
+        telephone1:
+          type:
+          - string
+          - 'null'
+        telephone2:
+          type:
+          - string
+          - 'null'
+        fax:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        role:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.RoleType'
+        security1:
+          type:
+          - string
+          - 'null'
+        security2:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeMinorSurgery:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeConsulter:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeRegistrar:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.PatientMatchesPatient:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        dateOfBirth:
+          type:
+          - string
+          - 'null'
+        sex:
+          type:
+          - string
+          - 'null'
+        previousNames:
+          type:
+          - string
+          - 'null'
+        familyName:
+          type:
+          - string
+          - 'null'
+        callingName:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        nhsNumber:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.AddressType'
+        homeTelephone:
+          type:
+          - string
+          - 'null'
+        registeredGpID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+        usualGpID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+        tradingHaID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+        walkingQuarters:
+          type:
+          - string
+          - 'null'
+        dispensing:
+          type:
+          - string
+          - 'null'
+        ruralMileage:
+          type:
+          - string
+          - 'null'
+        difficultQuarters:
+          type:
+          - string
+          - 'null'
+        residentialInstitute:
+          type:
+          - string
+          - 'null'
+        blockedSpecial:
+          type:
+          - string
+          - 'null'
+        recordsAt:
+          type:
+          - string
+          - 'null'
+        hospitalNumbers:
+          type:
+          - string
+          - 'null'
+        deductedDate:
+          type:
+          - string
+          - 'null'
+        dateOfDeath:
+          type:
+          - string
+          - 'null'
+        dead:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.RegistrationTypeDead'
+        deadSpecified:
+          type: boolean
+        dateAdded:
+          type:
+          - string
+          - 'null'
+        oldNhsNumber:
+          type:
+          - string
+          - 'null'
+        workTelephone:
+          type:
+          - string
+          - 'null'
+        mobile:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        homeAddress:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.AddressType'
+        homeGP:
+          type:
+          - string
+          - 'null'
+        homeGPCode:
+          type:
+          - string
+          - 'null'
+        chiNumber:
+          type:
+          - string
+          - 'null'
+        footpathMiles:
+          type:
+          - string
+          - 'null'
+        waterMiles:
+          type:
+          - string
+          - 'null'
+        serviceType:
+          type:
+          - string
+          - 'null'
+        serviceNumber:
+          type:
+          - string
+          - 'null'
+        customRegistrationFields:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.RegistrationTypeCustomRegistrationEntry'
+        groNumber:
+          type:
+          - string
+          - 'null'
+        upciNumber:
+          type:
+          - string
+          - 'null'
+        maritalStatus:
+          type:
+          - string
+          - 'null'
+        medicationReviewDate:
+          type:
+          - string
+          - 'null'
+        exemptionExpiry:
+          type:
+          - string
+          - 'null'
+        screenMessage:
+          type:
+          - string
+          - 'null'
+        reminderSent:
+          type:
+          - string
+          - 'null'
+        ethnicCode:
+          type:
+          - string
+          - 'null'
+        prisonNumber:
+          type:
+          - string
+          - 'null'
+        previousPrisonNumbers:
+          type:
+          - string
+          - 'null'
+        prisonDoctorGP:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+        socialSecurityNumber:
+          type:
+          - string
+          - 'null'
+        currentStatus:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.StatusType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.RoleType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        application:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.ApplicationType'
+        team:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+        location:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PatientMatches:
+      type: object
+      properties:
+        patientList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PatientMatchesPatient'
+        peopleList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.AddressType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        houseNameFlat:
+          type:
+          - string
+          - 'null'
+        street:
+          type:
+          - string
+          - 'null'
+        village:
+          type:
+          - string
+          - 'null'
+        town:
+          type:
+          - string
+          - 'null'
+        county:
+          type:
+          - string
+          - 'null'
+        postCode:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.IntegerCodeType:
+      type: object
+      properties:
+        value:
+          type:
+          - string
+          - 'null'
+        scheme:
+          type:
+          - string
+          - 'null'
+        term:
+          type:
+          - string
+          - 'null'
+        oldCode:
+          type:
+          - string
+          - 'null'
+        mapCode:
+          type:
+          - string
+          - 'null'
+        mapScheme:
+          type:
+          - string
+          - 'null'
+        interventionTarget:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.StringCodeType'
+      additionalProperties: false
+    PartnerApi.Service.Model.Details:
+      type: object
+      properties:
+        text:
+          type:
+          - string
+          - 'null'
+        coding:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Coding'
+      additionalProperties: false
+    PartnerApi.Service.Model.Issue:
+      type: object
+      properties:
+        severity:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.SeverityType'
+        code:
+          type:
+          - string
+          - 'null'
+        details:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Details'
+        diagnostics:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.RegistrationTypeDead:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.SeverityType:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeChildSurveillance:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.ApplicationType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        applicationMnemonic:
+          type:
+          - string
+          - 'null'
+        applicationName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonCategoryTypePurpose:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.Text:
+      type: object
+      properties:
+        status:
+          type:
+          - string
+          - 'null'
+        div:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    OAuth2CodeEMIS-X-GP-PAPI:
+      type: oauth2
+      flows:
+        authorizationCode:
+          scopes:
+            papi-appt.read: Read Appointments
+            papi-appt.write: Write Appointments
+            papi-cr.read: Read Clinical Record
+            papi-cr.write: Write Clinical Record
+            papi-subjects.read: Read Subjects
+            papi-config.read: Read Config
+            papi-searches.read: Read Searches
