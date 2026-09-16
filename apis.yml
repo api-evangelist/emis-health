@@ -2,18 +2,16 @@ aid: emis-health
 url: https://raw.githubusercontent.com/api-evangelist/emis-health/refs/heads/main/apis.yml
 name: EMIS Health
 kind: company
-description: EMIS Health is a United Kingdom health-technology company and one of
-  the two dominant GP clinical-system providers in the NHS (alongside TPP SystmOne),
-  supplying the EMIS Web electronic patient record used across primary care, community
-  pharmacy, and other care settings. EMIS is migrating from EMIS Web to EMIS-X, a
-  cloud-first platform, and exposes third-party integration through the EMIS Partner
-  Developer Portal at docs.partner.emis-x.uk. The gated partner programme documents
-  a RESTful JSON Partner API (PAPI) covering appointments, the clinical/medical record,
-  patient demographics and matching, organisation lookup and clinical searches, plus
-  EMIS-X App Launch and an EMIS-X Analytics data warehouse. Authentication is OAuth2 /
-  OIDC (Microsoft Entra External ID / Azure AD B2C) using authorization-code, PKCE,
-  and client-credentials flows with scoped JWT access tokens; native HL7 FHIR resource
-  support is documented as upcoming rather than yet available.
+description: EMIS Health is a United Kingdom health-technology company and one of the two dominant GP
+  clinical-system providers in the NHS (alongside TPP SystmOne), supplying the EMIS Web electronic patient
+  record used across primary care, community pharmacy, and other care settings. EMIS is migrating from
+  EMIS Web to EMIS-X, a cloud-first platform, and exposes third-party integration through the EMIS Partner
+  Developer Portal at docs.partner.emis-x.uk. The gated partner programme documents a RESTful JSON Partner
+  API (PAPI) covering appointments, the clinical/medical record, patient demographics and matching, organisation
+  lookup and clinical searches, plus EMIS-X App Launch and an EMIS-X Analytics data warehouse. Authentication
+  is OAuth2 / OIDC (Microsoft Entra External ID / Azure AD B2C) using authorization-code, PKCE, and client-credentials
+  flows with scoped JWT access tokens; native HL7 FHIR resource support is documented as upcoming rather
+  than yet available.
 deliveryModel:
   model: unknown
   open_source: false
@@ -54,15 +52,14 @@ tags:
 - Clinical Data
 - Electronic Patient Record
 created: '2026-07-24'
-modified: '2026-07-24'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: emis-health:emis-x-app-launch
   name: EMIS-X App Launch
-  description: >-
-    EMIS-X App Launch lets partner applications be launched in-context from within the EMIS-X / EMIS Web
-    clinical workflow, passing an authenticated user and patient context to the integrating application
-    via the shared EMIS-X OAuth2 / OIDC authentication.
+  description: EMIS-X App Launch lets partner applications be launched in-context from within the EMIS-X
+    / EMIS Web clinical workflow, passing an authenticated user and patient context to the integrating
+    application via the shared EMIS-X OAuth2 / OIDC authentication.
   humanURL: https://docs.partner.emis-x.uk/emisx-app-launch/
   tags:
   - App Launch
@@ -74,9 +71,8 @@ apis:
     url: https://docs.partner.emis-x.uk/auth/
 - aid: emis-health:emis-x-analytics
   name: EMIS-X Analytics
-  description: >-
-    EMIS-X Analytics provides partner access to an EMIS-X data warehouse with modelled datasets across
-    domains including Community Pharmacy, Incremental Primary Care Views (iPCVs), OpenSAFELY, Recruit,
+  description: EMIS-X Analytics provides partner access to an EMIS-X data warehouse with modelled datasets
+    across domains including Community Pharmacy, Incremental Primary Care Views (iPCVs), OpenSAFELY, Recruit,
     and IM1 Bulk Extract, browsable through the developer portal data explorer.
   humanURL: https://docs.partner.emis-x.uk/getting-started/
   tags:
@@ -133,7 +129,7 @@ apis:
   - type: DataModel
     url: data-model/emis-health-data-model.yml
 - aid: emis-health:emis-health-health-api
-  name: EMIS Health Health API
+  name: EMIS Health API
   description: The health API from EMIS Health — 1 operation(s) for health.
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
@@ -331,7 +327,10 @@ common:
   url: overlays/emis-health-partner-api-overlay.yaml
 - type: X-MCPServerCandidate
   url: mcp/emis-health-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
 - type: AgenticAccess
   url: agentic-access/emis-health-agentic-access.yml
 - type: DomainSecurity
