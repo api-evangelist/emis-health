@@ -205,7 +205,7 @@ apis:
   humanURL: https://docs.partner.emis-x.uk/papi-overview
   baseURL: https://api.platform.emis-x.uk/partner
   tags:
-  - Patient
+  - Patients
   tags_raw:
   - patient
   properties:
