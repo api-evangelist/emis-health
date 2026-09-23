@@ -3,12 +3,12 @@ info:
   title: Partner Swagger API
   version: '1.2'
 tags:
-- name: swagger
+- name: Swagger
 paths:
   /swagger/*:
     get:
       tags:
-      - swagger
+      - Swagger
       summary: Swagger UI endpoint
       description: Serves the Swagger UI and OpenAPI JSON.
       operationId: swagger

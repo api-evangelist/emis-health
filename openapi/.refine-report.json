@@ -1,0 +1,48 @@
+{
+  "provider": "emis-health",
+  "sources": [
+    "_original/emis-health-partner-api-openapi.json"
+  ],
+  "outputs": [
+    "emis-health-cors-api-openapi.yml",
+    "emis-health-appointments-api-openapi.yml",
+    "emis-health-health-api-openapi.yml",
+    "emis-health-medicalrecord-api-openapi.yml",
+    "emis-health-organisation-api-openapi.yml",
+    "emis-health-patient-api-openapi.yml",
+    "emis-health-patientmatching-api-openapi.yml",
+    "emis-health-search-api-openapi.yml",
+    "emis-health-swagger-api-openapi.yml",
+    "emis-health-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "emis-health-partner-api-openapi.json: upgraded openapi 3.0.4 -> OpenAPI 3.2.0",
+    "emis-health-partner-api-openapi.json: declared missing tag: CORS",
+    "emis-health-partner-api-openapi.json: declared missing tag: appointments",
+    "emis-health-partner-api-openapi.json: declared missing tag: health",
+    "emis-health-partner-api-openapi.json: declared missing tag: medicalRecord",
+    "emis-health-partner-api-openapi.json: declared missing tag: organisation",
+    "emis-health-partner-api-openapi.json: declared missing tag: patient",
+    "emis-health-partner-api-openapi.json: declared missing tag: patientMatching",
+    "emis-health-partner-api-openapi.json: declared missing tag: search",
+    "emis-health-partner-api-openapi.json: declared missing tag: swagger",
+    "emis-health-partner-api-openapi.json: declared missing tag: user",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "emis-health-appointments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emis-health-cors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emis-health-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emis-health-medicalrecord-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emis-health-organisation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emis-health-patient-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emis-health-patientmatching-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emis-health-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emis-health-swagger-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emis-health-user-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

@@ -14,6 +14,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsBookAppointment
+      x-operation-id-source: derived
   /api/v1/appointments/CancelAppointment:
     options:
       tags:
@@ -23,6 +25,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsCancelAppointment
+      x-operation-id-source: derived
   /api/v1/appointments/GetAppointmentConfiguration:
     options:
       tags:
@@ -32,6 +36,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsGetAppointmentConfiguration
+      x-operation-id-source: derived
   /api/v1/appointments/GetAppointmentSessions:
     options:
       tags:
@@ -41,6 +47,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsGetAppointmentSessions
+      x-operation-id-source: derived
   /api/v1/appointments/GetArrivedPatients:
     options:
       tags:
@@ -50,6 +58,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsGetArrivedPatients
+      x-operation-id-source: derived
   /api/v1/medicalRecord/GetAttachments:
     options:
       tags:
@@ -59,6 +69,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordGetAttachments
+      x-operation-id-source: derived
   /api/v1/medicalRecord/GetAttachmentsV2:
     options:
       tags:
@@ -68,6 +80,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordGetAttachmentsV2
+      x-operation-id-source: derived
   /api/v1/medicalRecord/GetBase64AttachmentData:
     options:
       tags:
@@ -77,6 +91,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordGetBase64AttachmentData
+      x-operation-id-source: derived
   /api/v1/medicalRecord/GetBase64AttachmentDataV2:
     options:
       tags:
@@ -86,6 +102,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordGetBase64AttachmentDataV2
+      x-operation-id-source: derived
   /api/v1/appointments/GetBookedPatients:
     options:
       tags:
@@ -95,6 +113,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsGetBookedPatients
+      x-operation-id-source: derived
   /api/v1/appointments/GetBookedPatientsV2:
     options:
       tags:
@@ -104,6 +124,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsGetBookedPatientsV2
+      x-operation-id-source: derived
   /api/v1/patientMatching/GetChangedPatients:
     options:
       tags:
@@ -113,6 +135,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1PatientMatchingGetChangedPatients
+      x-operation-id-source: derived
   /api/v1/patientMatching/GetChangedPatientsMR:
     options:
       tags:
@@ -122,6 +146,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1PatientMatchingGetChangedPatientsMR
+      x-operation-id-source: derived
   /api/v1/medicalRecord/GetCodedRecord:
     options:
       tags:
@@ -131,6 +157,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordGetCodedRecord
+      x-operation-id-source: derived
   /api/v1/medicalRecord/GetConsultation:
     options:
       tags:
@@ -140,6 +168,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordGetConsultation
+      x-operation-id-source: derived
   /api/v1/medicalRecord/GetEvents:
     options:
       tags:
@@ -149,6 +179,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordGetEvents
+      x-operation-id-source: derived
   /:
     options:
       tags:
@@ -158,6 +190,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsRoot
+      x-operation-id-source: derived
   /api/v1/patientMatching/GetMatchedPatients:
     options:
       tags:
@@ -167,6 +201,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1PatientMatchingGetMatchedPatients
+      x-operation-id-source: derived
   /api/v1/medicalRecord/GetMedicalRecord:
     options:
       tags:
@@ -176,6 +212,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordGetMedicalRecord
+      x-operation-id-source: derived
   /api/v1/medicalRecord/GetMedicationIssues:
     options:
       tags:
@@ -185,6 +223,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordGetMedicationIssues
+      x-operation-id-source: derived
   /api/v1/organisation/GetOrganisation:
     options:
       tags:
@@ -194,6 +234,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1OrganisationGetOrganisation
+      x-operation-id-source: derived
   /api/v1/organisation/GetOrganisationV2:
     options:
       tags:
@@ -203,6 +245,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1OrganisationGetOrganisationV2
+      x-operation-id-source: derived
   /api/v1/appointments/GetPatientAppointments:
     options:
       tags:
@@ -212,6 +256,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsGetPatientAppointments
+      x-operation-id-source: derived
   /api/v1/appointments/GetPatientAppointmentsV2:
     options:
       tags:
@@ -221,6 +267,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsGetPatientAppointmentsV2
+      x-operation-id-source: derived
   /api/v1/patient/GetPatientDemographics:
     options:
       tags:
@@ -230,6 +278,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1PatientGetPatientDemographics
+      x-operation-id-source: derived
   /api/v1/search/GetPatientSearches:
     options:
       tags:
@@ -239,6 +289,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1SearchGetPatientSearches
+      x-operation-id-source: derived
   /api/v1/patientMatching/GetPatientSequence:
     options:
       tags:
@@ -248,6 +300,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1PatientMatchingGetPatientSequence
+      x-operation-id-source: derived
   /api/v1/appointments/GetSentInPatients:
     options:
       tags:
@@ -257,6 +311,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsGetSentInPatients
+      x-operation-id-source: derived
   /api/v1/appointments/GetSlotsForSession:
     options:
       tags:
@@ -266,6 +322,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsGetSlotsForSession
+      x-operation-id-source: derived
   /api/v1/appointments/GetSlotsForSessionV2:
     options:
       tags:
@@ -275,6 +333,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsGetSlotsForSessionV2
+      x-operation-id-source: derived
   /api/v1/user/GetUserById:
     options:
       tags:
@@ -284,6 +344,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1UserGetUserById
+      x-operation-id-source: derived
   /api/v1/appointments/AddSlotComment:
     options:
       tags:
@@ -293,6 +355,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsAddSlotComment
+      x-operation-id-source: derived
   /api/v1/appointments/SetAppointmentStatus:
     options:
       tags:
@@ -302,6 +366,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsSetAppointmentStatus
+      x-operation-id-source: derived
   /api/v1/appointments/SetAppointmentStatusEx:
     options:
       tags:
@@ -311,6 +377,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsSetAppointmentStatusEx
+      x-operation-id-source: derived
   /api/v1/appointments/SetSlotNotes:
     options:
       tags:
@@ -320,6 +388,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsSetSlotNotes
+      x-operation-id-source: derived
   /api/v1/appointments/SetSlotType:
     options:
       tags:
@@ -329,6 +399,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1AppointmentsSetSlotType
+      x-operation-id-source: derived
   /api/v1/medicalRecord/UpdateAttachment:
     options:
       tags:
@@ -338,6 +410,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordUpdateAttachment
+      x-operation-id-source: derived
   /api/v1/medicalRecord/UpdateConsultationVisibility:
     options:
       tags:
@@ -347,6 +421,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordUpdateConsultationVisibility
+      x-operation-id-source: derived
   /api/v1/medicalRecord/FileRecord:
     options:
       tags:
@@ -356,6 +432,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsApiV1MedicalRecordFileRecord
+      x-operation-id-source: derived
   /swagger/*:
     options:
       tags:
@@ -365,6 +443,8 @@ paths:
       responses:
         '204':
           description: No Content
+      operationId: optionsSwagger*
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearer:

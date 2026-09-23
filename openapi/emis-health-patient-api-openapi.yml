@@ -3,12 +3,12 @@ info:
   title: Partner Patient API
   version: '1.2'
 tags:
-- name: patient
+- name: Patient
 paths:
   /api/v1/patient/GetPatientDemographics:
     get:
       tags:
-      - patient
+      - Patient
       description: This call returns a demographic subset of the medical record for a specific patient number.
       operationId: GetPatientDemographics
       parameters:
@@ -84,97 +84,29 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-subjects.read
+      summary: Get patient demographics
+      x-summary-source: derived
 components:
   schemas:
-    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeScripts:
+    PartnerApi.EmisOpen.MedicalRecord38.ReferralTypeUrgency:
       enum:
       - 0
       - 1
+      - 2
+      - 3
       type: integer
       format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.RegistrationTypeDead:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformationMessagingError:
+    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeServiceProvider:
       type: object
       properties:
-        errorString:
-          type:
-          - string
-          - 'null'
-        errornumber:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.TestRequestHeaderTypePregnant:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.StringCodeType:
-      type: object
-      properties:
-        value:
-          type:
-          - string
-          - 'null'
-        scheme:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeTypeScheme'
-        schemeSpecified:
-          type: boolean
-        term:
-          type:
-          - string
-          - 'null'
-        oldCode:
-          type:
-          - string
-          - 'null'
-        mapCode:
-          type:
-          - string
-          - 'null'
-        mapScheme:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.OriginatorType:
-      type: object
-      properties:
-        system:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.OriginatorTypeSystem'
-        organisationType:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        department:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
         organisation:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
+        person:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.QualifierType:
-      type: object
-      properties:
-        qualifierItemID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
-        group:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.OriginatorTypeSystem:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-        version:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PathologyTestType:
+    PartnerApi.EmisOpen.MedicalRecord38.PersonType:
       type: object
       properties:
         dbid:
@@ -197,171 +129,133 @@ components:
           type:
           - string
           - 'null'
-        reportID:
+        mnemonic:
           type:
           - string
           - 'null'
-        specimenID:
+        pcsUser:
           type:
           - string
           - 'null'
-        displayTerm:
+        activeEMISUser:
           type:
           - string
           - 'null'
-        code:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        termID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        numericValue:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.NumericValueType'
-        textValue:
+        title:
           type:
           - string
           - 'null'
-        abnormalIndicator:
+        firstNames:
           type:
           - string
           - 'null'
-        ediResultStatus:
+        lastName:
           type:
           - string
           - 'null'
-        labSpecifiedCommentList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIComment'
-        rangeInformationList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyTestTypeRangeInformation'
-        filedCode:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        testNumber:
+        category:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonCategoryType'
+        nationalCode:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.LinkType:
-      type: object
-      properties:
-        target:
+        prescriptionCode:
+          type:
+          - string
+          - 'null'
+        gmcCode:
+          type:
+          - string
+          - 'null'
+        ukccCode:
+          type:
+          - string
+          - 'null'
+        scripts:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeScripts'
+        scriptsSpecified:
+          type: boolean
+        consulter:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeConsulter'
+        consulterSpecified:
+          type: boolean
+        contractStart:
+          type:
+          - string
+          - 'null'
+        contractEnd:
+          type:
+          - string
+          - 'null'
+        doctor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeDoctor'
+        doctorSpecified:
+          type: boolean
+        locum:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeLocum'
+        locumSpecified:
+          type: boolean
+        registrar:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeRegistrar'
+        registrarSpecified:
+          type: boolean
+        maternity:
+          type:
+          - string
+          - 'null'
+        childSurveillance:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeChildSurveillance'
+        childSurveillanceSpecified:
+          type: boolean
+        contraceptive:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeContraceptive'
+        contraceptiveSpecified:
+          type: boolean
+        twentyFourHour:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeTwentyFourHour'
+        twentyFourHourSpecified:
+          type: boolean
+        minorSurgery:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeMinorSurgery'
+        minorSurgerySpecified:
+          type: boolean
+        resonsibleHA:
           $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        linkType1:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkTypeLinkType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PolicyListTypePolicyType:
-      type: object
-      properties:
-        dbid:
+        trainer:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        contractualRelationship:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeContractualRelationship'
+        contractualRelationshipSpecified:
+          type: boolean
+        address:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AddressType'
+        telephone1:
           type:
           - string
           - 'null'
-        refId:
+        telephone2:
           type:
           - string
           - 'null'
-        guid:
+        fax:
           type:
           - string
           - 'null'
-        term:
+        email:
           type:
           - string
           - 'null'
-        fileStatus:
+        role:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.RoleType'
+        security1:
           type:
           - string
           - 'null'
-        userList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.ReferralTypeRequestType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType:
-      type: object
-      properties:
-        value:
-          type:
-          - string
-          - 'null'
-        scheme:
-          type:
-          - string
-          - 'null'
-        term:
-          type:
-          - string
-          - 'null'
-        oldCode:
-          type:
-          - string
-          - 'null'
-        mapCode:
-          type:
-          - string
-          - 'null'
-        mapScheme:
-          type:
-          - string
-          - 'null'
-        interventionTarget:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.AppointmentTypeSite:
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        name:
+        security2:
           type:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.RegistrationStatusType:
-      type: object
-      properties:
-        currentStatus:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.RegistrationStatusTypeCurrentStatus'
-        statusHistoryList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StatusType'
-        registrationHistoryList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.RegistrationHistoryType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeOrderCategory:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
     PartnerApi.EmisOpen.MedicalRecord38.RoleType:
       type: object
       properties:
@@ -427,6 +321,33 @@ components:
         numericMaximumSpecified:
           type: boolean
       additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.RegistrationHistoryType:
+      type: object
+      properties:
+        dateRegistered:
+          type:
+          - string
+          - 'null'
+        dateDeregistered:
+          type:
+          - string
+          - 'null'
+        patientType:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeContraceptive:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.TestRequestHeaderTypeNHS:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
     PartnerApi.EmisOpen.MedicalRecord38.ReferralType:
       type: object
       properties:
@@ -596,357 +517,31 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.EDIOrderType:
+    PartnerApi.EmisOpen.MedicalRecord38.AppointmentTypeSite:
       type: object
       properties:
-        dbid:
+        id:
           type:
           - string
           - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        headerID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        provider:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        formDestination:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeFormDestination'
-        orderCategory:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeOrderCategory'
-        status:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeStatus'
-        statusSpecified:
-          type: boolean
-        lastStatusDate:
-          type:
-          - string
-          - 'null'
-        testRequestList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.TestRequestType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PersonCategoryType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        mnemonic:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        purpose:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonCategoryTypePurpose'
-        purposeSpecified:
-          type: boolean
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.MedicationType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        authorisedUserID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        originalAuthor:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
-        assignedDate:
-          type:
-          - string
-          - 'null'
-        dateLastIssue:
-          type:
-          - string
-          - 'null'
-        issueMethod:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeIssueMethod'
-        issueMethodSpecified:
-          type: boolean
-        dateRxExpire:
-          type:
-          - string
-          - 'null'
-        doseAbbreviation:
-          type:
-          - string
-          - 'null'
-        dosage:
-          type:
-          - string
-          - 'null'
-        quantity:
-          type: number
-          format: float
-        quantitySpecified:
-          type: boolean
-        quantityUnits:
-          type:
-          - string
-          - 'null'
-        quantityRepresentation:
-          type:
-          - string
-          - 'null'
-        duration:
-          type:
-          - string
-          - 'null'
-        mixtureIndicator:
-          type:
-          - string
-          - 'null'
-        drug:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeDrug'
-        prescriptionType:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicationTypePrescriptionType'
-        prescriptionTypeSpecified:
-          type: boolean
-        drugSource:
-          type:
-          - string
-          - 'null'
-        rxReviewDate:
-          type:
-          - string
-          - 'null'
-        pharmacyText:
-          type:
-          - string
-          - 'null'
-        rxText:
-          type:
-          - string
-          - 'null'
-        authorisedIssue:
-          type:
-          - string
-          - 'null'
-        issueCount:
-          type:
-          - string
-          - 'null'
-        status:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeStatus'
-        statusSpecified:
-          type: boolean
-        advice:
-          type:
-          - string
-          - 'null'
-        template:
-          type:
-          - string
-          - 'null'
-        templateComponent:
-          type:
-          - string
-          - 'null'
-        templateInstance:
-          type:
-          - string
-          - 'null'
-        drugDelivery:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.DrugDeliveryType'
-        controlledDrug:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ControlledDrugInfoType'
-        problemLinkList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
-        serviceType:
-          type:
-          - string
-          - 'null'
-        dispensingInterval:
-          type:
-          - string
-          - 'null'
-        repeatIssueCount:
-          type:
-          - string
-          - 'null'
-        repeatInterval:
-          type:
-          - string
-          - 'null'
-        etpIssue:
-          type:
-          - string
-          - 'null'
-        contraceptiveIssue:
-          type:
-          - string
-          - 'null'
-        policyId:
+        name:
           type:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.TestRequestHeaderTypeInnoculationRisk:
+    PartnerApi.Service.Model.SeverityType:
       enum:
       - 0
       - 1
       type: integer
       format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.EDIComment:
-      type: object
-      properties:
-        ftx:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.ReferralTypeNHS:
+    PartnerApi.EmisOpen.MedicalRecord38.RegistrationTypeDead:
       enum:
       - 0
       - 1
       type: integer
       format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.IdentType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.ProblemType:
-      type: object
-      properties:
-        problemStatus:
-          type: integer
-          format: int32
-        problemStatusSpecified:
-          type: boolean
-        groupingStatus:
-          type: integer
-          format: int32
-        groupingStatusSpecified:
-          type: boolean
-        endDate:
-          type:
-          - string
-          - 'null'
-        endDatePart:
-          type: integer
-          format: int32
-        endDatePartSpecified:
-          type: boolean
-        problemType1:
-          type: integer
-          format: int32
-        problemType1Specified:
-          type: boolean
-        significance:
-          type: integer
-          format: int32
-        significanceSpecified:
-          type: boolean
-        expectedDuration:
-          type:
-          - string
-          - 'null'
-        parentProblem:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        owner:
-          type: integer
-          format: int32
-        ownerSpecified:
-          type: boolean
-        careAimList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.CareAimType'
-        carePlanList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.CarePlanType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.ReferralTypeTransport:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.AllergyType:
+    PartnerApi.EmisOpen.MedicalRecord38.TestRequestType:
       type: object
       properties:
         dbid:
@@ -1034,23 +629,577 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
-        episodicity:
-          type: integer
-          format: int32
-        episodicitySpecified:
-          type: boolean
-        allergyType1:
-          type: integer
-          format: int32
-        allergyType1Specified:
-          type: boolean
-        codes:
+        reference:
+          type:
+          - string
+          - 'null'
+        requestHeaderID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        specimenType:
+          type:
+          - string
+          - 'null'
+        specimenTypeCode:
           $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        exclude:
+        collectionDate:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.TestRequestTypeStatus'
+        statusSpecified:
+          type: boolean
+        lastStatusDate:
+          type:
+          - string
+          - 'null'
+        resultsRef:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        investigationRef:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        resultsDate:
           type:
           - string
           - 'null'
       additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.RegistrationTypeCustomRegistrationEntry:
+      type: object
+      properties:
+        fieldName:
+          type:
+          - string
+          - 'null'
+        fieldValue:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.ItemChoiceType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.AuthorType:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        systemDate:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType:
+      type: object
+      properties:
+        value:
+          type:
+          - string
+          - 'null'
+        scheme:
+          type:
+          - string
+          - 'null'
+        term:
+          type:
+          - string
+          - 'null'
+        oldCode:
+          type:
+          - string
+          - 'null'
+        mapCode:
+          type:
+          - string
+          - 'null'
+        mapScheme:
+          type:
+          - string
+          - 'null'
+        interventionTarget:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeTwentyFourHour:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.OriginatorType:
+      type: object
+      properties:
+        system:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.OriginatorTypeSystem'
+        organisationType:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        organisation:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        reportDataType:
+          type:
+          - string
+          - 'null'
+        reportID:
+          type:
+          - string
+          - 'null'
+        reportReceivedDateTime:
+          type:
+          - string
+          - 'null'
+        reportIssueDateTime:
+          type:
+          - string
+          - 'null'
+        reportTextList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIComment'
+        abnormal:
+          type:
+          - string
+          - 'null'
+        recordFileStatus:
+          type:
+          - string
+          - 'null'
+        consultationRef:
+          type:
+          - string
+          - 'null'
+        box:
+          type:
+          - string
+          - 'null'
+        requestID:
+          type:
+          - string
+          - 'null'
+        requestDateTime:
+          type:
+          - string
+          - 'null'
+        currentOwner:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
+        identifiers:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiers'
+        originalRequestor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalRequestor'
+        messageRecepient:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
+        serviceProvider:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeServiceProvider'
+        originalMessageDetails:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalMessageDetails'
+        clinicalInformationList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIComment'
+        viewedBy: {}
+        trueReportID: {}
+        specimenList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologySpecimenType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.RegistrationStatusTypeCurrentStatus:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        code:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
+        statusDate:
+          type:
+          - string
+          - 'null'
+        patientType:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
+        practiceRegistered:
+          type:
+          - string
+          - 'null'
+        haRegistered:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.AppointmentType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        sessionHolder:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        locationID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        assignedDate:
+          type:
+          - string
+          - 'null'
+        time:
+          type:
+          - string
+          - 'null'
+        site:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AppointmentTypeSite'
+        sessionID:
+          type:
+          - string
+          - 'null'
+        reason:
+          type:
+          - string
+          - 'null'
+        duration:
+          type: number
+          format: float
+        durationSpecified:
+          type: boolean
+        rub:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeScripts:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.QualifierType:
+      type: object
+      properties:
+        qualifierItemID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
+        group:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.AddressType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        houseNameFlat:
+          type:
+          - string
+          - 'null'
+        street:
+          type:
+          - string
+          - 'null'
+        village:
+          type:
+          - string
+          - 'null'
+        town:
+          type:
+          - string
+          - 'null'
+        county:
+          type:
+          - string
+          - 'null'
+        postCode:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.DrugDeliveryType:
+      type: object
+      properties:
+        doseQuantity:
+          type: number
+          format: float
+        doseQuantitySpecified:
+          type: boolean
+        doseUnits:
+          type:
+          - string
+          - 'null'
+        frequency:
+          type:
+          - string
+          - 'null'
+        frequencyUnits:
+          type:
+          - string
+          - 'null'
+        dailyDose:
+          type: number
+          format: float
+        dailyDoseSpecified:
+          type: boolean
+        dailyDoseUnits:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        item: {}
+        itemElementName:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ItemChoiceType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PolicyListTypePolicyType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refId:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        term:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        userList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.LinkType:
+      type: object
+      properties:
+        target:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        linkType1:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkTypeLinkType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.MedicationTypePrescriptionType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.IdentType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.ApplicationType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        applicationMnemonic:
+          type:
+          - string
+          - 'null'
+        applicationName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PathologyTestTypeRangeInformation:
+      type: object
+      properties:
+        minRange:
+          type:
+          - string
+          - 'null'
+        maxRange:
+          type:
+          - string
+          - 'null'
+        rangeFTXList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIComment'
+        rangeQualifier:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.PersonCategoryTypePurpose:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
     PartnerApi.EmisOpen.MedicalRecord38.IssueType:
       type: object
       properties:
@@ -1239,7 +1388,7 @@ components:
         medicationLink:
           $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicationLinkType'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.NoteType:
+    PartnerApi.EmisOpen.MedicalRecord38.LocationType:
       type: object
       properties:
         dbid:
@@ -1262,70 +1411,561 @@ components:
           type:
           - string
           - 'null'
+        locationName:
+          type:
+          - string
+          - 'null'
+        nationalCode:
+          type:
+          - string
+          - 'null'
+        locationTypeID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        address:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AddressType'
+        telephone1:
+          type:
+          - string
+          - 'null'
+        telephone2:
+          type:
+          - string
+          - 'null'
+        fax:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        contact:
+          type:
+          - string
+          - 'null'
+        cypher:
+          type:
+          - string
+          - 'null'
+        interchange:
+          type:
+          - string
+          - 'null'
+        linkCode:
+          type:
+          - string
+          - 'null'
+        seniorPartner:
+          type:
+          - string
+          - 'null'
+        pcgCode:
+          type:
+          - string
+          - 'null'
+        pctCode:
+          type:
+          - string
+          - 'null'
+        gpLinkCodeList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LocationTypeGPLinkCode'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeRegistrationEntry:
+      type: object
+      properties:
+        fieldName:
+          type:
+          - string
+          - 'null'
+        fieldValue:
+          type:
+          - string
+          - 'null'
+        dateChanged:
+          type:
+          - string
+          - 'null'
+        userID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeMinorSurgery:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.TestRequestHeaderTypeInnoculationRisk:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.ReferralTypeCommunity:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.MedicationType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        authorisedUserID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        originalAuthor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
         assignedDate:
           type:
           - string
           - 'null'
-        time:
+        dateLastIssue:
           type:
           - string
           - 'null'
-        urgency:
+        issueMethod:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeIssueMethod'
+        issueMethodSpecified:
+          type: boolean
+        dateRxExpire:
           type:
           - string
           - 'null'
-        ownerID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        authorID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        actionBefore:
+        doseAbbreviation:
           type:
           - string
           - 'null'
-        noteCode:
+        dosage:
+          type:
+          - string
+          - 'null'
+        quantity:
+          type: number
+          format: float
+        quantitySpecified:
+          type: boolean
+        quantityUnits:
+          type:
+          - string
+          - 'null'
+        quantityRepresentation:
+          type:
+          - string
+          - 'null'
+        duration:
+          type:
+          - string
+          - 'null'
+        mixtureIndicator:
+          type:
+          - string
+          - 'null'
+        drug:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeDrug'
+        prescriptionType:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicationTypePrescriptionType'
+        prescriptionTypeSpecified:
+          type: boolean
+        drugSource:
+          type:
+          - string
+          - 'null'
+        rxReviewDate:
+          type:
+          - string
+          - 'null'
+        pharmacyText:
+          type:
+          - string
+          - 'null'
+        rxText:
+          type:
+          - string
+          - 'null'
+        authorisedIssue:
+          type:
+          - string
+          - 'null'
+        issueCount:
           type:
           - string
           - 'null'
         status:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeStatus'
+        statusSpecified:
+          type: boolean
+        advice:
           type:
           - string
           - 'null'
-        noteText:
+        template:
           type:
           - string
           - 'null'
-        dataType:
+        templateComponent:
           type:
           - string
           - 'null'
-        reportID:
+        templateInstance:
+          type:
+          - string
+          - 'null'
+        drugDelivery:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.DrugDeliveryType'
+        controlledDrug:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ControlledDrugInfoType'
+        problemLinkList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
+        serviceType:
+          type:
+          - string
+          - 'null'
+        dispensingInterval:
+          type:
+          - string
+          - 'null'
+        repeatIssueCount:
+          type:
+          - string
+          - 'null'
+        repeatInterval:
+          type:
+          - string
+          - 'null'
+        etpIssue:
+          type:
+          - string
+          - 'null'
+        contraceptiveIssue:
+          type:
+          - string
+          - 'null'
+        policyId:
           type:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalMessageDetails:
+    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformation:
       type: object
       properties:
-        senderEDICode:
+        dateCreated:
           type:
           - string
           - 'null'
-        receiverEDICode:
+        timeCreated:
           type:
           - string
           - 'null'
-        interChange:
+        messagePurpose:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformationMessagePurpose'
+        messagingError:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformationMessagingError'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordType:
+      type: object
+      properties:
+        registration:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.RegistrationType'
+        registrationChangeHistory:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeRegistrationEntry'
+        miscellaneousData:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMiscellaneousData'
+        eventList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EventType'
+        consultationList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ConsultationType'
+        investigationList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.InvestigationType'
+        referralList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ReferralType'
+        allergyList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AllergyType'
+        medicationList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicationType'
+        issueList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IssueType'
+        attachmentList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AttachmentType'
+        diaryList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.DiaryType'
+        alertList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AlertType'
+        registrationStatus:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.RegistrationStatusType'
+        ediPathologyReportList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportType'
+        testRequestHeaderList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.TestRequestHeaderType'
+        noteList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.NoteType'
+        appointmentList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AppointmentType'
+        peopleList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonType'
+        locationList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LocationType'
+        locationTypeList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.TypeOfLocationType'
+        originator:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.OriginatorType'
+        recipientID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        messageInformation:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformation'
+        policyList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PolicyListTypePolicyType'
+        patientID:
           type:
           - string
           - 'null'
-        messageID:
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.OriginatorTypeSystem:
+      type: object
+      properties:
+        name:
           type:
           - string
           - 'null'
-        messageType:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalMessageDetailsMessageType'
-        messageTypeSpecified:
+        version:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeDoctor:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiersOriginalDetails:
+      type: object
+      properties:
+        forename:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        dateOfBirth:
+          type:
+          - string
+          - 'null'
+        nhs:
+          type:
+          - string
+          - 'null'
+        address:
+          type:
+          - string
+          - 'null'
+        sex:
+          type:
+          - string
+          - 'null'
+        labSubjectID:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.InvestigationType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        displayTerm:
+          type:
+          - string
+          - 'null'
+        dataSource:
+          type:
+          - string
+          - 'null'
+        code:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        termID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        abnormal:
+          type:
+          - string
+          - 'null'
+        dataType: {}
+        reportID:
+          type:
+          - string
+          - 'null'
+        specimenID:
+          type:
+          - string
+          - 'null'
+        specimenType:
+          type:
+          - string
+          - 'null'
+        numberOfTests:
+          type:
+          - string
+          - 'null'
+        repInvNumber:
+          type:
+          - string
+          - 'null'
+        userComment:
+          type:
+          - string
+          - 'null'
+        assignedDate:
+          type:
+          - string
+          - 'null'
+        datePart:
+          type: integer
+          format: int32
+        datePartSpecified:
           type: boolean
+        assignedTime:
+          type:
+          - string
+          - 'null'
+        descriptiveText:
+          type:
+          - string
+          - 'null'
+        originalAuthor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
+        authorID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        policyID:
+          type:
+          - string
+          - 'null'
+        eventList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EventType'
       additionalProperties: false
     PartnerApi.EmisOpen.MedicalRecord38.EventType:
       type: object
@@ -1460,48 +2100,43 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.TestRequestHeaderTypeNHS:
+    PartnerApi.EmisOpen.MedicalRecord38.ItemChoiceType1:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformationMessagingError:
+      type: object
+      properties:
+        errorString:
+          type:
+          - string
+          - 'null'
+        errornumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.ReferralTypeRequestType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.LinkTypeLinkType:
       enum:
       - 0
       - 1
       - 2
       type: integer
       format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        item: {}
-        itemElementName:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ItemChoiceType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalRequestor:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
-        itemElementName:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ItemChoiceType1'
-      additionalProperties: false
     PartnerApi.EmisOpen.MedicalRecord38.ControlledDrugInfoType:
       type: object
       properties:
@@ -1550,6 +2185,815 @@ components:
           - string
           - 'null'
         dduDoseAbbrev:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.Service.Model.Text:
+      type: object
+      properties:
+        status:
+          type:
+          - string
+          - 'null'
+        div:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.TestRequestTypeStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.ErrorResponse:
+      type: object
+      properties:
+        messageId:
+          type: string
+          format: uuid
+        text:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Text'
+        issue:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Issue'
+        legacyOutcome:
+          type: integer
+          format: int32
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformationMessagePurpose:
+      type: object
+      properties:
+        item: {}
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.AllergyType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        assignedDate:
+          type:
+          - string
+          - 'null'
+        datePart:
+          type: integer
+          format: int32
+        datePartSpecified:
+          type: boolean
+        assignedTime:
+          type:
+          - string
+          - 'null'
+        sequence:
+          type:
+          - string
+          - 'null'
+        authorID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        originalAuthor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
+        externalConsultant:
+          type:
+          - string
+          - 'null'
+        displayTerm:
+          type:
+          - string
+          - 'null'
+        descriptiveText:
+          type:
+          - string
+          - 'null'
+        dataSource:
+          type:
+          - string
+          - 'null'
+        policyID:
+          type:
+          - string
+          - 'null'
+        code:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        termID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        qualifierList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.QualifierType'
+        problem:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ProblemType'
+        problemLinkList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
+        referralLinkList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
+        episodicity:
+          type: integer
+          format: int32
+        episodicitySpecified:
+          type: boolean
+        allergyType1:
+          type: integer
+          format: int32
+        allergyType1Specified:
+          type: boolean
+        codes:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        exclude:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.TestRequestHeaderTypeFasted:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.EDIComment:
+      type: object
+      properties:
+        ftx:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeFormDestination:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeChildSurveillance:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.AttachmentType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        assignedDate:
+          type:
+          - string
+          - 'null'
+        datePart:
+          type: integer
+          format: int32
+        datePartSpecified:
+          type: boolean
+        assignedTime:
+          type:
+          - string
+          - 'null'
+        sequence:
+          type:
+          - string
+          - 'null'
+        authorID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        originalAuthor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
+        externalConsultant:
+          type:
+          - string
+          - 'null'
+        displayTerm:
+          type:
+          - string
+          - 'null'
+        descriptiveText:
+          type:
+          - string
+          - 'null'
+        dataSource:
+          type:
+          - string
+          - 'null'
+        policyID:
+          type:
+          - string
+          - 'null'
+        code:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        termID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        qualifierList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.QualifierType'
+        problem:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ProblemType'
+        problemLinkList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
+        referralLinkList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
+        title:
+          type:
+          - string
+          - 'null'
+        address:
+          type:
+          - string
+          - 'null'
+        version:
+          type:
+          - string
+          - 'null'
+        ddsIdentifier:
+          type:
+          - string
+          - 'null'
+        attachmentData:
+          type:
+          - string
+          - 'null'
+        provisional:
+          type: boolean
+        provisionalSpecified:
+          type: boolean
+        pfsVisible:
+          type: boolean
+        pfsVisibleSpecified:
+          type: boolean
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.TestRequestHeaderTypePregnant:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.StringCodeType:
+      type: object
+      properties:
+        value:
+          type:
+          - string
+          - 'null'
+        scheme:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeTypeScheme'
+        schemeSpecified:
+          type: boolean
+        term:
+          type:
+          - string
+          - 'null'
+        oldCode:
+          type:
+          - string
+          - 'null'
+        mapCode:
+          type:
+          - string
+          - 'null'
+        mapScheme:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.LocationTypeGPLinkCode:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        linkCode:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.TypeOfLocationType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.NoteType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        assignedDate:
+          type:
+          - string
+          - 'null'
+        time:
+          type:
+          - string
+          - 'null'
+        urgency:
+          type:
+          - string
+          - 'null'
+        ownerID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        authorID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        actionBefore:
+          type:
+          - string
+          - 'null'
+        noteCode:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        noteText:
+          type:
+          - string
+          - 'null'
+        dataType:
+          type:
+          - string
+          - 'null'
+        reportID:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeRegistrar:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.Coding:
+      type: object
+      properties:
+        system:
+          type:
+          - string
+          - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        display:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.Service.Model.Issue:
+      type: object
+      properties:
+        severity:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.SeverityType'
+        code:
+          type:
+          - string
+          - 'null'
+        details:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Details'
+        diagnostics:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeConsulter:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.PathologyTestType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        reportID:
+          type:
+          - string
+          - 'null'
+        specimenID:
+          type:
+          - string
+          - 'null'
+        displayTerm:
+          type:
+          - string
+          - 'null'
+        code:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        termID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        numericValue:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.NumericValueType'
+        textValue:
+          type:
+          - string
+          - 'null'
+        abnormalIndicator:
+          type:
+          - string
+          - 'null'
+        ediResultStatus:
+          type:
+          - string
+          - 'null'
+        labSpecifiedCommentList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIComment'
+        rangeInformationList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyTestTypeRangeInformation'
+        filedCode:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        testNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeOrderCategory:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.CarePlanType:
+      type: object
+      properties:
+        pkId:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        displayTerm:
+          type:
+          - string
+          - 'null'
+        termId:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        notes:
+          type:
+          - string
+          - 'null'
+        templateId:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        interventionCategoryId:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        interventionTargetTermId:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.ReferralTypeTransport:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeContractualRelationship:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.CareAimType:
+      type: object
+      properties:
+        pkId:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        goal:
+          type:
+          - string
+          - 'null'
+        targetDate:
+          type: string
+          format: date-time
+        targetDateSpecified:
+          type: boolean
+        expectedValue:
+          type:
+          - string
+          - 'null'
+        actualValue:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMiscellaneousData:
+      type: object
+      properties:
+        medicationMessage:
+          type:
+          - string
+          - 'null'
+        automaticWeekNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiers:
+      type: object
+      properties:
+        originalDetails:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiersOriginalDetails'
+        matchedDetails:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiersMatchedDetails'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.ElementListTypeConsultationElement:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        displayOrder:
+          type: integer
+          format: int32
+        displayOrderSpecified:
+          type: boolean
+        problemSection:
+          type: integer
+          format: int32
+        problemSectionSpecified:
+          type: boolean
+        header:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
+        item:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.ReferralTypeNHS:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.AlertType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        assignedDate:
+          type:
+          - string
+          - 'null'
+        datePart:
+          type: integer
+          format: int32
+        datePartSpecified:
+          type: boolean
+        assignedTime:
+          type:
+          - string
+          - 'null'
+        sequence:
+          type:
+          - string
+          - 'null'
+        authorID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        originalAuthor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
+        externalConsultant:
+          type:
+          - string
+          - 'null'
+        displayTerm:
+          type:
+          - string
+          - 'null'
+        descriptiveText:
+          type:
+          - string
+          - 'null'
+        dataSource:
+          type:
+          - string
+          - 'null'
+        policyID:
+          type:
+          - string
+          - 'null'
+        code:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        termID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
+        qualifierList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.QualifierType'
+        problem:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ProblemType'
+        problemLinkList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
+        referralLinkList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
+        book:
+          type:
+          - string
+          - 'null'
+        ariveSwap:
           type:
           - string
           - 'null'
@@ -1669,13 +3113,23 @@ components:
         locationTypeID:
           $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.ReferralTypeCommunity:
+    PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeIssueMethod:
       enum:
       - 0
       - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
       type: integer
       format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.ApplicationType:
+    PartnerApi.EmisOpen.MedicalRecord38.PersonCategoryType:
       type: object
       properties:
         dbid:
@@ -1698,29 +3152,283 @@ components:
           type:
           - string
           - 'null'
-        applicationMnemonic:
+        mnemonic:
           type:
           - string
           - 'null'
-        applicationName:
+        description:
           type:
           - string
           - 'null'
+        purpose:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonCategoryTypePurpose'
+        purposeSpecified:
+          type: boolean
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeLocum:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.ReferralTypeUrgency:
+    PartnerApi.EmisOpen.MedicalRecord38.StringCodeTypeScheme:
       enum:
       - 0
       - 1
       - 2
       - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
       type: integer
       format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeDrug:
+      type: object
+      properties:
+        item: {}
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiersMatchedDetails:
+      type: object
+      properties:
+        forename:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        dateOfBirth:
+          type:
+          - string
+          - 'null'
+        nhs:
+          type:
+          - string
+          - 'null'
+        patientID:
+          type:
+          - string
+          - 'null'
+        sex:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PathologySpecimenType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        reportID:
+          type:
+          - string
+          - 'null'
+        specimenID:
+          type:
+          - string
+          - 'null'
+        specimenType:
+          type:
+          - string
+          - 'null'
+        fastingStatus:
+          type:
+          - string
+          - 'null'
+        specimenVolume:
+          type: number
+          format: float
+        specimenVolumeSpecified:
+          type: boolean
+        specimenUnits:
+          type:
+          - string
+          - 'null'
+        collectionProcedure:
+          type:
+          - string
+          - 'null'
+        anotomicalOrigin:
+          type:
+          - string
+          - 'null'
+        specimenTextList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIComment'
+        sampleDateTime:
+          type:
+          - string
+          - 'null'
+        collectionStartDate:
+          type:
+          - string
+          - 'null'
+        collectionEndDate:
+          type:
+          - string
+          - 'null'
+        receivedByLabDateTime:
+          type:
+          - string
+          - 'null'
+        ediInvestigationList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyInvestigationType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.ConsultationType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        assignedDate:
+          type:
+          - string
+          - 'null'
+        datePart:
+          type: integer
+          format: int32
+        datePartSpecified:
+          type: boolean
+        userID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        externalConsultant:
+          type:
+          - string
+          - 'null'
+        locationID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        locationTypeID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        accompanyingHCPID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
+        consultationType1:
+          type: integer
+          format: int32
+        consultationType1Specified:
+          type: boolean
+        duration:
+          type:
+          - string
+          - 'null'
+        travelTime:
+          type:
+          - string
+          - 'null'
+        appointmentSlotID:
+          type:
+          - string
+          - 'null'
+        dataSource:
+          type:
+          - string
+          - 'null'
+        policyID:
+          type:
+          - string
+          - 'null'
+        originalAuthor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
+        elementList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ElementListTypeConsultationElement'
+        pfsVisible:
+          type: boolean
+        pfsVisibleSpecified:
+          type: boolean
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.EventTypeEventType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.MedicalRecord38.StatusType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        code:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
+        statusDate:
+          type:
+          - string
+          - 'null'
+        patientType:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
+      additionalProperties: false
     PartnerApi.EmisOpen.MedicalRecord38.RegistrationType:
       type: object
       properties:
@@ -1951,13 +3659,37 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeDoctor:
+    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalMessageDetails:
+      type: object
+      properties:
+        senderEDICode:
+          type:
+          - string
+          - 'null'
+        receiverEDICode:
+          type:
+          - string
+          - 'null'
+        interChange:
+          type:
+          - string
+          - 'null'
+        messageID:
+          type:
+          - string
+          - 'null'
+        messageType:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalMessageDetailsMessageType'
+        messageTypeSpecified:
+          type: boolean
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeLocum:
       enum:
       - 0
       - 1
       type: integer
       format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.PathologySpecimenType:
+    PartnerApi.EmisOpen.MedicalRecord38.EDIOrderType:
       type: object
       properties:
         dbid:
@@ -1980,888 +3712,84 @@ components:
           type:
           - string
           - 'null'
-        reportID:
-          type:
-          - string
-          - 'null'
-        specimenID:
-          type:
-          - string
-          - 'null'
-        specimenType:
-          type:
-          - string
-          - 'null'
-        fastingStatus:
-          type:
-          - string
-          - 'null'
-        specimenVolume:
-          type: number
-          format: float
-        specimenVolumeSpecified:
-          type: boolean
-        specimenUnits:
-          type:
-          - string
-          - 'null'
-        collectionProcedure:
-          type:
-          - string
-          - 'null'
-        anotomicalOrigin:
-          type:
-          - string
-          - 'null'
-        specimenTextList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIComment'
-        sampleDateTime:
-          type:
-          - string
-          - 'null'
-        collectionStartDate:
-          type:
-          - string
-          - 'null'
-        collectionEndDate:
-          type:
-          - string
-          - 'null'
-        receivedByLabDateTime:
-          type:
-          - string
-          - 'null'
-        ediInvestigationList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyInvestigationType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.CarePlanType:
-      type: object
-      properties:
-        pkId:
+        headerID:
           $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        displayTerm:
-          type:
-          - string
-          - 'null'
-        termId:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        notes:
-          type:
-          - string
-          - 'null'
-        templateId:
+        provider:
           $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        interventionCategoryId:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        interventionTargetTermId:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeDrug:
-      type: object
-      properties:
-        item: {}
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordType:
-      type: object
-      properties:
-        registration:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.RegistrationType'
-        registrationChangeHistory:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeRegistrationEntry'
-        miscellaneousData:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMiscellaneousData'
-        eventList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EventType'
-        consultationList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ConsultationType'
-        investigationList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.InvestigationType'
-        referralList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ReferralType'
-        allergyList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AllergyType'
-        medicationList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicationType'
-        issueList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IssueType'
-        attachmentList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AttachmentType'
-        diaryList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.DiaryType'
-        alertList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AlertType'
-        registrationStatus:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.RegistrationStatusType'
-        ediPathologyReportList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportType'
-        testRequestHeaderList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.TestRequestHeaderType'
-        noteList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.NoteType'
-        appointmentList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AppointmentType'
-        peopleList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonType'
-        locationList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LocationType'
-        locationTypeList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.TypeOfLocationType'
-        originator:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.OriginatorType'
-        recipientID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        messageInformation:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformation'
-        policyList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PolicyListTypePolicyType'
-        patientID:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeServiceProvider:
-      type: object
-      properties:
-        department:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
-        organisation:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
-        person:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.AppointmentType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        sessionHolder:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        locationID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        assignedDate:
-          type:
-          - string
-          - 'null'
-        time:
-          type:
-          - string
-          - 'null'
-        site:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AppointmentTypeSite'
-        sessionID:
-          type:
-          - string
-          - 'null'
-        reason:
-          type:
-          - string
-          - 'null'
-        duration:
-          type: number
-          format: float
-        durationSpecified:
-          type: boolean
-        rub:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.MedicationLinkType:
-      type: object
-      properties:
-        guid:
-          type:
-          - string
-          - 'null'
-        preparationID:
-          type:
-          - string
-          - 'null'
-        systemDate:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.CareAimType:
-      type: object
-      properties:
-        pkId:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        goal:
-          type:
-          - string
-          - 'null'
-        targetDate:
-          type: string
-          format: date-time
-        targetDateSpecified:
-          type: boolean
-        expectedValue:
-          type:
-          - string
-          - 'null'
-        actualValue:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeConsulter:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.StringCodeTypeScheme:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.AddressType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        houseNameFlat:
-          type:
-          - string
-          - 'null'
-        street:
-          type:
-          - string
-          - 'null'
-        village:
-          type:
-          - string
-          - 'null'
-        town:
-          type:
-          - string
-          - 'null'
-        county:
-          type:
-          - string
-          - 'null'
-        postCode:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.TestRequestHeaderTypeFasted:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformationMessagePurpose:
-      type: object
-      properties:
-        item: {}
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalMessageDetailsMessageType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.ItemChoiceType:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeTwentyFourHour:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.ConsultationType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        assignedDate:
-          type:
-          - string
-          - 'null'
-        datePart:
-          type: integer
-          format: int32
-        datePartSpecified:
-          type: boolean
-        userID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        externalConsultant:
-          type:
-          - string
-          - 'null'
-        locationID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        locationTypeID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        accompanyingHCPID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        consultationType1:
-          type: integer
-          format: int32
-        consultationType1Specified:
-          type: boolean
-        duration:
-          type:
-          - string
-          - 'null'
-        travelTime:
-          type:
-          - string
-          - 'null'
-        appointmentSlotID:
-          type:
-          - string
-          - 'null'
-        dataSource:
-          type:
-          - string
-          - 'null'
-        policyID:
-          type:
-          - string
-          - 'null'
-        originalAuthor:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
-        elementList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ElementListTypeConsultationElement'
-        pfsVisible:
-          type: boolean
-        pfsVisibleSpecified:
-          type: boolean
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.TestRequestType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        assignedDate:
-          type:
-          - string
-          - 'null'
-        datePart:
-          type: integer
-          format: int32
-        datePartSpecified:
-          type: boolean
-        assignedTime:
-          type:
-          - string
-          - 'null'
-        sequence:
-          type:
-          - string
-          - 'null'
-        authorID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        originalAuthor:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
-        externalConsultant:
-          type:
-          - string
-          - 'null'
-        displayTerm:
-          type:
-          - string
-          - 'null'
-        descriptiveText:
-          type:
-          - string
-          - 'null'
-        dataSource:
-          type:
-          - string
-          - 'null'
-        policyID:
-          type:
-          - string
-          - 'null'
-        code:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        termID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        qualifierList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.QualifierType'
-        problem:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ProblemType'
-        problemLinkList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
-        referralLinkList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
-        reference:
-          type:
-          - string
-          - 'null'
-        requestHeaderID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        specimenType:
-          type:
-          - string
-          - 'null'
-        specimenTypeCode:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        collectionDate:
-          type:
-          - string
-          - 'null'
+        formDestination:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeFormDestination'
+        orderCategory:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeOrderCategory'
         status:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.TestRequestTypeStatus'
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeStatus'
         statusSpecified:
           type: boolean
         lastStatusDate:
           type:
           - string
           - 'null'
-        resultsRef:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        investigationRef:
+        testRequestList:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        resultsDate:
-          type:
-          - string
-          - 'null'
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.TestRequestType'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeContraceptive:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.LocationType:
+    PartnerApi.EmisOpen.MedicalRecord38.ProblemType:
       type: object
       properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        locationName:
-          type:
-          - string
-          - 'null'
-        nationalCode:
-          type:
-          - string
-          - 'null'
-        locationTypeID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        address:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AddressType'
-        telephone1:
-          type:
-          - string
-          - 'null'
-        telephone2:
-          type:
-          - string
-          - 'null'
-        fax:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        contact:
-          type:
-          - string
-          - 'null'
-        cypher:
-          type:
-          - string
-          - 'null'
-        interchange:
-          type:
-          - string
-          - 'null'
-        linkCode:
-          type:
-          - string
-          - 'null'
-        seniorPartner:
-          type:
-          - string
-          - 'null'
-        pcgCode:
-          type:
-          - string
-          - 'null'
-        pctCode:
-          type:
-          - string
-          - 'null'
-        gpLinkCodeList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LocationTypeGPLinkCode'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeChildSurveillance:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.RegistrationHistoryType:
-      type: object
-      properties:
-        dateRegistered:
-          type:
-          - string
-          - 'null'
-        dateDeregistered:
-          type:
-          - string
-          - 'null'
-        patientType:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.AttachmentType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        assignedDate:
-          type:
-          - string
-          - 'null'
-        datePart:
+        problemStatus:
           type: integer
           format: int32
-        datePartSpecified:
+        problemStatusSpecified:
           type: boolean
-        assignedTime:
+        groupingStatus:
+          type: integer
+          format: int32
+        groupingStatusSpecified:
+          type: boolean
+        endDate:
           type:
           - string
           - 'null'
-        sequence:
+        endDatePart:
+          type: integer
+          format: int32
+        endDatePartSpecified:
+          type: boolean
+        problemType1:
+          type: integer
+          format: int32
+        problemType1Specified:
+          type: boolean
+        significance:
+          type: integer
+          format: int32
+        significanceSpecified:
+          type: boolean
+        expectedDuration:
           type:
           - string
           - 'null'
-        authorID:
+        parentProblem:
           $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        originalAuthor:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
-        externalConsultant:
-          type:
-          - string
-          - 'null'
-        displayTerm:
-          type:
-          - string
-          - 'null'
-        descriptiveText:
-          type:
-          - string
-          - 'null'
-        dataSource:
-          type:
-          - string
-          - 'null'
-        policyID:
-          type:
-          - string
-          - 'null'
-        code:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        termID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        qualifierList:
+        owner:
+          type: integer
+          format: int32
+        ownerSpecified:
+          type: boolean
+        careAimList:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.QualifierType'
-        problem:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ProblemType'
-        problemLinkList:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.CareAimType'
+        carePlanList:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
-        referralLinkList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
-        title:
-          type:
-          - string
-          - 'null'
-        address:
-          type:
-          - string
-          - 'null'
-        version:
-          type:
-          - string
-          - 'null'
-        ddsIdentifier:
-          type:
-          - string
-          - 'null'
-        attachmentData:
-          type:
-          - string
-          - 'null'
-        provisional:
-          type: boolean
-        provisionalSpecified:
-          type: boolean
-        pfsVisible:
-          type: boolean
-        pfsVisibleSpecified:
-          type: boolean
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.AuthorType:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        systemDate:
-          type:
-          - string
-          - 'null'
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.CarePlanType'
       additionalProperties: false
     PartnerApi.Service.Model.Details:
       type: object
@@ -2872,625 +3800,6 @@ components:
           - 'null'
         coding:
           $ref: '#/components/schemas/PartnerApi.Service.Model.Coding'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMiscellaneousData:
-      type: object
-      properties:
-        medicationMessage:
-          type:
-          - string
-          - 'null'
-        automaticWeekNumber:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeContractualRelationship:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    PartnerApi.Service.Model.SeverityType:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        reportDataType:
-          type:
-          - string
-          - 'null'
-        reportID:
-          type:
-          - string
-          - 'null'
-        reportReceivedDateTime:
-          type:
-          - string
-          - 'null'
-        reportIssueDateTime:
-          type:
-          - string
-          - 'null'
-        reportTextList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIComment'
-        abnormal:
-          type:
-          - string
-          - 'null'
-        recordFileStatus:
-          type:
-          - string
-          - 'null'
-        consultationRef:
-          type:
-          - string
-          - 'null'
-        box:
-          type:
-          - string
-          - 'null'
-        requestID:
-          type:
-          - string
-          - 'null'
-        requestDateTime:
-          type:
-          - string
-          - 'null'
-        currentOwner:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
-        identifiers:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiers'
-        originalRequestor:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalRequestor'
-        messageRecepient:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
-        serviceProvider:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeServiceProvider'
-        originalMessageDetails:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalMessageDetails'
-        clinicalInformationList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIComment'
-        viewedBy: {}
-        trueReportID: {}
-        specimenList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologySpecimenType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.DrugDeliveryType:
-      type: object
-      properties:
-        doseQuantity:
-          type: number
-          format: float
-        doseQuantitySpecified:
-          type: boolean
-        doseUnits:
-          type:
-          - string
-          - 'null'
-        frequency:
-          type:
-          - string
-          - 'null'
-        frequencyUnits:
-          type:
-          - string
-          - 'null'
-        dailyDose:
-          type: number
-          format: float
-        dailyDoseSpecified:
-          type: boolean
-        dailyDoseUnits:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.RegistrationTypeCustomRegistrationEntry:
-      type: object
-      properties:
-        fieldName:
-          type:
-          - string
-          - 'null'
-        fieldValue:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PersonType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        mnemonic:
-          type:
-          - string
-          - 'null'
-        pcsUser:
-          type:
-          - string
-          - 'null'
-        activeEMISUser:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        firstNames:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-        category:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonCategoryType'
-        nationalCode:
-          type:
-          - string
-          - 'null'
-        prescriptionCode:
-          type:
-          - string
-          - 'null'
-        gmcCode:
-          type:
-          - string
-          - 'null'
-        ukccCode:
-          type:
-          - string
-          - 'null'
-        scripts:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeScripts'
-        scriptsSpecified:
-          type: boolean
-        consulter:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeConsulter'
-        consulterSpecified:
-          type: boolean
-        contractStart:
-          type:
-          - string
-          - 'null'
-        contractEnd:
-          type:
-          - string
-          - 'null'
-        doctor:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeDoctor'
-        doctorSpecified:
-          type: boolean
-        locum:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeLocum'
-        locumSpecified:
-          type: boolean
-        registrar:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeRegistrar'
-        registrarSpecified:
-          type: boolean
-        maternity:
-          type:
-          - string
-          - 'null'
-        childSurveillance:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeChildSurveillance'
-        childSurveillanceSpecified:
-          type: boolean
-        contraceptive:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeContraceptive'
-        contraceptiveSpecified:
-          type: boolean
-        twentyFourHour:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeTwentyFourHour'
-        twentyFourHourSpecified:
-          type: boolean
-        minorSurgery:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeMinorSurgery'
-        minorSurgerySpecified:
-          type: boolean
-        resonsibleHA:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        trainer:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        contractualRelationship:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PersonTypeContractualRelationship'
-        contractualRelationshipSpecified:
-          type: boolean
-        address:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AddressType'
-        telephone1:
-          type:
-          - string
-          - 'null'
-        telephone2:
-          type:
-          - string
-          - 'null'
-        fax:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        role:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.RoleType'
-        security1:
-          type:
-          - string
-          - 'null'
-        security2:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.MedicationTypeIssueMethod:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      - 11
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformation:
-      type: object
-      properties:
-        dateCreated:
-          type:
-          - string
-          - 'null'
-        timeCreated:
-          type:
-          - string
-          - 'null'
-        messagePurpose:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformationMessagePurpose'
-        messagingError:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeMessageInformationMessagingError'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.MedicalRecordTypeRegistrationEntry:
-      type: object
-      properties:
-        fieldName:
-          type:
-          - string
-          - 'null'
-        fieldValue:
-          type:
-          - string
-          - 'null'
-        dateChanged:
-          type:
-          - string
-          - 'null'
-        userID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiers:
-      type: object
-      properties:
-        originalDetails:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiersOriginalDetails'
-        matchedDetails:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiersMatchedDetails'
-      additionalProperties: false
-    PartnerApi.Service.Model.Coding:
-      type: object
-      properties:
-        system:
-          type:
-          - string
-          - 'null'
-        code:
-          type:
-          - string
-          - 'null'
-        display:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.RegistrationStatusTypeCurrentStatus:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        code:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
-        statusDate:
-          type:
-          - string
-          - 'null'
-        patientType:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
-        practiceRegistered:
-          type:
-          - string
-          - 'null'
-        haRegistered:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PathologyTestTypeRangeInformation:
-      type: object
-      properties:
-        minRange:
-          type:
-          - string
-          - 'null'
-        maxRange:
-          type:
-          - string
-          - 'null'
-        rangeFTXList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIComment'
-        rangeQualifier:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.MedicationTypePrescriptionType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.ItemChoiceType1:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.LinkTypeLinkType:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.InvestigationType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        displayTerm:
-          type:
-          - string
-          - 'null'
-        dataSource:
-          type:
-          - string
-          - 'null'
-        code:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        termID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        abnormal:
-          type:
-          - string
-          - 'null'
-        dataType: {}
-        reportID:
-          type:
-          - string
-          - 'null'
-        specimenID:
-          type:
-          - string
-          - 'null'
-        specimenType:
-          type:
-          - string
-          - 'null'
-        numberOfTests:
-          type:
-          - string
-          - 'null'
-        repInvNumber:
-          type:
-          - string
-          - 'null'
-        userComment:
-          type:
-          - string
-          - 'null'
-        assignedDate:
-          type:
-          - string
-          - 'null'
-        datePart:
-          type: integer
-          format: int32
-        datePartSpecified:
-          type: boolean
-        assignedTime:
-          type:
-          - string
-          - 'null'
-        descriptiveText:
-          type:
-          - string
-          - 'null'
-        originalAuthor:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
-        authorID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        policyID:
-          type:
-          - string
-          - 'null'
-        eventList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EventType'
-      additionalProperties: false
-    PartnerApi.Service.Model.ErrorResponse:
-      type: object
-      properties:
-        messageId:
-          type: string
-          format: uuid
-        text:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.Text'
-        issue:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.Issue'
-        legacyOutcome:
-          type: integer
-          format: int32
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.LocationTypeGPLinkCode:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        linkCode:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     PartnerApi.EmisOpen.MedicalRecord38.TestRequestHeaderType:
       type: object
@@ -3575,161 +3884,39 @@ components:
           items:
             $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.EDIOrderType'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeRegistrar:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.EventTypeEventType:
+    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalRequestor:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StructuredIdentType'
+        itemElementName:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ItemChoiceType1'
+      additionalProperties: false
+    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeOriginalMessageDetailsMessageType:
       enum:
       - 0
       - 1
       - 2
       - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      - 11
-      - 12
-      - 13
-      - 14
       type: integer
       format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.AlertType:
+    PartnerApi.EmisOpen.MedicalRecord38.RegistrationStatusType:
       type: object
       properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        assignedDate:
-          type:
-          - string
-          - 'null'
-        datePart:
-          type: integer
-          format: int32
-        datePartSpecified:
-          type: boolean
-        assignedTime:
-          type:
-          - string
-          - 'null'
-        sequence:
-          type:
-          - string
-          - 'null'
-        authorID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-        originalAuthor:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.AuthorType'
-        externalConsultant:
-          type:
-          - string
-          - 'null'
-        displayTerm:
-          type:
-          - string
-          - 'null'
-        descriptiveText:
-          type:
-          - string
-          - 'null'
-        dataSource:
-          type:
-          - string
-          - 'null'
-        policyID:
-          type:
-          - string
-          - 'null'
-        code:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        termID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StringCodeType'
-        qualifierList:
+        currentStatus:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.RegistrationStatusTypeCurrentStatus'
+        statusHistoryList:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.QualifierType'
-        problem:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.ProblemType'
-        problemLinkList:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.StatusType'
+        registrationHistoryList:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
-        referralLinkList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.LinkType'
-        book:
-          type:
-          - string
-          - 'null'
-        ariveSwap:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PersonCategoryTypePurpose:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.EDIOrderTypeFormDestination:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.RegistrationHistoryType'
       additionalProperties: false
     PartnerApi.EmisOpen.MedicalRecord38.PathologyInvestigationType:
       type: object
@@ -3826,203 +4013,18 @@ components:
           items:
             $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.PathologyTestType'
       additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PersonTypeMinorSurgery:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiersMatchedDetails:
+    PartnerApi.EmisOpen.MedicalRecord38.MedicationLinkType:
       type: object
       properties:
-        forename:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-        dateOfBirth:
-          type:
-          - string
-          - 'null'
-        nhs:
-          type:
-          - string
-          - 'null'
-        patientID:
-          type:
-          - string
-          - 'null'
-        sex:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.TestRequestTypeStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.MedicalRecord38.ElementListTypeConsultationElement:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
         guid:
           type:
           - string
           - 'null'
-        fileStatus:
+        preparationID:
           type:
           - string
           - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        displayOrder:
-          type: integer
-          format: int32
-        displayOrderSpecified:
-          type: boolean
-        problemSection:
-          type: integer
-          format: int32
-        problemSectionSpecified:
-          type: boolean
-        header:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
-        item:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IdentType'
-      additionalProperties: false
-    PartnerApi.Service.Model.Issue:
-      type: object
-      properties:
-        severity:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.SeverityType'
-        code:
-          type:
-          - string
-          - 'null'
-        details:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.Details'
-        diagnostics:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.PathologyReportTypeIdentifiersOriginalDetails:
-      type: object
-      properties:
-        forename:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-        dateOfBirth:
-          type:
-          - string
-          - 'null'
-        nhs:
-          type:
-          - string
-          - 'null'
-        address:
-          type:
-          - string
-          - 'null'
-        sex:
-          type:
-          - string
-          - 'null'
-        labSubjectID:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.TypeOfLocationType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.MedicalRecord38.StatusType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        code:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
-        statusDate:
-          type:
-          - string
-          - 'null'
-        patientType:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.MedicalRecord38.IntegerCodeType'
-      additionalProperties: false
-    PartnerApi.Service.Model.Text:
-      type: object
-      properties:
-        status:
-          type:
-          - string
-          - 'null'
-        div:
+        systemDate:
           type:
           - string
           - 'null'

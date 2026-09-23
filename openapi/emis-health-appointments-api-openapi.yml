@@ -3,12 +3,12 @@ info:
   title: Partner Appointments API
   version: '1.2'
 tags:
-- name: appointments
+- name: Appointments
 paths:
   /api/v1/appointments/BookAppointment:
     get:
       tags:
-      - appointments
+      - Appointments
       description: This call books a patient into the specified appointment slot
       operationId: BookAppointment
       parameters:
@@ -109,10 +109,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.write
+      summary: Book appointment
+      x-summary-source: derived
   /api/v1/appointments/CancelAppointment:
     get:
       tags:
-      - appointments
+      - Appointments
       description: This call removes a patient from a specified appointment slot
       operationId: CancelAppointment
       parameters:
@@ -195,10 +197,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.write
+      summary: Cancel appointment
+      x-summary-source: derived
   /api/v1/appointments/GetAppointmentConfiguration:
     get:
       tags:
-      - appointments
+      - Appointments
       description: This call is used to retrieve a site's appointment configuration settings, including slot types, session holders, staff holidays, and practice holidays. The date filter bounds the staff and practice holidays to avoid returning large amounts of historical data.
       operationId: GetAppointmentConfiguration
       parameters:
@@ -281,10 +285,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.read
+      summary: Get appointment configuration
+      x-summary-source: derived
   /api/v1/appointments/GetAppointmentSessions:
     get:
       tags:
-      - appointments
+      - Appointments
       description: This call returns a list of appointment sessions within a given timeframe. The maximum window to retrieve sessions is 90 days.
       operationId: GetAppointmentSessions
       parameters:
@@ -372,10 +378,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.read
+      summary: Get appointment sessions
+      x-summary-source: derived
   /api/v1/appointments/GetArrivedPatients:
     get:
       tags:
-      - appointments
+      - Appointments
       description: This call returns a list of patients whose current status is 'arrived'. This status is normally set to indicate that the patient has arrived and is in the waiting area, ready to be called by the clinician.
       operationId: GetArrivedPatients
       parameters:
@@ -458,10 +466,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.read
+      summary: Get arrived patients
+      x-summary-source: derived
   /api/v1/appointments/GetBookedPatients:
     get:
       tags:
-      - appointments
+      - Appointments
       description: 'This call returns a list of patients with appointments booked in the next x minutes. It also indicates the presence of alerts in the record. Note that these should not be displayed to patients. For each session holder it indicates the estimated waiting time (how far behind the doctor is running).
 
 
@@ -547,10 +557,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.read
+      summary: Get booked patients
+      x-summary-source: derived
   /api/v1/appointments/GetBookedPatientsV2:
     get:
       tags:
-      - appointments
+      - Appointments
       description: 'This call returns a list of patients with appointments booked in the next x minutes. It also indicates the presence of alerts in the record. Note that these should not be displayed to patients. For each session holder it indicates the estimated waiting time (how far behind the doctor is running).
 
 
@@ -639,10 +651,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.read
+      summary: Get booked patients V2
+      x-summary-source: derived
   /api/v1/appointments/GetPatientAppointments:
     get:
       tags:
-      - appointments
+      - Appointments
       description: This call returns a list of patient appointments within a given timeframe. The maximum window to retrieve sessions is 90 days.
       operationId: GetPatientAppointments
       parameters:
@@ -732,10 +746,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.read
+      summary: Get patient appointments
+      x-summary-source: derived
   /api/v1/appointments/GetPatientAppointmentsV2:
     get:
       tags:
-      - appointments
+      - Appointments
       description: This call returns a list of patient appointments within a given timeframe. The maximum window to retrieve sessions is 90 days.
       operationId: GetPatientAppointmentsV2
       parameters:
@@ -825,10 +841,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.read
+      summary: Get patient appointments V2
+      x-summary-source: derived
   /api/v1/appointments/GetSentInPatients:
     get:
       tags:
-      - appointments
+      - Appointments
       description: 'This call returns a list of patients whose current status is ''sent in''. This status is normally set by the clinician or receptionist when they are ready to see the patient. This status will remain set until they leave the surgery.
 
 
@@ -914,10 +932,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.read
+      summary: Get sent in patients
+      x-summary-source: derived
   /api/v1/appointments/GetSlotsForSession:
     get:
       tags:
-      - appointments
+      - Appointments
       description: This call retrieves a list of slots in a specified session.
       operationId: GetSlotsForSession
       parameters:
@@ -993,10 +1013,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.read
+      summary: Get slots for session
+      x-summary-source: derived
   /api/v1/appointments/GetSlotsForSessionV2:
     get:
       tags:
-      - appointments
+      - Appointments
       description: This call retrieves a list of slots in a specified session.
       operationId: GetSlotsForSessionV2
       parameters:
@@ -1072,10 +1094,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.read
+      summary: Get slots for session V2
+      x-summary-source: derived
   /api/v1/appointments/AddSlotComment:
     patch:
       tags:
-      - appointments
+      - Appointments
       description: Adds a comment to a slot. Comments can be added to any specified slot.
       operationId: AddSlotComment
       parameters:
@@ -1157,10 +1181,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.write
+      summary: Add slot comment
+      x-summary-source: derived
   /api/v1/appointments/SetAppointmentStatus:
     patch:
       tags:
-      - appointments
+      - Appointments
       description: For a given appointment slot, this call sets the status in the clinical system to show if the patient has arrived, left or needs sending in.
       operationId: SetAppointmentStatus
       parameters:
@@ -1242,10 +1268,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.write
+      summary: Set appointment status
+      x-summary-source: derived
   /api/v1/appointments/SetAppointmentStatusEx:
     patch:
       tags:
-      - appointments
+      - Appointments
       description: 'This call replaces and expands the functionality provided by SetAppointmentStatus to check for the correct patient before modifying the status. This is an extension of SetAppointmentStatus.
 
 
@@ -1337,10 +1365,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.write
+      summary: Set appointment status ex
+      x-summary-source: derived
   /api/v1/appointments/SetSlotNotes:
     patch:
       tags:
-      - appointments
+      - Appointments
       description: Updates the existing slot notes for a specified appointment slot.
       operationId: SetSlotNotes
       parameters:
@@ -1421,10 +1451,12 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.write
+      summary: Set slot notes
+      x-summary-source: derived
   /api/v1/appointments/SetSlotType:
     patch:
       tags:
-      - appointments
+      - Appointments
       description: This call sets the slot type and booking note of a given slot.
       operationId: SetSlotType
       parameters:
@@ -1510,441 +1542,47 @@ paths:
       - bearer: []
       - OAuth2CodeEMIS-X-GP-PAPI:
         - papi-appt.write
+      summary: Set slot type
+      x-summary-source: derived
 components:
   schemas:
-    PartnerApi.EmisOpen.AppointmentSessions.SiteStruct:
+    PartnerApi.EmisOpen.SlotsForSession.TypeStruct:
       type: object
       properties:
-        dbid:
-          type: integer
-          format: int32
-        name:
+        typeID:
+          type:
+          - string
+          - 'null'
+        description:
           type:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeContractualRelationship:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37.PersonTypeMinorSurgery:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37V2.RegistrationTypeCustomRegistrationEntry:
-      type: object
-      properties:
-        fieldName:
-          type:
-          - string
-          - 'null'
-        fieldValue:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.IdentType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.SlotsForSessionV2.SlotStruct:
-      type: object
-      properties:
-        dbid:
-          type: integer
-          format: int32
-        refID:
-          type: integer
-          format: int32
-        startTime:
-          type:
-          - string
-          - 'null'
-        slotLength:
-          type:
-          - string
-          - 'null'
-        type:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSessionV2.TypeStruct'
-        status:
-          type:
-          - string
-          - 'null'
-        patientList:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSessionV2.PatientListStruct'
-        notes:
-          type:
-          - string
-          - 'null'
-        reason:
-          type:
-          - string
-          - 'null'
-        commentList:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeMinorSurgery:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37.PersonTypeContractualRelationship:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37V2.RegistrationType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        dateOfBirth:
-          type:
-          - string
-          - 'null'
-        sex:
-          type:
-          - string
-          - 'null'
-        previousNames:
-          type:
-          - string
-          - 'null'
-        familyName:
-          type:
-          - string
-          - 'null'
-        callingName:
-          type:
-          - string
-          - 'null'
-        firstNames:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        nhsNumber:
-          type:
-          - string
-          - 'null'
-        address:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.AddressType'
-        homeTelephone:
-          type:
-          - string
-          - 'null'
-        registeredGpID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-        usualGpID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-        tradingHaID:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-        walkingQuarters:
-          type:
-          - string
-          - 'null'
-        dispensing:
-          type:
-          - string
-          - 'null'
-        ruralMileage:
-          type:
-          - string
-          - 'null'
-        difficultQuarters:
-          type:
-          - string
-          - 'null'
-        residentialInstitute:
-          type:
-          - string
-          - 'null'
-        blockedSpecial:
-          type:
-          - string
-          - 'null'
-        recordsAt:
-          type:
-          - string
-          - 'null'
-        hospitalNumbers:
-          type:
-          - string
-          - 'null'
-        deductedDate:
-          type:
-          - string
-          - 'null'
-        dateOfDeath:
-          type:
-          - string
-          - 'null'
-        dead:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.RegistrationTypeDead'
-        deadSpecified:
-          type: boolean
-        dateAdded:
-          type:
-          - string
-          - 'null'
-        oldNhsNumber:
-          type:
-          - string
-          - 'null'
-        workTelephone:
-          type:
-          - string
-          - 'null'
-        mobile:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        homeAddress:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.AddressType'
-        homeGP:
-          type:
-          - string
-          - 'null'
-        homeGPCode:
-          type:
-          - string
-          - 'null'
-        chiNumber:
-          type:
-          - string
-          - 'null'
-        footpathMiles:
-          type:
-          - string
-          - 'null'
-        waterMiles:
-          type:
-          - string
-          - 'null'
-        serviceType:
-          type:
-          - string
-          - 'null'
-        serviceNumber:
-          type:
-          - string
-          - 'null'
-        customRegistrationFields:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.RegistrationTypeCustomRegistrationEntry'
-        groNumber:
-          type:
-          - string
-          - 'null'
-        upciNumber:
-          type:
-          - string
-          - 'null'
-        maritalStatus:
-          type:
-          - string
-          - 'null'
-        medicationReviewDate:
-          type:
-          - string
-          - 'null'
-        exemptionExpiry:
-          type:
-          - string
-          - 'null'
-        screenMessage:
-          type:
-          - string
-          - 'null'
-        reminderSent:
-          type:
-          - string
-          - 'null'
-        ethnicCode:
-          type:
-          - string
-          - 'null'
-        prisonNumber:
-          type:
-          - string
-          - 'null'
-        previousPrisonNumbers:
-          type:
-          - string
-          - 'null'
-        prisonDoctorGP:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-        socialSecurityNumber:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.PersonTypeScripts:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37.PersonTypeConsulter:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAppointment:
+    PartnerApi.EmisOpen.AppointmentConfiguration.TypeStruct:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-        appointmentSite:
           type:
           - string
           - 'null'
-        appointmentName:
+        display:
           type:
           - string
           - 'null'
-        date:
+        description:
           type:
           - string
           - 'null'
-        time:
+        bookable:
           type:
           - string
           - 'null'
-        sessionHolder:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-        sessionUsersList:
+        emisAccess:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-        sessionLocationsList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-        sessionId:
-          type: integer
-          format: int64
-        slotType:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAppointmentSlotType'
       additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBookedAppointment:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
-        appointmentSite:
-          type:
-          - string
-          - 'null'
-        appointmentName:
-          type:
-          - string
-          - 'null'
-        date:
-          type:
-          - string
-          - 'null'
-        time:
-          type:
-          - string
-          - 'null'
-        sessionHolder:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
-        sessionUsersList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
-        sessionLocationsList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
-        sessionId:
-          type: integer
-          format: int64
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.PersonTypeRegistrar:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37.PersonTypeDoctor:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37.BookedPatientsSessionHolder:
+    PartnerApi.EmisOpen.BookedPatients37.ApplicationType:
       type: object
       properties:
         dbid:
@@ -1967,237 +1605,22 @@ components:
           type:
           - string
           - 'null'
-        mnemonic:
+        applicationMnemonic:
           type:
           - string
           - 'null'
-        pcsUser:
-          type:
-          - string
-          - 'null'
-        activeEMISUser:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        firstNames:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-        category:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonCategoryType'
-        nationalCode:
-          type:
-          - string
-          - 'null'
-        prescriptionCode:
-          type:
-          - string
-          - 'null'
-        gmcCode:
-          type:
-          - string
-          - 'null'
-        ukccCode:
-          type:
-          - string
-          - 'null'
-        scripts:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeScripts'
-        scriptsSpecified:
-          type: boolean
-        consulter:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeConsulter'
-        consulterSpecified:
-          type: boolean
-        contractStart:
-          type:
-          - string
-          - 'null'
-        contractEnd:
-          type:
-          - string
-          - 'null'
-        doctor:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeDoctor'
-        doctorSpecified:
-          type: boolean
-        locum:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeLocum'
-        locumSpecified:
-          type: boolean
-        registrar:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeRegistrar'
-        registrarSpecified:
-          type: boolean
-        maternity:
-          type:
-          - string
-          - 'null'
-        childSurveillance:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeChildSurveillance'
-        childSurveillanceSpecified:
-          type: boolean
-        contraceptive:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeContraceptive'
-        contraceptiveSpecified:
-          type: boolean
-        twentyFourHour:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeTwentyFourHour'
-        twentyFourHourSpecified:
-          type: boolean
-        minorSurgery:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeMinorSurgery'
-        minorSurgerySpecified:
-          type: boolean
-        resonsibleHA:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
-        trainer:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
-        contractualRelationship:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeContractualRelationship'
-        contractualRelationshipSpecified:
-          type: boolean
-        address:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.AddressType'
-        telephone1:
-          type:
-          - string
-          - 'null'
-        telephone2:
-          type:
-          - string
-          - 'null'
-        fax:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        role:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.RoleType'
-        security1:
-          type:
-          - string
-          - 'null'
-        security2:
-          type:
-          - string
-          - 'null'
-        waitingTime:
+        applicationName:
           type:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2:
-      type: object
-      properties:
-        bookedList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2Booked'
-        sessionHolderList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2SessionHolder'
-        time:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.SlotsForSession.SlotStruct:
-      type: object
-      properties:
-        dbid:
-          type: integer
-          format: int32
-        refID:
-          type: integer
-          format: int32
-        startTime:
-          type:
-          - string
-          - 'null'
-        slotLength:
-          type:
-          - string
-          - 'null'
-        type:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSession.TypeStruct'
-        status:
-          type:
-          - string
-          - 'null'
-        patientList:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSession.PatientListStruct'
-        notes:
-          type:
-          - string
-          - 'null'
-        reason:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.IdentType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.GetPatientAppointments.HolderStruct:
-      type: object
-      properties:
-        dbid:
-          type: integer
-          format: int32
-        refID:
-          type: integer
-          format: int32
-        title:
-          type:
-          - string
-          - 'null'
-        firstNames:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeConsulter:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
     PartnerApi.EmisOpen.BookedPatients37V2.PersonCategoryType:
       type: object
       properties:
@@ -2234,90 +1657,7 @@ components:
         purposeSpecified:
           type: boolean
       additionalProperties: false
-    PartnerApi.EmisOpen.AppointmentConfiguration.HolidayStruct:
-      type: object
-      properties:
-        description:
-          type:
-          - string
-          - 'null'
-        day:
-          type:
-          - string
-          - 'null'
-        startTime:
-          type:
-          - string
-          - 'null'
-        endTime:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.GetPatientAppointments.AppointmentStruct:
-      type: object
-      properties:
-        slotID:
-          type: integer
-          format: int32
-        siteID:
-          type: integer
-          format: int32
-        date:
-          type:
-          - string
-          - 'null'
-        startTime:
-          type:
-          - string
-          - 'null'
-        duration:
-          type:
-          - string
-          - 'null'
-        notes:
-          type:
-          - string
-          - 'null'
-        reason:
-          type:
-          - string
-          - 'null'
-        sessionName:
-          type:
-          - string
-          - 'null'
-        sessionDBID:
-          type: integer
-          format: int32
-        holderList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.GetPatientAppointments.HolderStruct'
-        status:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeScripts:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.SlotsForSessionV2.SlotListStruct:
-      type: object
-      properties:
-        slot:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSessionV2.SlotStruct'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.PersonTypeContraceptive:
+    PartnerApi.EmisOpen.BookedPatients37V2.RegistrationTypeDead:
       enum:
       - 0
       - 1
@@ -2338,1155 +1678,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.IndividualStruct'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeLocum:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2SessionHolder:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        mnemonic:
-          type:
-          - string
-          - 'null'
-        pcsUser:
-          type:
-          - string
-          - 'null'
-        activeEMISUser:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        firstNames:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-        category:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonCategoryType'
-        nationalCode:
-          type:
-          - string
-          - 'null'
-        prescriptionCode:
-          type:
-          - string
-          - 'null'
-        gmcCode:
-          type:
-          - string
-          - 'null'
-        ukccCode:
-          type:
-          - string
-          - 'null'
-        scripts:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeScripts'
-        scriptsSpecified:
-          type: boolean
-        consulter:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeConsulter'
-        consulterSpecified:
-          type: boolean
-        contractStart:
-          type:
-          - string
-          - 'null'
-        contractEnd:
-          type:
-          - string
-          - 'null'
-        doctor:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeDoctor'
-        doctorSpecified:
-          type: boolean
-        locum:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeLocum'
-        locumSpecified:
-          type: boolean
-        registrar:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeRegistrar'
-        registrarSpecified:
-          type: boolean
-        maternity:
-          type:
-          - string
-          - 'null'
-        childSurveillance:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeChildSurveillance'
-        childSurveillanceSpecified:
-          type: boolean
-        contraceptive:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeContraceptive'
-        contraceptiveSpecified:
-          type: boolean
-        twentyFourHour:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeTwentyFourHour'
-        twentyFourHourSpecified:
-          type: boolean
-        minorSurgery:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeMinorSurgery'
-        minorSurgerySpecified:
-          type: boolean
-        resonsibleHA:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-        trainer:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-        contractualRelationship:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeContractualRelationship'
-        contractualRelationshipSpecified:
-          type: boolean
-        address:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.AddressType'
-        telephone1:
-          type:
-          - string
-          - 'null'
-        telephone2:
-          type:
-          - string
-          - 'null'
-        fax:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        role:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.RoleType'
-        security1:
-          type:
-          - string
-          - 'null'
-        security2:
-          type:
-          - string
-          - 'null'
-        waitingTime:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.Appointment.PatientInformationType:
-      type: object
-      properties:
-        patientId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        led:
-          type:
-          - string
-          - 'null'
-        patientNumber:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        dob:
-          type:
-          - string
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-        hasPatientWarnings:
-          type:
-          - string
-          - 'null'
-        actionPerformedOn:
-          type: integer
-          format: int64
-      additionalProperties: false
-    PartnerApi.EmisOpen.SlotsForSessionV2.TypeStruct:
-      type: object
-      properties:
-        typeID:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.AppointmentConfiguration.TypeStruct:
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        display:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        bookable:
-          type:
-          - string
-          - 'null'
-        emisAccess:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.BookedPatients:
-      type: object
-      properties:
-        bookedList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBooked'
-        sessionHolderList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.BookedPatientsSessionHolder'
-        time:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.AppointmentConfiguration.SiteStruct:
-      type: object
-      properties:
-        dbid:
-          type: integer
-          format: int32
-        refID:
-          type: integer
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeContraceptive:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.GetPatientAppointmentsV2.AppointmentStructSlotType:
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        display:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        bookable:
-          type: boolean
-        emisAccess:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.SlotsForSessionV2.PatientListStruct:
-      type: object
-      properties:
-        patient:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSessionV2.PatientStruct'
-      additionalProperties: false
-    PartnerApi.Service.Constants.AppointmentStatus:
-      enum:
-      - 2
-      - 3
-      - 4
-      - 12
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37.ApplicationType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        applicationMnemonic:
-          type:
-          - string
-          - 'null'
-        applicationName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.SlotsForSession.PatientStruct:
-      type: object
-      properties:
-        dbid:
-          type: integer
-          format: int32
-        refID:
-          type: integer
-          format: int32
-        title:
-          type:
-          - string
-          - 'null'
-        firstNames:
-          type:
-          - string
-          - 'null'
-        surname:
-          type:
-          - string
-          - 'null'
-        fullName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAppointmentSlotType:
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        display:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        bookable:
-          type: boolean
-        emisAccess:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.RegistrationTypeCustomRegistrationEntry:
-      type: object
-      properties:
-        fieldName:
-          type:
-          - string
-          - 'null'
-        fieldValue:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeDoctor:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.AppointmentSessions.AppointmentSessionList:
-      type: object
-      properties:
-        appointmentSession:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentSessions.AppointmentSessionStruct'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.AddressType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        houseNameFlat:
-          type:
-          - string
-          - 'null'
-        street:
-          type:
-          - string
-          - 'null'
-        village:
-          type:
-          - string
-          - 'null'
-        town:
-          type:
-          - string
-          - 'null'
-        county:
-          type:
-          - string
-          - 'null'
-        postCode:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.GetPatientAppointmentsV2.HolderStruct:
-      type: object
-      properties:
-        dbid:
-          type: integer
-          format: int32
-        refID:
-          type: integer
-          format: int32
-        title:
-          type:
-          - string
-          - 'null'
-        firstNames:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.PersonTypeTwentyFourHour:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeTwentyFourHour:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.AppointmentSessions.AppointmentSessionStruct:
-      type: object
-      properties:
-        dbid:
-          type: integer
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-        date:
-          type:
-          - string
-          - 'null'
-        startTime:
-          type:
-          - string
-          - 'null'
-        endTime:
-          type:
-          - string
-          - 'null'
-        slotLength:
-          type:
-          - string
-          - 'null'
-        slotTypeList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentSessions.SlotsStruct'
-        site:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentSessions.SiteStruct'
-        holderList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentSessions.HolderStruct'
-      additionalProperties: false
-    PartnerApi.EmisOpen.AppointmentConfiguration.AppointmentConfiguration:
-      type: object
-      properties:
-        siteList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.SiteStruct'
-        holderList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.HolderStruct'
-        scheduleList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.ScheduleStruct'
-        holidayList:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.HolidaysStruct'
-        slotTypeList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.TypeStruct'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.RegistrationTypeDead:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.SlotsForSession.SlotListStruct:
-      type: object
-      properties:
-        slot:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSession.SlotStruct'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.PersonCategoryTypePurpose:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBooked:
-      type: object
-      properties:
-        patient:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.RegistrationType'
-        appointment:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBookedAppointment'
-        alert:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBookedAlert'
-        alertSpecified:
-          type: boolean
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.PersonTypeChildSurveillance:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.Appointment.AppointmentInformationType:
-      type: object
-      properties:
-        sessionId:
-          type: integer
-          format: int64
-        slotId:
-          type: integer
-          format: int64
-        slotDateTime:
-          type:
-          - string
-          - 'null'
-        endDateTime:
-          type:
-          - string
-          - 'null'
-        reason:
-          type:
-          - string
-          - 'null'
-        bookingNotes:
-          type:
-          - string
-          - 'null'
-        slotTypeId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    PartnerApi.EmisOpen.AppointmentConfiguration.HolderStruct:
-      type: object
-      properties:
-        dbid:
-          type: integer
-          format: int32
-        refID:
-          type: integer
-          format: int32
-        title:
-          type:
-          - string
-          - 'null'
-        firstNames:
-          type:
-          - string
-          - 'null'
-        surname:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.PersonTypeLocum:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAlert:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBookedAlert:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeRegistrar:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.Service.Model.Appointment:
-      type: object
-      properties:
-        sessionId:
-          type: integer
-          format: int64
-        actionPerformedOn:
-          type: integer
-          format: int64
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.RoleType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        application:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.ApplicationType'
-        team:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-        location:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.SlotsForSession.TypeStruct:
-      type: object
-      properties:
-        typeID:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.Service.Model.Details:
-      type: object
-      properties:
-        text:
-          type:
-          - string
-          - 'null'
-        coding:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.Coding'
-      additionalProperties: false
-    PartnerApi.Service.Model.SeverityType:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.BookedPatients37.RoleType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        application:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.ApplicationType'
-        team:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
-        location:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.GetPatientAppointmentsV2.AppointmentStruct:
-      type: object
-      properties:
-        slotID:
-          type: integer
-          format: int32
-        siteID:
-          type: integer
-          format: int32
-        date:
-          type:
-          - string
-          - 'null'
-        startTime:
-          type:
-          - string
-          - 'null'
-        duration:
-          type:
-          - string
-          - 'null'
-        notes:
-          type:
-          - string
-          - 'null'
-        reason:
-          type:
-          - string
-          - 'null'
-        sessionName:
-          type:
-          - string
-          - 'null'
-        sessionDBID:
-          type: integer
-          format: int32
-        holderList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.GetPatientAppointmentsV2.HolderStruct'
-        status:
-          type:
-          - string
-          - 'null'
-        slotType:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.GetPatientAppointmentsV2.AppointmentStructSlotType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.PersonCategoryType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        mnemonic:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        purpose:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonCategoryTypePurpose'
-        purposeSpecified:
-          type: boolean
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.ApplicationType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        applicationMnemonic:
-          type:
-          - string
-          - 'null'
-        applicationName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.AppointmentConfiguration.ScheduleStruct:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-        startTime:
-          type:
-          - string
-          - 'null'
-        endTime:
-          type:
-          - string
-          - 'null'
-        slotLength:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.Service.Model.Coding:
-      type: object
-      properties:
-        system:
-          type:
-          - string
-          - 'null'
-        code:
-          type:
-          - string
-          - 'null'
-        display:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.RegistrationTypeDead:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.AppointmentSessions.SlotsStruct:
-      type: object
-      properties:
-        typeID:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        total:
-          type: integer
-          format: int32
-        booked:
-          type: integer
-          format: int32
-        blocked:
-          type: integer
-          format: int32
-        embargoed:
-          type: integer
-          format: int32
-        available:
-          type: integer
-          format: int32
-      additionalProperties: false
-    PartnerApi.Service.Model.ErrorResponse:
-      type: object
-      properties:
-        messageId:
-          type: string
-          format: uuid
-        text:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.Text'
-        issue:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.Issue'
-        legacyOutcome:
-          type: integer
-          format: int32
-      additionalProperties: false
-    PartnerApi.EmisOpen.SlotsForSession.PatientListStruct:
-      type: object
-      properties:
-        patient:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSession.PatientStruct'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37.AddressType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        houseNameFlat:
-          type:
-          - string
-          - 'null'
-        street:
-          type:
-          - string
-          - 'null'
-        village:
-          type:
-          - string
-          - 'null'
-        town:
-          type:
-          - string
-          - 'null'
-        county:
-          type:
-          - string
-          - 'null'
-        postCode:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.GetPatientAppointmentsV2.PatientAppointmentListV2:
-      type: object
-      properties:
-        appointment:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.GetPatientAppointmentsV2.AppointmentStruct'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2Booked:
-      type: object
-      properties:
-        patient:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.RegistrationType'
-        appointment:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAppointment'
-        alert:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAlert'
-        alertSpecified:
-          type: boolean
-      additionalProperties: false
-    PartnerApi.EmisOpen.GetPatientAppointments.PatientAppointmentList:
-      type: object
-      properties:
-        appointment:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.GetPatientAppointments.AppointmentStruct'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.PersonCategoryTypePurpose:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.Appointment.BookedAppointmentType:
-      type: object
-      properties:
-        appointmentInformation:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.Appointment.AppointmentInformationType'
-        patientInforamtion:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.Appointment.PatientInformationType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.AppointmentSessions.HolderStruct:
-      type: object
-      properties:
-        dbid:
-          type: integer
-          format: int32
-        refID:
-          type: integer
-          format: int32
-        title:
-          type:
-          - string
-          - 'null'
-        firstNames:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeChildSurveillance:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.Service.Model.Issue:
-      type: object
-      properties:
-        severity:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.SeverityType'
-        code:
-          type:
-          - string
-          - 'null'
-        details:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.Details'
-        diagnostics:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.SlotsForSessionV2.PatientStruct:
-      type: object
-      properties:
-        dbid:
-          type: integer
-          format: int32
-        refID:
-          type: integer
-          format: int32
-        title:
-          type:
-          - string
-          - 'null'
-        firstNames:
-          type:
-          - string
-          - 'null'
-        surname:
-          type:
-          - string
-          - 'null'
-        fullName:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     PartnerApi.EmisOpen.BookedPatients37.RegistrationType:
       type: object
@@ -3702,13 +1893,918 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeConsulter:
+    PartnerApi.EmisOpen.BookedPatients37V2.RegistrationTypeCustomRegistrationEntry:
+      type: object
+      properties:
+        fieldName:
+          type:
+          - string
+          - 'null'
+        fieldValue:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.AppointmentSessions.HolderStruct:
+      type: object
+      properties:
+        dbid:
+          type: integer
+          format: int32
+        refID:
+          type: integer
+          format: int32
+        title:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.SlotsForSessionV2.SlotStruct:
+      type: object
+      properties:
+        dbid:
+          type: integer
+          format: int32
+        refID:
+          type: integer
+          format: int32
+        startTime:
+          type:
+          - string
+          - 'null'
+        slotLength:
+          type:
+          - string
+          - 'null'
+        type:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSessionV2.TypeStruct'
+        status:
+          type:
+          - string
+          - 'null'
+        patientList:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSessionV2.PatientListStruct'
+        notes:
+          type:
+          - string
+          - 'null'
+        reason:
+          type:
+          - string
+          - 'null'
+        commentList:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    PartnerApi.Service.Model.SeverityType:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeRegistrar:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.BookedPatients37.RegistrationTypeCustomRegistrationEntry:
+      type: object
+      properties:
+        fieldName:
+          type:
+          - string
+          - 'null'
+        fieldValue:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.PersonTypeScripts:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.GetPatientAppointments.AppointmentStruct:
+      type: object
+      properties:
+        slotID:
+          type: integer
+          format: int32
+        siteID:
+          type: integer
+          format: int32
+        date:
+          type:
+          - string
+          - 'null'
+        startTime:
+          type:
+          - string
+          - 'null'
+        duration:
+          type:
+          - string
+          - 'null'
+        notes:
+          type:
+          - string
+          - 'null'
+        reason:
+          type:
+          - string
+          - 'null'
+        sessionName:
+          type:
+          - string
+          - 'null'
+        sessionDBID:
+          type: integer
+          format: int32
+        holderList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.GetPatientAppointments.HolderStruct'
+        status:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2SessionHolder:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        mnemonic:
+          type:
+          - string
+          - 'null'
+        pcsUser:
+          type:
+          - string
+          - 'null'
+        activeEMISUser:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        category:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonCategoryType'
+        nationalCode:
+          type:
+          - string
+          - 'null'
+        prescriptionCode:
+          type:
+          - string
+          - 'null'
+        gmcCode:
+          type:
+          - string
+          - 'null'
+        ukccCode:
+          type:
+          - string
+          - 'null'
+        scripts:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeScripts'
+        scriptsSpecified:
+          type: boolean
+        consulter:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeConsulter'
+        consulterSpecified:
+          type: boolean
+        contractStart:
+          type:
+          - string
+          - 'null'
+        contractEnd:
+          type:
+          - string
+          - 'null'
+        doctor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeDoctor'
+        doctorSpecified:
+          type: boolean
+        locum:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeLocum'
+        locumSpecified:
+          type: boolean
+        registrar:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeRegistrar'
+        registrarSpecified:
+          type: boolean
+        maternity:
+          type:
+          - string
+          - 'null'
+        childSurveillance:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeChildSurveillance'
+        childSurveillanceSpecified:
+          type: boolean
+        contraceptive:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeContraceptive'
+        contraceptiveSpecified:
+          type: boolean
+        twentyFourHour:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeTwentyFourHour'
+        twentyFourHourSpecified:
+          type: boolean
+        minorSurgery:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeMinorSurgery'
+        minorSurgerySpecified:
+          type: boolean
+        resonsibleHA:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+        trainer:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+        contractualRelationship:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeContractualRelationship'
+        contractualRelationshipSpecified:
+          type: boolean
+        address:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.AddressType'
+        telephone1:
+          type:
+          - string
+          - 'null'
+        telephone2:
+          type:
+          - string
+          - 'null'
+        fax:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        role:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.RoleType'
+        security1:
+          type:
+          - string
+          - 'null'
+        security2:
+          type:
+          - string
+          - 'null'
+        waitingTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.Appointment.AppointmentInformationType:
+      type: object
+      properties:
+        sessionId:
+          type: integer
+          format: int64
+        slotId:
+          type: integer
+          format: int64
+        slotDateTime:
+          type:
+          - string
+          - 'null'
+        endDateTime:
+          type:
+          - string
+          - 'null'
+        reason:
+          type:
+          - string
+          - 'null'
+        bookingNotes:
+          type:
+          - string
+          - 'null'
+        slotTypeId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.PersonTypeChildSurveillance:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.Appointment:
+      type: object
+      properties:
+        sessionId:
+          type: integer
+          format: int64
+        actionPerformedOn:
+          type: integer
+          format: int64
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.IdentType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.PersonTypeConsulter:
       enum:
       - 0
       - 1
       - 2
       type: integer
       format: int32
+    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAppointment:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+        appointmentSite:
+          type:
+          - string
+          - 'null'
+        appointmentName:
+          type:
+          - string
+          - 'null'
+        date:
+          type:
+          - string
+          - 'null'
+        time:
+          type:
+          - string
+          - 'null'
+        sessionHolder:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+        sessionUsersList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+        sessionLocationsList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+        sessionId:
+          type: integer
+          format: int64
+        slotType:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAppointmentSlotType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBookedAppointment:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
+        appointmentSite:
+          type:
+          - string
+          - 'null'
+        appointmentName:
+          type:
+          - string
+          - 'null'
+        date:
+          type:
+          - string
+          - 'null'
+        time:
+          type:
+          - string
+          - 'null'
+        sessionHolder:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
+        sessionUsersList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
+        sessionLocationsList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
+        sessionId:
+          type: integer
+          format: int64
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.PersonTypeTwentyFourHour:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeChildSurveillance:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.BookedPatients37.RoleType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        application:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.ApplicationType'
+        team:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
+        location:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.PersonTypeRegistrar:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.SlotsForSession.PatientListStruct:
+      type: object
+      properties:
+        patient:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSession.PatientStruct'
+      additionalProperties: false
+    PartnerApi.EmisOpen.Appointment.BookedAppointmentType:
+      type: object
+      properties:
+        appointmentInformation:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.Appointment.AppointmentInformationType'
+        patientInforamtion:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.Appointment.PatientInformationType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.SlotsForSessionV2.TypeStruct:
+      type: object
+      properties:
+        typeID:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.GetPatientAppointmentsV2.AppointmentStructSlotType:
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        display:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        bookable:
+          type: boolean
+        emisAccess:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.SlotsForSessionV2.PatientListStruct:
+      type: object
+      properties:
+        patient:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSessionV2.PatientStruct'
+      additionalProperties: false
+    PartnerApi.EmisOpen.GetPatientAppointmentsV2.HolderStruct:
+      type: object
+      properties:
+        dbid:
+          type: integer
+          format: int32
+        refID:
+          type: integer
+          format: int32
+        title:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.PersonTypeDoctor:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.BookedPatients37.IdentType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.BookedPatientsSessionHolder:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        mnemonic:
+          type:
+          - string
+          - 'null'
+        pcsUser:
+          type:
+          - string
+          - 'null'
+        activeEMISUser:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        category:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonCategoryType'
+        nationalCode:
+          type:
+          - string
+          - 'null'
+        prescriptionCode:
+          type:
+          - string
+          - 'null'
+        gmcCode:
+          type:
+          - string
+          - 'null'
+        ukccCode:
+          type:
+          - string
+          - 'null'
+        scripts:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeScripts'
+        scriptsSpecified:
+          type: boolean
+        consulter:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeConsulter'
+        consulterSpecified:
+          type: boolean
+        contractStart:
+          type:
+          - string
+          - 'null'
+        contractEnd:
+          type:
+          - string
+          - 'null'
+        doctor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeDoctor'
+        doctorSpecified:
+          type: boolean
+        locum:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeLocum'
+        locumSpecified:
+          type: boolean
+        registrar:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeRegistrar'
+        registrarSpecified:
+          type: boolean
+        maternity:
+          type:
+          - string
+          - 'null'
+        childSurveillance:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeChildSurveillance'
+        childSurveillanceSpecified:
+          type: boolean
+        contraceptive:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeContraceptive'
+        contraceptiveSpecified:
+          type: boolean
+        twentyFourHour:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeTwentyFourHour'
+        twentyFourHourSpecified:
+          type: boolean
+        minorSurgery:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeMinorSurgery'
+        minorSurgerySpecified:
+          type: boolean
+        resonsibleHA:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
+        trainer:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.IdentType'
+        contractualRelationship:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonTypeContractualRelationship'
+        contractualRelationshipSpecified:
+          type: boolean
+        address:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.AddressType'
+        telephone1:
+          type:
+          - string
+          - 'null'
+        telephone2:
+          type:
+          - string
+          - 'null'
+        fax:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        role:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.RoleType'
+        security1:
+          type:
+          - string
+          - 'null'
+        security2:
+          type:
+          - string
+          - 'null'
+        waitingTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeContraceptive:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.GetPatientAppointments.HolderStruct:
+      type: object
+      properties:
+        dbid:
+          type: integer
+          format: int32
+        refID:
+          type: integer
+          format: int32
+        title:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.AppointmentSessions.AppointmentSessionList:
+      type: object
+      properties:
+        appointmentSession:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentSessions.AppointmentSessionStruct'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBookedAlert:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.BookedPatients37.PersonTypeContraceptive:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.AppointmentSessions.SiteStruct:
+      type: object
+      properties:
+        dbid:
+          type: integer
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.PersonTypeContractualRelationship:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.AppointmentSessions.SlotsStruct:
+      type: object
+      properties:
+        typeID:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        total:
+          type: integer
+          format: int32
+        booked:
+          type: integer
+          format: int32
+        blocked:
+          type: integer
+          format: int32
+        embargoed:
+          type: integer
+          format: int32
+        available:
+          type: integer
+          format: int32
+      additionalProperties: false
+    PartnerApi.EmisOpen.AppointmentConfiguration.HolderStruct:
+      type: object
+      properties:
+        dbid:
+          type: integer
+          format: int32
+        refID:
+          type: integer
+          format: int32
+        title:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        surname:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeLocum:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.SlotsForSession.SlotListStruct:
+      type: object
+      properties:
+        slot:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSession.SlotStruct'
+      additionalProperties: false
+    PartnerApi.EmisOpen.SlotsForSessionV2.SlotListStruct:
+      type: object
+      properties:
+        slot:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSessionV2.SlotStruct'
+      additionalProperties: false
     PartnerApi.Service.Model.Text:
       type: object
       properties:
@@ -3721,6 +2817,115 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.ApplicationType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        applicationMnemonic:
+          type:
+          - string
+          - 'null'
+        applicationName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.GetPatientAppointmentsV2.PatientAppointmentListV2:
+      type: object
+      properties:
+        appointment:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.GetPatientAppointmentsV2.AppointmentStruct'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeContractualRelationship:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.ErrorResponse:
+      type: object
+      properties:
+        messageId:
+          type: string
+          format: uuid
+        text:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Text'
+        issue:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Issue'
+        legacyOutcome:
+          type: integer
+          format: int32
+      additionalProperties: false
+    PartnerApi.EmisOpen.AppointmentConfiguration.SiteStruct:
+      type: object
+      properties:
+        dbid:
+          type: integer
+          format: int32
+        refID:
+          type: integer
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.SlotsForSessionV2.PatientStruct:
+      type: object
+      properties:
+        dbid:
+          type: integer
+          format: int32
+        refID:
+          type: integer
+          format: int32
+        title:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        surname:
+          type:
+          - string
+          - 'null'
+        fullName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.PersonCategoryTypePurpose:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
     PartnerApi.EmisOpen.AppointmentConfiguration.IndividualStruct:
       type: object
       properties:
@@ -3748,6 +2953,835 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.HolidayStruct'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.RegistrationType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        dateOfBirth:
+          type:
+          - string
+          - 'null'
+        sex:
+          type:
+          - string
+          - 'null'
+        previousNames:
+          type:
+          - string
+          - 'null'
+        familyName:
+          type:
+          - string
+          - 'null'
+        callingName:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        nhsNumber:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.AddressType'
+        homeTelephone:
+          type:
+          - string
+          - 'null'
+        registeredGpID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+        usualGpID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+        tradingHaID:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+        walkingQuarters:
+          type:
+          - string
+          - 'null'
+        dispensing:
+          type:
+          - string
+          - 'null'
+        ruralMileage:
+          type:
+          - string
+          - 'null'
+        difficultQuarters:
+          type:
+          - string
+          - 'null'
+        residentialInstitute:
+          type:
+          - string
+          - 'null'
+        blockedSpecial:
+          type:
+          - string
+          - 'null'
+        recordsAt:
+          type:
+          - string
+          - 'null'
+        hospitalNumbers:
+          type:
+          - string
+          - 'null'
+        deductedDate:
+          type:
+          - string
+          - 'null'
+        dateOfDeath:
+          type:
+          - string
+          - 'null'
+        dead:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.RegistrationTypeDead'
+        deadSpecified:
+          type: boolean
+        dateAdded:
+          type:
+          - string
+          - 'null'
+        oldNhsNumber:
+          type:
+          - string
+          - 'null'
+        workTelephone:
+          type:
+          - string
+          - 'null'
+        mobile:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        homeAddress:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.AddressType'
+        homeGP:
+          type:
+          - string
+          - 'null'
+        homeGPCode:
+          type:
+          - string
+          - 'null'
+        chiNumber:
+          type:
+          - string
+          - 'null'
+        footpathMiles:
+          type:
+          - string
+          - 'null'
+        waterMiles:
+          type:
+          - string
+          - 'null'
+        serviceType:
+          type:
+          - string
+          - 'null'
+        serviceNumber:
+          type:
+          - string
+          - 'null'
+        customRegistrationFields:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.RegistrationTypeCustomRegistrationEntry'
+        groNumber:
+          type:
+          - string
+          - 'null'
+        upciNumber:
+          type:
+          - string
+          - 'null'
+        maritalStatus:
+          type:
+          - string
+          - 'null'
+        medicationReviewDate:
+          type:
+          - string
+          - 'null'
+        exemptionExpiry:
+          type:
+          - string
+          - 'null'
+        screenMessage:
+          type:
+          - string
+          - 'null'
+        reminderSent:
+          type:
+          - string
+          - 'null'
+        ethnicCode:
+          type:
+          - string
+          - 'null'
+        prisonNumber:
+          type:
+          - string
+          - 'null'
+        previousPrisonNumbers:
+          type:
+          - string
+          - 'null'
+        prisonDoctorGP:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+        socialSecurityNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.GetPatientAppointmentsV2.AppointmentStruct:
+      type: object
+      properties:
+        slotID:
+          type: integer
+          format: int32
+        siteID:
+          type: integer
+          format: int32
+        date:
+          type:
+          - string
+          - 'null'
+        startTime:
+          type:
+          - string
+          - 'null'
+        duration:
+          type:
+          - string
+          - 'null'
+        notes:
+          type:
+          - string
+          - 'null'
+        reason:
+          type:
+          - string
+          - 'null'
+        sessionName:
+          type:
+          - string
+          - 'null'
+        sessionDBID:
+          type: integer
+          format: int32
+        holderList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.GetPatientAppointmentsV2.HolderStruct'
+        status:
+          type:
+          - string
+          - 'null'
+        slotType:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.GetPatientAppointmentsV2.AppointmentStructSlotType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.AppointmentSessions.AppointmentSessionStruct:
+      type: object
+      properties:
+        dbid:
+          type: integer
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+        date:
+          type:
+          - string
+          - 'null'
+        startTime:
+          type:
+          - string
+          - 'null'
+        endTime:
+          type:
+          - string
+          - 'null'
+        slotLength:
+          type:
+          - string
+          - 'null'
+        slotTypeList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentSessions.SlotsStruct'
+        site:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentSessions.SiteStruct'
+        holderList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentSessions.HolderStruct'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.PersonCategoryType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        mnemonic:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        purpose:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.PersonCategoryTypePurpose'
+        purposeSpecified:
+          type: boolean
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeDoctor:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.Coding:
+      type: object
+      properties:
+        system:
+          type:
+          - string
+          - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        display:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.RoleType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        application:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.ApplicationType'
+        team:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+        location:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.IdentType'
+      additionalProperties: false
+    PartnerApi.Service.Model.Issue:
+      type: object
+      properties:
+        severity:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.SeverityType'
+        code:
+          type:
+          - string
+          - 'null'
+        details:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Details'
+        diagnostics:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.GetPatientAppointments.PatientAppointmentList:
+      type: object
+      properties:
+        appointment:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.GetPatientAppointments.AppointmentStruct'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBooked:
+      type: object
+      properties:
+        patient:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.RegistrationType'
+        appointment:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBookedAppointment'
+        alert:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBookedAlert'
+        alertSpecified:
+          type: boolean
+      additionalProperties: false
+    PartnerApi.Service.Constants.AppointmentStatus:
+      enum:
+      - 2
+      - 3
+      - 4
+      - 12
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.SlotsForSession.PatientStruct:
+      type: object
+      properties:
+        dbid:
+          type: integer
+          format: int32
+        refID:
+          type: integer
+          format: int32
+        title:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        surname:
+          type:
+          - string
+          - 'null'
+        fullName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.BookedPatients:
+      type: object
+      properties:
+        bookedList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.BookedPatientsBooked'
+        sessionHolderList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37.BookedPatientsSessionHolder'
+        time:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.RegistrationTypeDead:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.BookedPatients37.AddressType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        houseNameFlat:
+          type:
+          - string
+          - 'null'
+        street:
+          type:
+          - string
+          - 'null'
+        village:
+          type:
+          - string
+          - 'null'
+        town:
+          type:
+          - string
+          - 'null'
+        county:
+          type:
+          - string
+          - 'null'
+        postCode:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.PersonTypeLocum:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2:
+      type: object
+      properties:
+        bookedList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2Booked'
+        sessionHolderList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2SessionHolder'
+        time:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeScripts:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeMinorSurgery:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.AppointmentConfiguration.ScheduleStruct:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        startTime:
+          type:
+          - string
+          - 'null'
+        endTime:
+          type:
+          - string
+          - 'null'
+        slotLength:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAlert:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.AppointmentConfiguration.AppointmentConfiguration:
+      type: object
+      properties:
+        siteList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.SiteStruct'
+        holderList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.HolderStruct'
+        scheduleList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.ScheduleStruct'
+        holidayList:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.HolidaysStruct'
+        slotTypeList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.AppointmentConfiguration.TypeStruct'
+      additionalProperties: false
+    PartnerApi.EmisOpen.Appointment.PatientInformationType:
+      type: object
+      properties:
+        patientId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        led:
+          type:
+          - string
+          - 'null'
+        patientNumber:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        dob:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        hasPatientWarnings:
+          type:
+          - string
+          - 'null'
+        actionPerformedOn:
+          type: integer
+          format: int64
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.AddressType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        houseNameFlat:
+          type:
+          - string
+          - 'null'
+        street:
+          type:
+          - string
+          - 'null'
+        village:
+          type:
+          - string
+          - 'null'
+        town:
+          type:
+          - string
+          - 'null'
+        county:
+          type:
+          - string
+          - 'null'
+        postCode:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2Booked:
+      type: object
+      properties:
+        patient:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.RegistrationType'
+        appointment:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAppointment'
+        alert:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAlert'
+        alertSpecified:
+          type: boolean
+      additionalProperties: false
+    PartnerApi.EmisOpen.SlotsForSession.SlotStruct:
+      type: object
+      properties:
+        dbid:
+          type: integer
+          format: int32
+        refID:
+          type: integer
+          format: int32
+        startTime:
+          type:
+          - string
+          - 'null'
+        slotLength:
+          type:
+          - string
+          - 'null'
+        type:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSession.TypeStruct'
+        status:
+          type:
+          - string
+          - 'null'
+        patientList:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.SlotsForSession.PatientListStruct'
+        notes:
+          type:
+          - string
+          - 'null'
+        reason:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37V2.BookedPatientsV2BookedAppointmentSlotType:
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        display:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        bookable:
+          type: boolean
+        emisAccess:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.Service.Model.Details:
+      type: object
+      properties:
+        text:
+          type:
+          - string
+          - 'null'
+        coding:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Coding'
+      additionalProperties: false
+    PartnerApi.EmisOpen.BookedPatients37.PersonTypeMinorSurgery:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.BookedPatients37V2.PersonTypeTwentyFourHour:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.BookedPatients37.PersonCategoryTypePurpose:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.AppointmentConfiguration.HolidayStruct:
+      type: object
+      properties:
+        description:
+          type:
+          - string
+          - 'null'
+        day:
+          type:
+          - string
+          - 'null'
+        startTime:
+          type:
+          - string
+          - 'null'
+        endTime:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearer:
