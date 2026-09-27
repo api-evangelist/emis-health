@@ -353,20 +353,19 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeDoctor:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
     PartnerApi.EmisOpen.PatientMatches37.RegistrationTypeDead:
       enum:
       - 0
       - 1
       type: integer
       format: int32
-    PartnerApi.EmisOpen.PatientMatches37.PersonTypeContractualRelationship:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.PatientMatches37.IntegerCodeType:
+    PartnerApi.EmisOpen.PatientMatches37.StringCodeType:
       type: object
       properties:
         value:
@@ -374,9 +373,9 @@ components:
           - string
           - 'null'
         scheme:
-          type:
-          - string
-          - 'null'
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.StringCodeTypeScheme'
+        schemeSpecified:
+          type: boolean
         term:
           type:
           - string
@@ -393,277 +392,14 @@ components:
           type:
           - string
           - 'null'
-        interventionTarget:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.StringCodeType'
       additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.PersonTypeConsulter:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    PartnerApi.Service.Model.ErrorResponse:
-      type: object
-      properties:
-        messageId:
-          type: string
-          format: uuid
-        text:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.Text'
-        issue:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.Issue'
-        legacyOutcome:
-          type: integer
-          format: int32
-      additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.RegistrationTypeCustomRegistrationEntry:
-      type: object
-      properties:
-        fieldName:
-          type:
-          - string
-          - 'null'
-        fieldValue:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.PersonCategoryTypePurpose:
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeLocum:
       enum:
       - 0
       - 1
       type: integer
       format: int32
-    PartnerApi.EmisOpen.PatientMatches37.PersonTypeContraceptive:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.PatientMatches37.PersonCategoryType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        mnemonic:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        purpose:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonCategoryTypePurpose'
-        purposeSpecified:
-          type: boolean
-      additionalProperties: false
     PartnerApi.EmisOpen.PatientMatches37.PersonTypeRegistrar:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.Service.Model.SeverityType:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.PatientMatches37.PersonType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        mnemonic:
-          type:
-          - string
-          - 'null'
-        pcsUser:
-          type:
-          - string
-          - 'null'
-        activeEMISUser:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        firstNames:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-        category:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonCategoryType'
-        nationalCode:
-          type:
-          - string
-          - 'null'
-        prescriptionCode:
-          type:
-          - string
-          - 'null'
-        gmcCode:
-          type:
-          - string
-          - 'null'
-        ukccCode:
-          type:
-          - string
-          - 'null'
-        scripts:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeScripts'
-        scriptsSpecified:
-          type: boolean
-        consulter:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeConsulter'
-        consulterSpecified:
-          type: boolean
-        contractStart:
-          type:
-          - string
-          - 'null'
-        contractEnd:
-          type:
-          - string
-          - 'null'
-        doctor:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeDoctor'
-        doctorSpecified:
-          type: boolean
-        locum:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeLocum'
-        locumSpecified:
-          type: boolean
-        registrar:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeRegistrar'
-        registrarSpecified:
-          type: boolean
-        maternity:
-          type:
-          - string
-          - 'null'
-        childSurveillance:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeChildSurveillance'
-        childSurveillanceSpecified:
-          type: boolean
-        contraceptive:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeContraceptive'
-        contraceptiveSpecified:
-          type: boolean
-        twentyFourHour:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeTwentyFourHour'
-        twentyFourHourSpecified:
-          type: boolean
-        minorSurgery:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeMinorSurgery'
-        minorSurgerySpecified:
-          type: boolean
-        resonsibleHA:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
-        trainer:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
-        contractualRelationship:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeContractualRelationship'
-        contractualRelationshipSpecified:
-          type: boolean
-        address:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.AddressType'
-        telephone1:
-          type:
-          - string
-          - 'null'
-        telephone2:
-          type:
-          - string
-          - 'null'
-        fax:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        role:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.RoleType'
-        security1:
-          type:
-          - string
-          - 'null'
-        security2:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.IdentType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.PersonTypeChildSurveillance:
       enum:
       - 0
       - 1
@@ -885,16 +621,318 @@ components:
         currentStatus:
           $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.StatusType'
       additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.StringCodeTypeScheme:
+    PartnerApi.Service.Model.ErrorResponse:
+      type: object
+      properties:
+        messageId:
+          type: string
+          format: uuid
+        text:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Text'
+        issue:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Issue'
+        legacyOutcome:
+          type: integer
+          format: int32
+      additionalProperties: false
+    PartnerApi.Service.Model.SeverityType:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.RoleType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        application:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.ApplicationType'
+        team:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+        location:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonCategoryTypePurpose:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.IntegerCodeType:
+      type: object
+      properties:
+        value:
+          type:
+          - string
+          - 'null'
+        scheme:
+          type:
+          - string
+          - 'null'
+        term:
+          type:
+          - string
+          - 'null'
+        oldCode:
+          type:
+          - string
+          - 'null'
+        mapCode:
+          type:
+          - string
+          - 'null'
+        mapScheme:
+          type:
+          - string
+          - 'null'
+        interventionTarget:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.StringCodeType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        mnemonic:
+          type:
+          - string
+          - 'null'
+        pcsUser:
+          type:
+          - string
+          - 'null'
+        activeEMISUser:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        firstNames:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        category:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonCategoryType'
+        nationalCode:
+          type:
+          - string
+          - 'null'
+        prescriptionCode:
+          type:
+          - string
+          - 'null'
+        gmcCode:
+          type:
+          - string
+          - 'null'
+        ukccCode:
+          type:
+          - string
+          - 'null'
+        scripts:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeScripts'
+        scriptsSpecified:
+          type: boolean
+        consulter:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeConsulter'
+        consulterSpecified:
+          type: boolean
+        contractStart:
+          type:
+          - string
+          - 'null'
+        contractEnd:
+          type:
+          - string
+          - 'null'
+        doctor:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeDoctor'
+        doctorSpecified:
+          type: boolean
+        locum:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeLocum'
+        locumSpecified:
+          type: boolean
+        registrar:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeRegistrar'
+        registrarSpecified:
+          type: boolean
+        maternity:
+          type:
+          - string
+          - 'null'
+        childSurveillance:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeChildSurveillance'
+        childSurveillanceSpecified:
+          type: boolean
+        contraceptive:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeContraceptive'
+        contraceptiveSpecified:
+          type: boolean
+        twentyFourHour:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeTwentyFourHour'
+        twentyFourHourSpecified:
+          type: boolean
+        minorSurgery:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeMinorSurgery'
+        minorSurgerySpecified:
+          type: boolean
+        resonsibleHA:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+        trainer:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
+        contractualRelationship:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonTypeContractualRelationship'
+        contractualRelationshipSpecified:
+          type: boolean
+        address:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.AddressType'
+        telephone1:
+          type:
+          - string
+          - 'null'
+        telephone2:
+          type:
+          - string
+          - 'null'
+        fax:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        role:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.RoleType'
+        security1:
+          type:
+          - string
+          - 'null'
+        security2:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeMinorSurgery:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.Service.Model.Coding:
+      type: object
+      properties:
+        system:
+          type:
+          - string
+          - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        display:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeContractualRelationship:
       enum:
       - 0
       - 1
       - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.IdentType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.RegistrationTypeCustomRegistrationEntry:
+      type: object
+      properties:
+        fieldName:
+          type:
+          - string
+          - 'null'
+        fieldValue:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeConsulter:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeChildSurveillance:
+      enum:
+      - 0
+      - 1
       type: integer
       format: int32
     PartnerApi.EmisOpen.PatientMatches37.ApplicationType:
@@ -929,60 +967,16 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.PatientMatches:
-      type: object
-      properties:
-        patientList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PatientMatchesPatient'
-        peopleList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.PersonTypeDoctor:
+    PartnerApi.EmisOpen.PatientMatches37.StringCodeTypeScheme:
       enum:
       - 0
       - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.PatientMatches37.StringCodeType:
-      type: object
-      properties:
-        value:
-          type:
-          - string
-          - 'null'
-        scheme:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.StringCodeTypeScheme'
-        schemeSpecified:
-          type: boolean
-        term:
-          type:
-          - string
-          - 'null'
-        oldCode:
-          type:
-          - string
-          - 'null'
-        mapCode:
-          type:
-          - string
-          - 'null'
-        mapScheme:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.PersonTypeMinorSurgery:
-      enum:
-      - 0
-      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
       type: integer
       format: int32
     PartnerApi.Service.Model.Details:
@@ -994,22 +988,6 @@ components:
           - 'null'
         coding:
           $ref: '#/components/schemas/PartnerApi.Service.Model.Coding'
-      additionalProperties: false
-    PartnerApi.Service.Model.Coding:
-      type: object
-      properties:
-        system:
-          type:
-          - string
-          - 'null'
-        code:
-          type:
-          - string
-          - 'null'
-        display:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     PartnerApi.Service.Model.Issue:
       type: object
@@ -1027,6 +1005,64 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PatientMatches:
+      type: object
+      properties:
+        patientList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PatientMatchesPatient'
+        peopleList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonType'
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonCategoryType:
+      type: object
+      properties:
+        dbid:
+          type:
+          - string
+          - 'null'
+        refID:
+          type:
+          - string
+          - 'null'
+        guid:
+          type:
+          - string
+          - 'null'
+        fileStatus:
+          type:
+          - string
+          - 'null'
+        oldGUID:
+          type:
+          - string
+          - 'null'
+        mnemonic:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        purpose:
+          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.PersonCategoryTypePurpose'
+        purposeSpecified:
+          type: boolean
+      additionalProperties: false
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeScripts:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
     PartnerApi.EmisOpen.PatientMatches37.StatusType:
       type: object
       properties:
@@ -1059,37 +1095,13 @@ components:
         patientType:
           $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IntegerCodeType'
       additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.RoleType:
-      type: object
-      properties:
-        dbid:
-          type:
-          - string
-          - 'null'
-        refID:
-          type:
-          - string
-          - 'null'
-        guid:
-          type:
-          - string
-          - 'null'
-        fileStatus:
-          type:
-          - string
-          - 'null'
-        oldGUID:
-          type:
-          - string
-          - 'null'
-        application:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.ApplicationType'
-        team:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
-        location:
-          $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientMatches37.IdentType'
-      additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.PersonTypeScripts:
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeContraceptive:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    PartnerApi.EmisOpen.PatientMatches37.PersonTypeTwentyFourHour:
       enum:
       - 0
       - 1
@@ -1143,18 +1155,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.EmisOpen.PatientMatches37.PersonTypeLocum:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    PartnerApi.EmisOpen.PatientMatches37.PersonTypeTwentyFourHour:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
   securitySchemes:
     bearer:
       type: http
