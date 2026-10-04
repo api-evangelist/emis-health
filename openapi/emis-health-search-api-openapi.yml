@@ -117,6 +117,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    PartnerApi.EmisOpen.PatientSearchesMatches.PatientType:
+      type: object
+      properties:
+        refID:
+          type: integer
+          format: int32
+        currentStatus:
+          type: integer
+          format: int32
+      additionalProperties: false
     PartnerApi.EmisOpen.PatientSearchesMatches.PatientMatches:
       type: object
       properties:
@@ -126,6 +136,16 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/PartnerApi.EmisOpen.PatientSearchesMatches.PatientType'
+      additionalProperties: false
+    PartnerApi.Service.Model.Details:
+      type: object
+      properties:
+        text:
+          type:
+          - string
+          - 'null'
+        coding:
+          $ref: '#/components/schemas/PartnerApi.Service.Model.Coding'
       additionalProperties: false
     PartnerApi.Service.Model.SeverityType:
       enum:
@@ -145,22 +165,14 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    PartnerApi.Service.Model.Coding:
-      type: object
-      properties:
-        system:
-          type:
-          - string
-          - 'null'
-        code:
-          type:
-          - string
-          - 'null'
-        display:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
+    PartnerApi.Service.Contracts.Search.ReportType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
     PartnerApi.Service.Model.ErrorResponse:
       type: object
       properties:
@@ -175,34 +187,6 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    PartnerApi.EmisOpen.PatientSearchesMatches.PatientType:
-      type: object
-      properties:
-        refID:
-          type: integer
-          format: int32
-        currentStatus:
-          type: integer
-          format: int32
-      additionalProperties: false
-    PartnerApi.Service.Contracts.Search.ReportType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    PartnerApi.Service.Model.Details:
-      type: object
-      properties:
-        text:
-          type:
-          - string
-          - 'null'
-        coding:
-          $ref: '#/components/schemas/PartnerApi.Service.Model.Coding'
-      additionalProperties: false
     PartnerApi.Service.Model.Issue:
       type: object
       properties:
@@ -215,6 +199,22 @@ components:
         details:
           $ref: '#/components/schemas/PartnerApi.Service.Model.Details'
         diagnostics:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PartnerApi.Service.Model.Coding:
+      type: object
+      properties:
+        system:
+          type:
+          - string
+          - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        display:
           type:
           - string
           - 'null'
