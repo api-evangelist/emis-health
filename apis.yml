@@ -42,6 +42,17 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.j
 tags:
 - Healthcare
 - United Kingdom
+- Electronic Health Records
+- Interoperability
+- HL7
+- FHIR
+- Primary Care
+- NHS
+- Clinical Data
+- Electronic Patient Record
+tags_raw:
+- Healthcare
+- United Kingdom
 - EHR
 - EMR
 - Interoperability
