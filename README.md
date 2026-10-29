@@ -1,4 +1,4 @@
-# EMIS Health (emis-health)
+# EMIS Health
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,71 +64,130 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-EMIS Health is a United Kingdom health-technology company and one of the two dominant GP clinical-system providers in the NHS (alongside TPP SystmOne), supplying the EMIS Web electronic patient record used across primary care, community pharmacy, and other care settings. EMIS is migrating from EMIS Web to EMIS-X, a cloud-first platform, and exposes third-party integration through the gated EMIS Partner Developer Portal at [docs.partner.emis-x.uk](https://docs.partner.emis-x.uk/).
+EMIS Health is a United Kingdom health-technology company and one of the two dominant GP clinical-system providers in the NHS (alongside TPP SystmOne), supplying the EMIS Web electronic patient record used across primary care, community pharmacy, and other care settings. EMIS is migrating from EMIS Web to EMIS-X, a cloud-first platform, and exposes third-party integration through the EMIS Partner Developer Portal at docs.partner.emis-x.uk. The gated partner programme documents a RESTful JSON Partner API (PAPI) covering appointments, the clinical/medical record, patient demographics and matching, organisation lookup and clinical searches, plus EMIS-X App Launch and an EMIS-X Analytics data warehouse. Authentication is OAuth2 / OIDC (Microsoft Entra External ID / Azure AD B2C) using authorization-code, PKCE, and client-credentials flows with scoped JWT access tokens; native HL7 FHIR resource support is documented as upcoming rather than yet available.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/emis-health/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/emis-health/refs/heads/main/apis.yml)
+**Areas:** Healthcare · United Kingdom · Electronic Health Records · Interoperability · HL7 · FHIR · Primary Care · NHS · Clinical Data · Electronic Patient Record
 
-## Tags
+## EMIS Health on APIs.io
 
-- Healthcare
-- United Kingdom
-- EHR
-- EMR
-- Interoperability
-- HL7
-- FHIR
-- Primary Care
-- NHS
-- Clinical Data
-- Electronic Patient Record
+Everything profiled for EMIS Health is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/emis-health/](https://apis.io/providers/emis-health/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (12)
 
-- **Created:** 2026-07-24
-- **Modified:** 2026-07-24
+- [EMIS-X App Launch](https://apis.io/apis/emis-health/emis-x-app-launch/) — EMIS-X App Launch lets partner applications be launched in-context from within the EMIS-X / EMIS Web clinical workflow, passing an authenticated user and…
+- [EMIS-X Analytics](https://apis.io/apis/emis-health/emis-x-analytics/) — EMIS-X Analytics provides partner access to an EMIS-X data warehouse with modelled datasets across domains including Community Pharmacy, Incremental Primary…
+- [EMIS Health Appointments API](https://apis.io/apis/emis-health/emis-health-appointments-api/) — The appointments API from EMIS Health — 17 operation(s) for appointments.
+- [EMIS Health CORS API](https://apis.io/apis/emis-health/emis-health-cors-api/) — The CORS API from EMIS Health — 40 operation(s) for cors.
+- [EMIS Health API](https://apis.io/apis/emis-health/emis-health-health-api/) — The health API from EMIS Health — 1 operation(s) for health.
+- [EMIS Health Medical Record API](https://apis.io/apis/emis-health/emis-health-medicalrecord-api/) — The medicalRecord API from EMIS Health — 12 operation(s) for medicalrecord.
+- [EMIS Health Organisation API](https://apis.io/apis/emis-health/emis-health-organisation-api/) — The organisation API from EMIS Health — 2 operation(s) for organisation.
+- [EMIS Health Patient API](https://apis.io/apis/emis-health/emis-health-patient-api/) — The patient API from EMIS Health — 1 operation(s) for patient.
+- [EMIS Health Patient Matching API](https://apis.io/apis/emis-health/emis-health-patientmatching-api/) — The patientMatching API from EMIS Health — 4 operation(s) for patientmatching.
+- [EMIS Health Search API](https://apis.io/apis/emis-health/emis-health-search-api/) — The search API from EMIS Health — 1 operation(s) for search.
+- [EMIS Health Swagger API](https://apis.io/apis/emis-health/emis-health-swagger-api/) — The swagger API from EMIS Health — 1 operation(s) for swagger.
+- [EMIS Health User API](https://apis.io/apis/emis-health/emis-health-user-api/) — The user API from EMIS Health — 1 operation(s) for user.
 
-## APIs
+### Published properties
 
-### EMIS Partner API (PAPI)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-A RESTful JSON API for EMIS-X / EMIS Web integration, exposing appointments, the clinical/medical record, patient demographics, patient matching, organisation lookup, and clinical searches. Documented as OpenAPI 3.0.4 (Partner API v1.2) with 40 operations. Access is OAuth2 authorization-code with scoped bearer (JWT) tokens.
+#### MCP servers (1)
 
-- **Human URL:** [https://docs.partner.emis-x.uk/papi-overview](https://docs.partner.emis-x.uk/papi-overview)
-- **Base URL:** `https://api.platform.emis-x.uk/partner`
+Model Context Protocol servers that expose the API to agents.
 
-#### Properties
+- [emis-partner-api](https://apis.io/servers/emis-health/emis-partner-api/)
 
-- [OpenAPI](openapi/emis-health-partner-api-openapi.json)
-- [Documentation](https://docs.partner.emis-x.uk/papi-overview)
-- [API Reference](https://docs.partner.emis-x.uk/openapi/papi)
-- [Authentication](https://docs.partner.emis-x.uk/auth/)
+#### Agentic access (1)
 
-### EMIS-X App Launch
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Launch partner applications in-context from within the EMIS-X / EMIS Web clinical workflow, passing authenticated user and patient context via the shared EMIS-X OAuth2 / OIDC authentication.
+- [Emis Health Agentic Access](https://apis.io/agentic-access/emis-health/emis-health-agentic-access/)
 
-- **Human URL:** [https://docs.partner.emis-x.uk/emisx-app-launch/](https://docs.partner.emis-x.uk/emisx-app-launch/)
+#### Collections (1)
 
-### EMIS-X Analytics
+Postman and Open Collection request collections.
 
-Partner access to an EMIS-X data warehouse with modelled datasets across Community Pharmacy, Incremental Primary Care Views (iPCVs), OpenSAFELY, Recruit, and IM1 Bulk Extract, browsable through the developer portal data explorer.
+- [Partner API](https://apis.io/collections/emis-health/open-emis-health-partner-api/)
 
-- **Human URL:** [https://docs.partner.emis-x.uk/getting-started/](https://docs.partner.emis-x.uk/getting-started/)
+#### Overlays (1)
 
-## Authentication
+OpenAPI overlays, including conversational phrasing for each operation.
 
-OAuth2 / OIDC via Microsoft Entra External ID (Azure AD B2C) at `identity.stg.emis-x.uk`, supporting authorization-code, PKCE, and client-credentials flows with scoped JWT bearer access tokens. PAPI OAuth2 scopes include `papi-appt.read`, `papi-appt.write`, `papi-cr.read`, `papi-cr.write`, `papi-subjects.read`, `papi-config.read`, and `papi-searches.read`. Native HL7 FHIR resource support is documented as upcoming; the current Partner API is REST JSON, not FHIR, and no SMART-on-FHIR configuration is served at review time.
+- [Emis Health Partner Api Overlay](https://apis.io/overlays/emis-health/emis-health-partner-api-overlay/)
 
-## Common Properties
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Emis Health Authentication](https://apis.io/security/emis-health/emis-health-authentication/)
+- [Emis Health Domain Security](https://apis.io/security/emis-health/emis-health-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Emis Health Scopes](https://apis.io/scopes/emis-health/emis-health-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.emishealth.com/)
-- [Developer Portal](https://docs.partner.emis-x.uk/)
-- [Getting Started](https://docs.partner.emis-x.uk/getting-started/)
-- [Onboarding](https://docs.partner.emis-x.uk/onboarding-one/)
-- [Authentication](https://docs.partner.emis-x.uk/auth/)
-- [Privacy Policy](https://www.emishealth.com/privacy-policy)
+- [Documentation](https://docs.partner.emis-x.uk/getting-started/)
+- [Getting started](https://docs.partner.emis-x.uk/getting-started/)
+- [API reference](https://docs.partner.emis-x.uk/openapi/papi)
+- [Blog](https://www.enliviohealth.com/news/news)
+- [Privacy policy](https://www.emishealth.com/privacy-policy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 34.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 42.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 61.3 |
+| Access clarity | 10.5 |
+
+**Agent readiness 31.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 34.4** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/emis-health/](https://apis.io/providers/emis-health/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for EMIS Health: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/emis-health/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
